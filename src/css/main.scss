@@ -2202,19 +2202,32 @@ a.project-card,
 .projects__linktree-btn {
   display: inline-flex;
   align-items: center;
-  gap: $space-md;
-  padding: $space-md $space-2xl;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.35rem;
+  max-width: 100%;
+  box-sizing: border-box;
   border: 1px solid rgba(235, 175, 76, 0.4);
-  background: rgba(20, 21, 24, 0.7);
+  background: rgba(20, 21, 24, 0.85);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: $white;
   font-family: $font-sans;
-  font-size: $text-xs;
-  letter-spacing: 0.16em;
+  font-size: clamp(0.64rem, 0.58rem + 0.3vw, 0.75rem);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-radius: 3px;
+  border-radius: 4px;
   text-decoration: none;
   transition: all $duration-fast ease;
+  line-height: 1.35;
+  text-align: center;
+
+  @include respond(md) {
+    gap: $space-md;
+    padding: 0.85rem 2.4rem;
+    font-size: $text-xs;
+    letter-spacing: 0.16em;
+  }
 
   .btn-dot {
     width: 6px;
@@ -3084,9 +3097,11 @@ a.project-card,
     position: relative;
     z-index: 2;
     max-width: 900px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
   }
 
   &__tag {
@@ -3100,35 +3115,41 @@ a.project-card,
     background: rgba(212, 168, 83, 0.12);
     border: 1px solid rgba(212, 168, 83, 0.3);
     border-radius: 2px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   &__statement {
     @include serif-heading;
-    font-size: clamp(2rem, 3.2vw + 1rem, 4rem);
+    font-size: clamp(1.6rem, 2.5vw + 1rem, 4rem);
     color: $white;
-    line-height: 1.2;
+    line-height: 1.25;
     margin-bottom: $space-md;
     text-wrap: balance;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   &__author {
     font-family: $font-sans;
-    font-size: $text-sm;
-    letter-spacing: 0.15em;
+    font-size: clamp(0.72rem, 0.68rem + 0.3vw, $text-sm);
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $grey-mid;
-    margin-bottom: $space-2xl;
+    margin-bottom: clamp(1.5rem, 1.2rem + 1vw, $space-2xl);
   }
 
   &__specs {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: $space-md;
     padding-top: $space-xl;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 
     @include respond(md) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
@@ -3142,19 +3163,36 @@ a.project-card,
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 3px;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 
     .spec-label {
       font-size: 0.65rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: $amber;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .spec-value {
       font-size: 0.78rem;
       letter-spacing: 0.04em;
       color: $white;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
+  }
+
+  &__btn-wrap {
+    margin-top: clamp(1.4rem, 1.2rem + 1vw, 2.5rem);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
   }
 }
 
@@ -7520,34 +7558,59 @@ a.project-card,
   }
 }
 
-// ── Action Spotlight: Reduce height on mobile ──
+// ── Action Spotlight: Reduce height and ensure strict containment on mobile ──
 .action-spotlight {
   @media (max-width: $bp-md) {
     min-height: 55vh;
-    padding: clamp(2.5rem, 2rem + 1.5vw, 4rem) $gutter;
+    padding: clamp(2.5rem, 2rem + 1.5vw, 4rem) 1rem;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__content {
+    @media (max-width: $bp-md) {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0;
+    }
   }
 
   &__statement {
     @media (max-width: $bp-sm) {
-      font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.5rem);
+      font-size: clamp(1.4rem, 1.2rem + 1.5vw, 2.2rem);
+      padding: 0 0.25rem;
     }
   }
 
   &__specs {
-    @media (max-width: $bp-sm) {
-      gap: 0.5rem;
+    @media (max-width: $bp-md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .action-spotlight__spec {
+      min-width: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+
       @media (max-width: $bp-sm) {
-        padding: 0.45rem 0.65rem;
+        padding: 0.5rem 0.65rem;
 
         .spec-label {
           font-size: 0.55rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .spec-value {
           font-size: 0.68rem;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
       }
     }
