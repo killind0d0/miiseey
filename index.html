@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mise Films Pvt Ltd — Cinematic storytelling. We craft films that move." />
+  <meta name="theme-color" content="#141518" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mise Films — Cinematic Storytelling" />
+  <meta property="og:description" content="Mise Films Pvt Ltd — An auteur production house in Gayaji, Bihar. We craft atmospheric celluloid narratives for bold directors, brands, and visionaries." />
+  <meta property="og:image" content="./images/og-cover.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://misefilms.com" />
+  <meta property="og:site_name" content="Mise Films" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mise Films — Cinematic Storytelling" />
+  <meta name="twitter:description" content="Cinematic storytelling. We craft films that move." />
+  <meta name="twitter:image" content="./images/og-cover.jpg" />
+
+  <title>Mise Films — Cinematic Storytelling</title>
+
+  <!-- Preconnect to font CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/logo/mise-logo.png" />
+  <link rel="apple-touch-icon" href="./images/logo/mise-logo.png" />
+
+  <!-- Fonts: Cormorant Garamond (serif) + Plus Jakarta Sans (sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Entry point -->
+  <script type="module" src="/src/js/main.js"></script>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CUSTOM CURSOR                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CINEMATIC ENTRY: B&W 35MM UNIVERSAL COUNTDOWN LEADER    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="cine-entry" id="cine-entry" role="presentation">
+    <!-- B&W Scratched Celluloid Countdown Leader (3 -> 2 -> 1 -> 0) -->
+    <div class="cine-leader" id="cine-leader" role="status" aria-label="35mm Film Countdown Leader">
+      <div class="cine-leader__bg"></div>
+
+      <!-- Scratched Celluloid Damage & Projector Bulb Flicker -->
+      <div class="cine-leader__film-gate">
+        <div class="cine-leader__scratch cine-leader__scratch--1"></div>
+        <div class="cine-leader__scratch cine-leader__scratch--2"></div>
+        <div class="cine-leader__scratch cine-leader__scratch--3"></div>
+        <div class="cine-leader__dust"></div>
+        <div class="cine-leader__flicker"></div>
+      </div>
+
+      <!-- SMPTE Leader Corner Telemetry Marks -->
+      <div class="cine-leader__meta cine-leader__meta--tl">ACADEMY LEADER // 35MM</div>
+      <div class="cine-leader__meta cine-leader__meta--tr">SOUND SYNC // 24 FPS</div>
+      <div class="cine-leader__meta cine-leader__meta--bl">HEAD // REEL 01</div>
+      <div class="cine-leader__meta cine-leader__meta--br">PICTURE START</div>
+
+      <!-- Reticle Crosshairs with Optical Ticks -->
+      <div class="cine-leader__crosshair cine-leader__crosshair--h"></div>
+      <div class="cine-leader__crosshair cine-leader__crosshair--v"></div>
+
+      <!-- Center Clock Face & Pie Wipe Leader -->
+      <div class="cine-leader__reticle">
+        <div class="cine-leader__circle cine-leader__circle--outer"></div>
+        <div class="cine-leader__circle cine-leader__circle--inner"></div>
+
+        <!-- 360° Rotating Clock Hand & Sweeping Pie Wedge -->
+        <div class="cine-leader__pie-wedge" id="cine-leader-pie"></div>
+        <div class="cine-leader__clock-hand" id="cine-leader-hand"></div>
+
+        <!-- Large Worn Stencil Optical Numeral -->
+        <div class="cine-leader__numeral" id="cine-leader-numeral">3</div>
+      </div>
+    </div>
+
+    <!-- Full-Screen White Optical Flash -->
+    <div class="cine-leader__flash" id="cine-leader-flash" aria-hidden="true"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- NAVIGATION                                             -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo" data-magnetic>Mise Films</a>
+
+    <div class="nav__links">
+      <a href="#work" class="nav__link" data-magnetic>Work</a>
+      <a href="#bihar-baithak" class="nav__link" data-magnetic>Bihar Baithak</a>
+      <a href="#about" class="nav__link" data-magnetic>About</a>
+      <a href="#services" class="nav__link" data-magnetic>Services</a>
+      <a href="#contact" class="nav__link" data-magnetic>Contact</a>
+    </div>
+
+    <button class="nav__menu-btn" id="menu-btn" aria-label="Open menu" data-magnetic>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#work" class="mobile-menu__link">Work</a>
+    <a href="#bihar-baithak" class="mobile-menu__link">Bihar Baithak</a>
+    <a href="#about" class="mobile-menu__link">About</a>
+    <a href="#services" class="mobile-menu__link">Services</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT (wrapped for Lenis)                       -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <main id="smooth-content">
+
+    <!-- ─── HERO ─────────────────────────────────────────── -->
+    <section class="hero" id="hero">
+      <!-- 1. FULL SCREEN EDGE-TO-EDGE INTRO VIDEO (Pure Video, Zero Overlapping Text) -->
+      <div class="hero__screen">
+        <div class="hero__video-wrap">
+          <video
+            class="hero__video"
+            id="hero-intro-video"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            poster="./images/mise-logo-hd.png"
+          >
+            <source src="./videos/mise-intro-1080.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <!-- 2. HERO STATEMENT DIRECTLY BELOW THE VIDEO (ZERO OVERLAP) -->
+      <div class="hero__statement" id="hero-statement">
+        <div class="hero__statement-grid">
+          <!-- Cinema Camera Artwork Column (Left Column, facing right toward statement) -->
+          <div class="hero__cam-showcase">
+            <div class="hero__cam-glow" aria-hidden="true"></div>
+            <img
+              src="./images/cam.png"
+              alt="Mise Films Production Camera on Tripod"
+              class="hero__cam-img"
+              loading="eager"
+            />
+            <div class="hero__cam-telemetry" aria-hidden="true">
+              <span class="cam-tlm-tag">A-CAM RIG // TRIPOD MOUNT</span>
+              <span class="cam-tlm-coord">24.7955° N, 85.0002° E</span>
+            </div>
+          </div>
+
+          <!-- Text Manifesto Column (Center Column) -->
+          <div class="hero__content">
+            <div class="hero__eyebrow">// AUTEUR PRODUCTION HOUSE • GAYAJI, BIHAR</div>
+            <h1 class="hero__title" data-split-text>
+              Cinema Sculpted<br />in Light & Truth
+            </h1>
+            <p class="hero__subtitle" data-split-lines>
+              Mise Films is an auteur production house in Gayaji, Bihar. We craft atmospheric celluloid narratives for bold directors, brands, and visionaries.
+            </p>
+            <div class="hero__badges">
+              <span class="hero__badge">35MM / LARGE FORMAT</span>
+              <span class="hero__badge">ANAMORPHIC GLASS</span>
+              <span class="hero__badge">RAW CELLULOID POETRY</span>
+            </div>
+          </div>
+
+          <!-- Production Spotlight Artwork Column (Right Column, inverted to face left toward statement) -->
+          <div class="hero__spotlight-showcase">
+            <div class="hero__spotlight-glow" aria-hidden="true"></div>
+            <img
+              src="./images/spotlight.png"
+              alt="Mise Films Production Studio Spotlight"
+              class="hero__spotlight-img"
+              loading="eager"
+            />
+            <div class="hero__cam-telemetry hero__spotlight-telemetry" aria-hidden="true">
+              <span class="cam-tlm-tag">KEY LIGHT // 5600K TUNGSTEN</span>
+              <span class="cam-tlm-coord">STAGE 01 // FOCUS 45°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FEATURED WORK ────────────────────────────────── -->
+    <section class="section" id="work">
+      <div class="section__header" data-reveal="fade-up">
+        <div>
+          <span class="section__label">Selected Work</span>
+          <h2 class="section__title">Stories We've Told</h2>
+        </div>
+        <p class="section__description">
+          A curated selection of our most impactful productions — each one a world unto itself.
+        </p>
+      </div>
+
+      <!-- ─── CINEMA CATEGORY FILTERS ─── -->
+      <div class="projects-filter" id="projects-filter" data-reveal="fade-up">
+        <span class="projects-filter__label">Filter Craft:</span>
+        <div class="projects-filter__buttons">
+          <button class="filter-btn is-active" data-filter="all" type="button">
+            <span>All Works</span>
+            <span class="filter-count">15</span>
+          </button>
+          <button class="filter-btn" data-filter="commercials" type="button">
+            <span>Commercials & Brand</span>
+            <span class="filter-count">5</span>
+          </button>
+          <button class="filter-btn" data-filter="music-videos" type="button">
+            <span>Music Videos</span>
+            <span class="filter-count">9</span>
+          </button>
+          <button class="filter-btn" data-filter="feature-films" type="button">
+            <span>Feature & Devotional</span>
+            <span class="filter-count">1</span>
+          </button>
+          <button class="filter-btn" data-filter="documentaries" type="button">
+            <span>Documentaries & Live</span>
+            <span class="filter-count">2</span>
+          </button>
+          <button class="filter-btn" data-filter="post-production" type="button">
+            <span>Post & BTS</span>
+            <span class="filter-count">2</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── HYBRID SHOWCASE: DIRECTOR'S SUITE MONITOR + CRITERION ARCHIVE ─── -->
+      <div class="hybrid-suite" id="hybrid-suite" data-reveal="fade-up">
+
+        <!-- 1. MOVIE CAMERA MASTER MONITOR (TOP) -->
+        <div class="hybrid-master cine-camera-monitor" id="hybrid-master">
+          <!-- Top Camera Housing Chassis / Telemetry Bar -->
+          <div class="camera-monitor__top-bar">
+            <div class="cam-brand-tag">
+              <span class="cam-screw">⊕</span>
+              <span class="cam-model">MISE CINE // ALEXA 35 4K</span>
+              <span class="cam-rec-pill">
+                <span class="cam-rec-dot"></span>
+                <span class="cam-rec-text">REC</span>
+              </span>
+            </div>
+
+            <!-- Running Timecode Display (TC 01:24:08:14) -->
+            <div class="camera-monitor__timecode-wrap">
+              <span class="tc-label">TC</span>
+              <span class="tc-display" id="camera-timecode">01:24:08:14</span>
+              <span class="tc-fps">24 FPS</span>
+            </div>
+
+            <!-- Camera Telemetry (Shutter, ISO, WB, Audio) -->
+            <div class="camera-monitor__telemetry">
+              <span class="cam-stat"><strong>SHUTTER</strong> 180.0°</span>
+              <span class="cam-stat"><strong>EI</strong> 800</span>
+              <span class="cam-stat"><strong>WB</strong> 5600K</span>
+              <span class="cam-stat cam-stat--pill" id="cam-lut-tag">LOG-C4 / REC.709</span>
+            </div>
+          </div>
+
+          <!-- Camera Viewfinder Stage with Live Camera Overlays -->
+          <div class="camera-monitor__stage" id="camera-stage">
+            <video
+              id="hybrid-master-video"
+              src="./videos/commercial-samsung.mp4"
+              poster="./images/projects/poster-samsung.jpg"
+              controls
+              autoplay
+              muted
+              playsinline
+              loop
+            ></video>
+
+            <div id="hybrid-iframe-wrap" class="hybrid-iframe-wrap" style="display: none;">
+              <iframe
+                id="hybrid-master-iframe"
+                src=""
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <!-- ── CAMERA VIEWING OSD (On-Screen Display) TELEMETRY ── -->
+            <div class="camera-osd" id="camera-osd">
+              <!-- 2.39:1 Anamorphic Frame Guide Lines -->
+              <div class="camera-osd__framelines">
+                <div class="osd-corner osd-corner--tl"></div>
+                <div class="osd-corner osd-corner--tr"></div>
+                <div class="osd-corner osd-corner--bl"></div>
+                <div class="osd-corner osd-corner--br"></div>
+                <!-- Center Crosshair Reticle -->
+                <div class="osd-crosshair" aria-hidden="true">+</div>
+              </div>
+
+              <!-- Live Audio VU Level Peak Bars (Left Side) -->
+              <div class="camera-osd__audio-meters" aria-hidden="true">
+                <div class="vu-channel">
+                  <span class="vu-label">L</span>
+                  <div class="vu-track"><div class="vu-bar" id="vu-bar-1"></div></div>
+                </div>
+                <div class="vu-channel">
+                  <span class="vu-label">R</span>
+                  <div class="vu-track"><div class="vu-bar" id="vu-bar-2"></div></div>
+                </div>
+                <span class="vu-db">-12dB</span>
+              </div>
+
+              <!-- Battery & Media Mag Telemetry (Bottom Right) -->
+              <div class="camera-osd__mag-info">
+                <span class="mag-pill">MAG 94% ProRes RAW</span>
+                <span class="bat-pill">BAT 14.8V</span>
+              </div>
+
+              <!-- Active Reel & Lens Telemetry (Bottom Left) -->
+              <div class="camera-osd__lens-info">
+                <span class="lens-tag">COOKE ANAMORPHIC /i 35mm T1.5</span>
+                <span class="roll-tag" id="camera-roll-tag">ROLL 01 / 15</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Camera Control Deck & Film Info Bar -->
+          <div class="camera-monitor__deck">
+            <!-- Film Metadata -->
+            <div class="camera-monitor__meta">
+              <div class="camera-monitor__tags">
+                <span class="camera-monitor__badge" id="hybrid-badge">COMMERCIAL CAMPAIGN • SAMSUNG INDIA</span>
+                <span class="camera-monitor__craft" id="hybrid-craft-badge">DIR. SHREYANK VISHNOI</span>
+              </div>
+              <h3 class="camera-monitor__title" id="hybrid-title">Galaxy Z Fold8 Ultra — Commercial Campaign</h3>
+              <p class="camera-monitor__credits" id="hybrid-credits">Direction & Technical Head: Shreyank Vishnoi • Mise Films</p>
+            </div>
+
+            <!-- Camera Production Actions & Toolset -->
+            <div class="camera-monitor__actions">
+              <!-- Quick Step Buttons -->
+              <button class="cam-action-btn cam-action-btn--step" id="cam-prev-btn" type="button" title="Previous Film Reel">
+                <span>◀</span>
+                <span class="btn-text-sm">PREV</span>
+              </button>
+
+              <button class="cam-action-btn cam-action-btn--step" id="cam-next-btn" type="button" title="Next Film Reel">
+                <span class="btn-text-sm">NEXT</span>
+                <span>▶</span>
+              </button>
+
+              <!-- Monitor Audio Deck -->
+              <div class="cam-audio-deck" id="cam-audio-deck">
+                <button class="cam-action-btn cam-action-btn--audio" id="cam-sound-toggle" type="button" title="Toggle Sound">
+                  <span id="cam-sound-icon">🔈</span>
+                  <span id="cam-sound-text">SOUND: OFF</span>
+                </button>
+                <input type="range" class="cam-vol-range" id="cam-vol-slider" min="0" max="1" step="0.05" value="0.8" title="Monitor Volume" aria-label="Monitor Volume" />
+              </div>
+
+              <!-- Toggle Camera OSD HUD -->
+              <button class="cam-action-btn" id="cam-hud-toggle" type="button" title="Toggle Camera Telemetry HUD">
+                <span>◫</span>
+                <span id="cam-hud-toggle-text">HUD: ON</span>
+              </button>
+
+              <!-- Full Darkroom Modal -->
+              <button class="cam-action-btn" id="hybrid-expand-btn" type="button" title="Expand Fullscreen Darkroom Player">
+                <span>⛶</span>
+                <span>Darkroom</span>
+              </button>
+
+              <!-- Direct Link to YouTube or Instagram -->
+              <a
+                href="https://www.youtube.com/watch?v=_YoNR9RlDjw"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cam-action-btn cam-action-btn--primary"
+                id="hybrid-link"
+              >
+                <span id="hybrid-link-text">Watch on YouTube</span>
+                <span class="arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. AUTEUR EXHIBITION TAPE & HORIZONTAL CRITERION DIGIPAK VAULT -->
+        <div class="exhibition-tape" id="exhibition-tape">
+          <div class="exhibition-tape__header">
+            <div class="exhibition-tape__left">
+              <span class="tape-bullet"></span>
+              <h4 class="tape-title">Criterion Archival Exhibition</h4>
+              <span class="tape-count" id="hybrid-ledger-count">15 Selected Works</span>
+            </div>
+
+            <!-- Tape Navigation & Auto-Roll Controls -->
+            <div class="exhibition-tape__controls">
+              <span class="tape-hint">Auto-rolling • Hover to pause</span>
+              <button class="tape-ctrl-btn" id="tape-pause-btn" type="button" title="Toggle Auto-Roll" aria-label="Toggle Auto-Roll">
+                <span id="tape-pause-icon">⏸</span>
+                <span id="tape-pause-text">Auto</span>
+              </button>
+              <button class="tape-ctrl-btn" id="tape-prev-btn" type="button" title="Previous Reel" aria-label="Previous Reel">‹</button>
+              <button class="tape-ctrl-btn" id="tape-next-btn" type="button" title="Next Reel" aria-label="Next Reel">›</button>
+            </div>
+          </div>
+
+          <!-- Horizontal Sliding Strip Canvas -->
+          <div class="exhibition-tape__canvas" id="exhibition-tape-canvas">
+            <div class="exhibition-tape__track hybrid-ledger" id="hybrid-ledger-table">
+          <!-- Digipak Box 1: Galaxy Z Fold8 Ultra -->
+          <div
+            class="criterion-slipcase-box criterion-row is-screening is-active"
+            data-index="0"
+            data-roll="ROLL 01 / 15"
+            data-video-type="local"
+            data-video-src="./videos/commercial-samsung.mp4"
+            
+            data-poster="./images/projects/poster-samsung.jpg"
+            data-title="Galaxy Z Fold8 Ultra — Commercial Campaign"
+            data-badge="COMMERCIAL CAMPAIGN • SAMSUNG INDIA"
+            data-credits="Direction: Shreyank Vishnoi • 4K Celluloid Playback"
+            data-post-url="https://www.youtube.com/watch?v=_YoNR9RlDjw"
+            data-platform="YouTube"
+            data-quality="4K UHD PLAYBACK"
+            data-category="commercials"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 001</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/poster-samsung.jpg" alt="Galaxy Z Fold8 Ultra" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 001</span>
+                    <h4 class="slipcase-front-title">Galaxy Z Fold8 Ultra</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • Samsung India</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2026</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 001</span>
+                  <h4 class="slipcase-back-title">Galaxy Z Fold8 Ultra</h4>
+                  <span class="slipcase-back-sub">COMMERCIAL CAMPAIGN • SAMSUNG INDIA</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Cooke Anamorphic /i 35mm</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 Anamorphic Scope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>ARRI LogC4 / Rec.709</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K ProRes RAW • 24 FPS</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2026</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 2: SkyHop Airlines Testing -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="1"
+            data-roll="ROLL 02 / 15"
+            data-video-type="local"
+            data-video-src="./videos/commercial-skyhop.mp4"
+            
+            data-poster="./images/projects/poster-skyhop.jpg"
+            data-title="SkyHop Airlines — Testing Campaign BTS"
+            data-badge="AVIATION CAMPAIGN • SCENE BANANA"
+            data-credits="Directed by Shreyank Vishnoi • Aerial Motion & BTS"
+            data-post-url="https://www.instagram.com/reel/DZLiZc5ze_1/"
+            data-platform="Instagram"
+            data-quality="1080P PRORES"
+            data-category="commercials post-production"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 002</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/poster-skyhop.jpg" alt="SkyHop Airlines Testing" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 002</span>
+                    <h4 class="slipcase-front-title">SkyHop Airlines Testing</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • Aviation & Aerials</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2026</span>
+                      <span class="box-format">Instagram</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 002</span>
+                  <h4 class="slipcase-back-title">SkyHop Airlines Testing</h4>
+                  <span class="slipcase-back-sub">AVIATION CAMPAIGN • SCENE BANANA</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Zeiss Supreme Primes 25mm</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>16:9 Broadcast & 9:16 Reel</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Rec.709 Commercial Master</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>1080P ProRes HQ • 60 FPS</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2026</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 3: 2 NUMBER — DG Immortals -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="2"
+            data-roll="ROLL 03 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="RhhNh-UzQDI"
+            data-poster="./images/projects/two-number.jpg"
+            data-title="2 NUMBER — DG Immortals x Parmish Verma"
+            data-badge="HIT MUSIC VIDEO • VYRL HARYANVI"
+            data-credits="Cinematography: Vikrant Yadav • Mise Films"
+            data-post-url="https://www.youtube.com/watch?v=RhhNh-UzQDI"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 003</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/two-number.jpg" alt="2 NUMBER — DG Immortals" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 003</span>
+                    <h4 class="slipcase-front-title">2 NUMBER — DG Immortals</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Music Video</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 003</span>
+                  <h4 class="slipcase-back-title">2 NUMBER — DG Immortals</h4>
+                  <span class="slipcase-back-sub">HIT MUSIC VIDEO • VYRL HARYANVI</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>ARRI Master Primes 50mm</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 CinemaScope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Kodak 5219 500T Grain</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 4: BOBMC Rider Mania -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="3"
+            data-roll="ROLL 04 / 15"
+            data-video-type="local"
+            data-video-src="./videos/commercial-ridermania.mp4"
+            
+            data-poster="./images/projects/poster-ridermania.jpg"
+            data-title="BOBMC Rider Mania — Day 2 Energy"
+            data-badge="FESTIVAL FILM • RIDER MANIA 2026"
+            data-credits="Cinematics & Direction: Shreyank Vishnoi • Feral Automotive"
+            data-post-url="https://www.instagram.com/reel/DUfEul5Eodc/"
+            data-platform="Instagram"
+            data-quality="1080P PRORES"
+            data-category="commercials documentaries"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 004</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/poster-ridermania.jpg" alt="BOBMC Rider Mania" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 004</span>
+                    <h4 class="slipcase-front-title">BOBMC Rider Mania</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • Automotive Adrenaline</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2026</span>
+                      <span class="box-format">Instagram</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 004</span>
+                  <h4 class="slipcase-back-title">BOBMC Rider Mania</h4>
+                  <span class="slipcase-back-sub">FESTIVAL FILM • RIDER MANIA 2026</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Sigma High-Speed Cine 18-35mm</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>9:16 Kinetic / 16:9 Scope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Warm Earthy Festival Grade</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>1080P ProRes HQ</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2026</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 5: Icon World of Tile -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="4"
+            data-roll="ROLL 05 / 15"
+            data-video-type="local"
+            data-video-src="./videos/commercial-iconworld.mp4"
+            
+            data-poster="./images/projects/poster-iconworld.jpg"
+            data-title="Icon World of Tile — Store Launch Film"
+            data-badge="ARCHITECTURAL COMMERCIAL • ICON PRIMA"
+            data-credits="Commercial Direction: Shreyank Vishnoi • Luxury Aesthetics"
+            data-post-url="https://www.instagram.com/reel/DSpOyLXE3Zo/"
+            data-platform="Instagram"
+            data-quality="1080P PRORES"
+            data-category="commercials"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 005</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/poster-iconworld.jpg" alt="Icon World of Tile" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 005</span>
+                    <h4 class="slipcase-front-title">Icon World of Tile</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • Luxury Interior</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2025</span>
+                      <span class="box-format">Instagram</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 005</span>
+                  <h4 class="slipcase-back-title">Icon World of Tile</h4>
+                  <span class="slipcase-back-sub">ARCHITECTURAL COMMERCIAL • ICON PRIMA</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Laowa Zero-D Primes</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>16:9 Interior Architectural</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Luxury Marble Balance</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>1080P ProRes HQ</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2025</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 6: ROOM MEIN — YABHA -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="5"
+            data-roll="ROLL 06 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="UZ_MVDo74lI"
+            data-poster="./images/projects/yabha-room-mein.jpg"
+            data-title="ROOM MEIN — YABHA"
+            data-badge="OFFICIAL MUSIC VIDEO • FEALES MUSIC"
+            data-credits="Directed by Shreyank Vishnoi • YABHA THE ALBUM"
+            data-post-url="https://www.youtube.com/watch?v=UZ_MVDo74lI"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 006</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/yabha-room-mein.jpg" alt="ROOM MEIN — YABHA" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 006</span>
+                    <h4 class="slipcase-front-title">ROOM MEIN — YABHA</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • The Album</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2025</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 006</span>
+                  <h4 class="slipcase-back-title">ROOM MEIN — YABHA</h4>
+                  <span class="slipcase-back-sub">OFFICIAL MUSIC VIDEO • FEALES MUSIC</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Cooke S4/i Prime Lenses</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.00:1 Univisium</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Moody Tungsten & Shadow</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2025</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 7: Madhurban Glamping -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="6"
+            data-roll="ROLL 07 / 15"
+            data-video-type="local"
+            data-video-src="./videos/project-madhurban.mp4"
+            
+            data-poster="./images/projects/cinema-madhurban-glamping.jpg"
+            data-title="Madhurban Glamping — Evolution"
+            data-badge="HOSPITALITY COMMERCIAL • MADHURBAN"
+            data-credits="Visual Direction & Edit: Shreyank Vishnoi • Scenic Luxury"
+            data-post-url="https://www.instagram.com/reel/DTkhowGEQYm/"
+            data-platform="Instagram"
+            data-quality="1080P PRORES"
+            data-category="commercials"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 007</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/cinema-madhurban-glamping.jpg" alt="Madhurban Glamping" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 007</span>
+                    <h4 class="slipcase-front-title">Madhurban Glamping</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • Hospitality & Nature</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2026</span>
+                      <span class="box-format">Instagram</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 007</span>
+                  <h4 class="slipcase-back-title">Madhurban Glamping</h4>
+                  <span class="slipcase-back-sub">HOSPITALITY COMMERCIAL • MADHURBAN</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>DJI Cine RAW & Prime Glass</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>16:9 Scenic Landscape</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Sunset Golden Hour Tone</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>1080P ProRes HQ</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2026</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 8: NAWAB — Nrip Malhan -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="7"
+            data-roll="ROLL 08 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="-QpLmA6AKQ4"
+            data-poster="./images/projects/nawab.jpg"
+            data-title="NAWAB — Nrip Malhan"
+            data-badge="OFFICIAL MUSIC VIDEO • PROD. KAYOS"
+            data-credits="Cinematography: Vikrant Yadav • Mise Films"
+            data-post-url="https://www.youtube.com/watch?v=-QpLmA6AKQ4"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 008</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/nawab.jpg" alt="NAWAB — Nrip Malhan" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 008</span>
+                    <h4 class="slipcase-front-title">NAWAB — Nrip Malhan</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Music Video</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 008</span>
+                  <h4 class="slipcase-back-title">NAWAB — Nrip Malhan</h4>
+                  <span class="slipcase-back-sub">OFFICIAL MUSIC VIDEO • PROD. KAYOS</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>ARRI Ultra Primes + Pro-Mist</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 Anamorphic Scope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Raw Narrative Contrast</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 9: Jamboree CM Live Event -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="8"
+            data-roll="ROLL 09 / 15"
+            data-video-type="local"
+            data-video-src="./videos/project-jamboree.mp4"
+            
+            data-poster="./images/projects/cinema-neoclassic-jamboree.jpg"
+            data-title="Jamboree — CM Live Event Coverage"
+            data-badge="LIVE CINEMATICS • NEOCLASSIC STUDIOS"
+            data-credits="Direction & Production: Shreyank Vishnoi • Ground Event"
+            data-post-url="https://www.instagram.com/reel/DRhPZO6kl1Z/"
+            data-platform="Instagram"
+            data-quality="1080P PRORES"
+            data-category="documentaries post-production"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 009</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/cinema-neoclassic-jamboree.jpg" alt="Jamboree CM Live Event" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 009</span>
+                    <h4 class="slipcase-front-title">Jamboree CM Live Event</h4>
+                    <p class="slipcase-front-credits">Dir. Shreyank Vishnoi • Ground Coverage</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2025</span>
+                      <span class="box-format">Instagram</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 009</span>
+                  <h4 class="slipcase-back-title">Jamboree CM Live Event</h4>
+                  <span class="slipcase-back-sub">LIVE CINEMATICS • NEOCLASSIC STUDIOS</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Shreyank Vishnoi</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Telephoto Cine Zooms & Steadicam</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>16:9 Broadcast Stage</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Live Concert Grading</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>1080P ProRes HQ</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2025</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 10: BYE — Aditya Bhardwaj -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="9"
+            data-roll="ROLL 10 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="DbiRVNeZPnw"
+            data-poster="./images/projects/bye.jpg"
+            data-title="BYE — Aditya Bhardwaj"
+            data-badge="OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ"
+            data-credits="DOP & Visual Direction: Vikrant Yadav • Mise Films"
+            data-post-url="https://www.youtube.com/watch?v=DbiRVNeZPnw"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 010</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/bye.jpg" alt="BYE — Aditya Bhardwaj" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 010</span>
+                    <h4 class="slipcase-front-title">BYE — Aditya Bhardwaj</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Music Video</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 010</span>
+                  <h4 class="slipcase-back-title">BYE — Aditya Bhardwaj</h4>
+                  <span class="slipcase-back-sub">OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Vintage Russian Anamorphic</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 CinemaScope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Melancholy Teal & Dusk Amber</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 11: TEDI TEDI — DG Immortals -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="10"
+            data-roll="ROLL 11 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="om5ktfnFfVs"
+            data-poster="./images/projects/tedi-tedi.jpg"
+            data-title="TEDI TEDI — DG Immortals"
+            data-badge="OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS"
+            data-credits="Cinematography: Vikrant Yadav • Mise Films Production"
+            data-post-url="https://www.youtube.com/watch?v=om5ktfnFfVs"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 011</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/tedi-tedi.jpg" alt="TEDI TEDI — DG Immortals" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 011</span>
+                    <h4 class="slipcase-front-title">TEDI TEDI — DG Immortals</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Music Video</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 011</span>
+                  <h4 class="slipcase-back-title">TEDI TEDI — DG Immortals</h4>
+                  <span class="slipcase-back-sub">OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Canon K35 Vintage Primes</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 CinemaScope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Street Gritty Chiaroscuro</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 12: BERETTA — DG Immortals -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="11"
+            data-roll="ROLL 12 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="amjhURwi-WE"
+            data-poster="./images/projects/beretta.jpg"
+            data-title="BERETTA — DG Immortals"
+            data-badge="OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS"
+            data-credits="Visuals & DOP: Vikrant Yadav • Mise Films"
+            data-post-url="https://www.youtube.com/watch?v=amjhURwi-WE"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 012</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/beretta.jpg" alt="BERETTA — DG Immortals" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 012</span>
+                    <h4 class="slipcase-front-title">BERETTA — DG Immortals</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Action Cinema</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 012</span>
+                  <h4 class="slipcase-back-title">BERETTA — DG Immortals</h4>
+                  <span class="slipcase-back-sub">OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Hawk V-Lite 2x Anamorphic</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 Anamorphic Scope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>High-Noon Action Contrast</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 13: PSYCO JAATNI — DG Immortals -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="12"
+            data-roll="ROLL 13 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="1N-J8m-1nJg"
+            data-poster="./images/projects/psyco-jaatni.jpg"
+            data-title="PSYCO JAATNI — DG Immortals"
+            data-badge="OFFICIAL VIDEO • IMMORTAL ERA"
+            data-credits="Visual Craft: Vikrant Yadav • Billionaire Boys"
+            data-post-url="https://www.youtube.com/watch?v=1N-J8m-1nJg"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 013</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/psyco-jaatni.jpg" alt="PSYCO JAATNI — DG Immortals" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 013</span>
+                    <h4 class="slipcase-front-title">PSYCO JAATNI — DG Immortals</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Music Video</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 013</span>
+                  <h4 class="slipcase-back-title">PSYCO JAATNI — DG Immortals</h4>
+                  <span class="slipcase-back-sub">OFFICIAL VIDEO • IMMORTAL ERA</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>ARRI Master Primes 32mm</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 CinemaScope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Hyper-Saturated Western</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 14: BAM BHOLE — DG Immortals -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="13"
+            data-roll="ROLL 14 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="kYQaTnenRfI"
+            data-poster="./images/projects/bam-bhole.jpg"
+            data-title="BAM BHOLE — DG Immortals"
+            data-badge="DEVOTIONAL CELLULOID • IMMORTAL ERA"
+            data-credits="Visual Production: Mise Films & Abhishek Raina"
+            data-post-url="https://www.youtube.com/watch?v=kYQaTnenRfI"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="feature-films music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 014</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/bam-bhole.jpg" alt="BAM BHOLE — DG Immortals" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 014</span>
+                    <h4 class="slipcase-front-title">BAM BHOLE — DG Immortals</h4>
+                    <p class="slipcase-front-credits">Devotional & Feature • Mise Films</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 014</span>
+                  <h4 class="slipcase-back-title">BAM BHOLE — DG Immortals</h4>
+                  <span class="slipcase-back-sub">DEVOTIONAL CELLULOID • IMMORTAL ERA</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Mise Films & Abhishek Raina</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Cooke Panchro /i Classic Primes</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 Anamorphic Scope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Sacred Himalayan Chiaroscuro</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Digipak Box 15: College Wale Gate Pe -->
+          <div
+            class="criterion-slipcase-box criterion-row"
+            data-index="14"
+            data-roll="ROLL 15 / 15"
+            data-video-type="youtube"
+            
+            data-yt-id="PPB5CAzVqZ4"
+            data-poster="./images/projects/college-wale-gate-pe.jpg"
+            data-title="College Wale Gate Pe — Aditya Bhardwaj"
+            data-badge="OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ"
+            data-credits="Visual Production: Vikrant Yadav • Mise Films"
+            data-post-url="https://www.youtube.com/watch?v=PPB5CAzVqZ4"
+            data-platform="YouTube"
+            data-quality="4K CELLULOID"
+            data-category="music-videos"
+          >
+            <!-- Active Screening Indicator -->
+            <div class="box-screening-pill">
+              <span class="box-screening-dot"></span>
+              <span>SCREENING</span>
+            </div>
+
+            <div class="slipcase-flipper">
+              <!-- FRONT COVER (DIGIPAK) -->
+              <div class="slipcase-face slipcase-face--front">
+                <!-- Iconic Vertical Spine Edge -->
+                <div class="slipcase-spine-edge">
+                  <span class="spine-edge-c">C</span>
+                  <span class="spine-edge-num">SPINE 015</span>
+                  <span class="spine-edge-brand">MISE</span>
+                </div>
+
+                <!-- Artwork Canvas -->
+                <div class="slipcase-artwork">
+                  <img src="./images/projects/college-wale-gate-pe.jpg" alt="College Wale Gate Pe" loading="lazy" />
+                  <div class="slipcase-artwork-overlay"></div>
+                  <div class="slipcase-foil-sheen"></div>
+
+                  <!-- Front Metadata -->
+                  <div class="slipcase-front-meta">
+                    <span class="slipcase-criterion-badge">THE CRITERION LEDGER № 015</span>
+                    <h4 class="slipcase-front-title">College Wale Gate Pe</h4>
+                    <p class="slipcase-front-credits">DOP. Vikrant Yadav • Music Video</p>
+                    <div class="slipcase-front-tags">
+                      <span class="box-year">2024</span>
+                      <span class="box-format">YouTube 4K</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="slipcase-quick-actions">
+                  <button class="box-action-btn js-screen-reel" type="button" title="Load Reel in Camera Monitor">
+                    <span>▶</span>
+                    <span>Screen</span>
+                  </button>
+                  <button class="box-action-btn box-action-btn--flip js-flip-spec" type="button" title="Flip to Camera Spec Sheet">
+                    <span>↻</span>
+                    <span>Specs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK COVER (CAMERA SPEC SHEET) -->
+              <div class="slipcase-face slipcase-face--back">
+                <div class="slipcase-back-header">
+                  <span class="slipcase-back-spine-tag">CRITERION MASTER ARCHIVE // № 015</span>
+                  <h4 class="slipcase-back-title">College Wale Gate Pe</h4>
+                  <span class="slipcase-back-sub">OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ</span>
+                </div>
+
+                <div class="slipcase-back-body">
+                  <div class="slipcase-back-row">
+                    <span>Lead Craft</span>
+                    <strong>Vikrant Yadav (DOP)</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Optical Glass</span>
+                    <strong>Zeiss Master Primes 35mm</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Aspect Ratio</span>
+                    <strong>2.39:1 CinemaScope</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Color Space</span>
+                    <strong>Nostalgic Sun-Drenched Daylight</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Master Quality</span>
+                    <strong>4K Master Celluloid</strong>
+                  </div>
+                  <div class="slipcase-back-row">
+                    <span>Archival Year</span>
+                    <strong>2024</strong>
+                  </div>
+                </div>
+
+                <div class="slipcase-back-actions">
+                  <button class="box-btn-master js-screen-reel" type="button">
+                    <span>▶ Load in Camera Monitor</span>
+                  </button>
+                  <button class="box-btn-back js-flip-spec" type="button">
+                    <span>← Back to Cover</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+      <!-- ─── CINEMATIC IN-SITE VIDEO MODAL (PLAYS INSTAGRAM & YOUTUBE IN-PLACE) ─── -->
+      <div class="cinema-modal" id="cinema-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="cinema-modal__backdrop" id="cinema-modal-backdrop"></div>
+        <div class="cinema-modal__window">
+          <!-- Top HUD Header -->
+          <div class="cinema-modal__header">
+            <div class="cinema-modal__meta">
+              <span class="cinema-modal__tag">DIRECT CINEMA PLAYBACK // MISE FILMS</span>
+              <h3 class="cinema-modal__title" id="modal-video-title">Project Video</h3>
+            </div>
+            <div class="cinema-modal__actions">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="cinema-modal__external-btn" id="modal-external-link">
+                <span id="modal-external-text">Open Post</span>
+                <span class="arrow">↗</span>
+              </a>
+              <button class="cinema-modal__close-btn" id="modal-close-btn" type="button" aria-label="Close Player">✕</button>
+            </div>
+          </div>
+
+          <!-- Video Stage -->
+          <div class="cinema-modal__stage" id="cinema-modal-stage">
+            <video id="modal-video-player" playsinline preload="auto" class="cinema-modal__video"></video>
+            <div id="modal-youtube-wrap" class="cinema-modal__iframe-wrap" style="display: none;">
+              <iframe id="modal-youtube-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- Custom Luxury Video Player Bar -->
+            <div class="cine-player-bar" id="modal-player-bar">
+              <button class="cine-player-btn" id="modal-play-btn" type="button" title="Play/Pause" aria-label="Play or Pause">
+                <span id="modal-play-icon">▶</span>
+              </button>
+              
+              <div class="cine-timecode">
+                <span id="modal-time-current">00:00</span>
+                <span class="cine-time-sep">/</span>
+                <span id="modal-time-duration">00:00</span>
+              </div>
+
+              <div class="cine-scrubber" id="modal-scrubber" title="Seek timeline" role="slider" aria-label="Timeline seek">
+                <div class="cine-scrubber__track">
+                  <div class="cine-scrubber__buffered" id="modal-scrubber-buffered"></div>
+                  <div class="cine-scrubber__progress" id="modal-scrubber-progress">
+                    <div class="cine-scrubber__pin"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cine-volume-group">
+                <button class="cine-player-btn" id="modal-mute-btn" type="button" title="Mute/Unmute" aria-label="Mute or Unmute">
+                  <span id="modal-mute-icon">🔊</span>
+                </button>
+                <div class="cine-volume-slider-wrap">
+                  <input type="range" class="cine-volume-range" id="modal-volume-slider" min="0" max="1" step="0.05" value="0.9" title="Volume" aria-label="Volume level" />
+                </div>
+              </div>
+
+              <button class="cine-player-btn" id="modal-fullscreen-btn" type="button" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+                <span id="modal-fullscreen-icon">⛶</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="divider" data-reveal></div>
+
+    <!-- ─── BIHAR BAITHAK (MEDIA PRODUCTION HOUSE UNDER MISE FILMS) ─── -->
+    <section class="section bihar-baithak" id="bihar-baithak">
+      <div class="section__header" data-reveal="fade-up">
+        <div>
+          <span class="section__label">Media House Under Mise Films</span>
+          <h2 class="section__title">Bihar Baithak</h2>
+        </div>
+        <p class="section__description">
+          An independent media powerhouse talking about the real issues, rich glory, and ground realities of Bihar — fearless, unbiased, and fact-focused.
+        </p>
+      </div>
+
+      <div class="bihar-baithak__container" data-reveal="fade-up">
+        <div class="bihar-baithak__banner-card">
+          <div class="bihar-baithak__media-wrap">
+            <picture>
+              <source srcset="./images/bihar-baithak.webp" type="image/webp" />
+              <img
+                src="./images/bihar-baithak.png"
+                alt="Bihar Baithak Banner - Media House Under Mise Films"
+                class="bihar-baithak__banner-img"
+                loading="lazy"
+              />
+            </picture>
+            <div class="bihar-baithak__glow-layer" aria-hidden="true"></div>
+            <div class="bihar-baithak__badge-bar">
+              <span class="bihar-baithak__live-tag">
+                <span class="bihar-baithak__pulse-dot"></span>
+                UNBIASED PLATFORM
+              </span>
+              <span class="bihar-baithak__brand-tag">MEDIA PRODUCTION UNDER MISE FILMS</span>
+            </div>
+          </div>
+
+          <div class="bihar-baithak__content">
+            <div class="bihar-baithak__lead">
+              <h3 class="bihar-baithak__headline">
+                A Platform That Spills Facts. Unfiltered & Uninfluenced.
+              </h3>
+              <p class="bihar-baithak__story">
+                Operating directly under the creative umbrella of <strong>Mise Films</strong>, <strong>Bihar Baithak</strong> is a dedicated media production house with a singular mission: to delve deep into the pressing issues and celebrate the historic glory of Bihar without fear or political filter.
+              </p>
+              <p class="bihar-baithak__subtext">
+                Free from political agendas, untouched by organizational influence, and bound only to the truth, Bihar Baithak exists as a bold, credible voice that spills pure facts for the people—amplifying grassroots stories and state heritage through cinematic production standards.
+              </p>
+            </div>
+
+            <!-- Core Pillars -->
+            <div class="bihar-baithak__features">
+              <div class="bihar-baithak__feat-pill">
+                <span class="bihar-baithak__feat-icon">⚖️</span>
+                <div>
+                  <strong>Politically Neutral</strong>
+                  <span>No corporate bias, no political party allegiance. Pure truth-telling.</span>
+                </div>
+              </div>
+              <div class="bihar-baithak__feat-pill">
+                <span class="bihar-baithak__feat-icon">🏛️</span>
+                <div>
+                  <strong>Issues & Historic Glory</strong>
+                  <span>Balancing critical state challenges with Bihar's unparalleled intellectual heritage.</span>
+                </div>
+              </div>
+              <div class="bihar-baithak__feat-pill">
+                <span class="bihar-baithak__feat-icon">🎙️</span>
+                <div>
+                  <strong>Spilling Direct Facts</strong>
+                  <span>Hard-hitting interviews, fact-checked investigative ground reporting, and discussions.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="bihar-baithak__actions">
+              <a
+                href="https://biharbaithak.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bihar-baithak__btn bihar-baithak__btn--primary"
+                data-magnetic
+              >
+                <span>Visit Official Website (biharbaithak.in)</span>
+                <span class="btn-arrow">↗</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@bihar_baithak"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bihar-baithak__btn bihar-baithak__btn--youtube"
+                data-magnetic
+              >
+                <svg class="bihar-baithak__yt-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span>Watch on YouTube (@bihar_baithak)</span>
+                <span class="btn-arrow">↗</span>
+              </a>
+              <a
+                href="https://wa.me/919504600078?text=Hey%20Bihar%20Baithak%2C%20are%20you%20available%20for%20projects%21"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bihar-baithak__btn bihar-baithak__btn--whatsapp"
+                data-magnetic
+              >
+                <svg class="bihar-baithak__wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span>WhatsApp (@bihar_baithak)</span>
+                <span class="btn-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" data-reveal></div>
+
+    <!-- ─── ABOUT & VISION (CINEMATIC PHILOSOPHY) ──────── -->
+    <section class="about" id="about">
+      <div class="about__glow-ambient" aria-hidden="true"></div>
+
+      <div class="about__inner" data-reveal="fade-up">
+        <!-- Section Header -->
+        <div class="about__header">
+          <div class="about__label-bar">
+            <span class="section__label">About Mise Films // Cinematic Philosophy</span>
+            <div class="about__telemetry-tag">REEL REF // MANIFESTO-01 • 35MM RAW</div>
+          </div>
+          <h2 class="about__heading">
+            Every frame is a choice.<br />
+            <span class="about__heading-italic">We make each one indelible.</span>
+          </h2>
+        </div>
+
+        <!-- Editorial 2-Column Philosophy Stage -->
+        <div class="about__grid">
+          <!-- Left: Mise-en-Scène Principle Slate Card -->
+          <div class="about__slate" data-reveal="fade-up">
+            <div class="about__slate-corner about__slate-corner--tl">+</div>
+            <div class="about__slate-corner about__slate-corner--tr">+</div>
+            <div class="about__slate-corner about__slate-corner--bl">+</div>
+            <div class="about__slate-corner about__slate-corner--br">+</div>
+
+            <div class="about__slate-badge">
+              <span class="about__slate-dot"></span>
+              <span>AUTEUR FOUNDATION</span>
+            </div>
+
+            <h3 class="about__slate-title">Mise-en-scène</h3>
+            <p class="about__slate-phonetic">[miz.ɑ̃.sɛn] • French Cinematic Philosophy</p>
+
+            <blockquote class="about__slate-quote">
+              "Translating literally to <em>'placing on stage'</em> or <em>'putting into the scene'</em>—it represents everything that breathes before the lens."
+            </blockquote>
+
+            <div class="about__slate-divider"></div>
+
+            <div class="about__slate-features">
+              <div class="about__slate-item">
+                <span class="about__slate-num">01</span>
+                <div>
+                  <strong>Intentional Composition</strong>
+                  <p>Deliberate actors, movement & architecture sculpted in depth</p>
+                </div>
+              </div>
+              <div class="about__slate-item">
+                <span class="about__slate-num">02</span>
+                <div>
+                  <strong>Tension of Light & Shadow</strong>
+                  <p>High-contrast chiaroscuro with organic analog falloff</p>
+                </div>
+              </div>
+              <div class="about__slate-item">
+                <span class="about__slate-num">03</span>
+                <div>
+                  <strong>Textural Silence</strong>
+                  <p>Framing and quiet space where raw human truth resides</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about__slate-axiom">
+              <span class="axiom-tag">CORE AXIOM</span>
+              <p>Nothing inside our frame happens by chance.</p>
+            </div>
+          </div>
+
+          <!-- Right: Narrative Manifesto Body -->
+          <div class="about__narrative" data-reveal="fade-up">
+            <div class="about__prose-card about__prose-card--lead">
+              <div class="about__card-index">01 // SACRED SOIL & FOUNDATION</div>
+              <p class="about__lead-para">
+                Rooted in the ancient, sacred soil of <strong class="text-highlight">Gayaji, Bihar</strong>, Mise Films was founded on an unyielding devotion to visual poetry and cinematic precision. We believe cinema is not mere recording—it is the deliberate orchestration of light, shadow, texture, and silence to expose the raw truth within human stories.
+              </p>
+            </div>
+
+            <div class="about__prose-card">
+              <div class="about__card-index">02 // THE PHILOSOPHY IN ACTION</div>
+              <p>
+                The name <strong>Mise</strong> is born directly from the foundational cinematic principle <strong><em>Mise-en-scène</em></strong>—the French film and theatrical philosophy translating literally to <em>"placing on stage"</em> or <em>"putting into the scene."</em> In auteur filmmaking, it represents everything that comes alive before the lens: the deliberate composition of actors, the tension of light and deep shadow, camera blocking, framing, and textural silence. At <strong>Mise Films</strong>, this philosophy governs every project we touch: <em>nothing inside our frame happens by chance</em>. Every story is sculpted with purpose, discipline, and visual truth.
+              </p>
+            </div>
+
+            <div class="about__prose-card">
+              <div class="about__card-index">03 // ENDURING VISUAL LANGUAGES</div>
+              <p>
+                From auteur music videos and cinematic commercials to long-form narratives, we don't chase fleeting digital trends. We build enduring visual languages that linger long after the projector goes dark.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cinema Stats Row -->
+        <div class="about__stats">
+          <div class="about__stat">
+            <div class="about__stat-icon">🎬</div>
+            <div class="about__stat-number" data-counter="47">0</div>
+            <div class="about__stat-label">Films Produced</div>
+            <div class="about__stat-sub">Narratives, Commercials & Music</div>
+          </div>
+          <div class="about__stat">
+            <div class="about__stat-icon">🏆</div>
+            <div class="about__stat-number" data-counter="12">0</div>
+            <div class="about__stat-label">Awards Won</div>
+            <div class="about__stat-sub">National & Festival Recognitions</div>
+          </div>
+          <div class="about__stat">
+            <div class="about__stat-icon">⏳</div>
+            <div class="about__stat-number" data-counter="8">0</div>
+            <div class="about__stat-label">Years of Craft</div>
+            <div class="about__stat-sub">Auteur Celluloid Dedication</div>
+          </div>
+        </div>
+
+        <div class="about__scroll-cue">
+          <div class="about__scroll-cue-badge">
+            <span>Scroll to meet leadership</span>
+            <span class="about__scroll-cue-arrow">↓</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" data-reveal></div>
+
+    <!-- ─── OWNER & MANAGING DIRECTOR SPOTLIGHT: VIVEK KUMAR (SCROLLED DOWN) ─── -->
+    <section class="leader-spotlight" id="owner-spotlight">
+      <div class="leader-spotlight__container" data-reveal="fade-up">
+        <!-- Vivek Kumar Photo (3D Cutout with ambient aura & slate badge) -->
+        <div class="leader-spotlight__portrait-wrap">
+          <div class="about__portrait-3d" id="about-portrait-3d" title="Vivek Kumar — Owner & Managing Director">
+            <div class="about__ambient-aura" aria-hidden="true"></div>
+            <div class="about__cutout-wrap" id="about-cutout-wrap">
+              <img
+                src="./images/team/vivek-kumar-transparent.png"
+                alt="Vivek Kumar - Owner & Managing Director at Mise Films"
+                class="about__cutout-img"
+                id="about-cutout-img"
+                loading="lazy"
+              />
+              <div class="about__portrait-slate">
+                <span class="about__slate-badge">OWNER & MD</span>
+                <div class="about__slate-meta">
+                  <strong>Vivek Kumar</strong>
+                  <span>Managing Director</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Vivek Kumar -->
+        <div class="leader-spotlight__info">
+          <span class="section__label">Studio Leadership // 01</span>
+          <h2 class="leader-spotlight__name">Vivek Kumar</h2>
+          <span class="leader-spotlight__role">Owner & Managing Director • Executive Producer</span>
+
+          <div class="leader-spotlight__bio">
+            <p>
+              As the Owner and Managing Director of <strong>Mise Films</strong>, Vivek Kumar steers the studio's executive vision, commercial scale, and cultural footprint. Devoted to independent visual storytelling and high-impact productions, he directs studio-wide operations, strategic partnerships, and creative investments—championing raw narrative authenticity while scaling Mise Films across regional and national celluloid landscapes.
+            </p>
+            <p>
+              Under his leadership, Mise Films has grown from a visionary boutique studio in Gayaji into a powerhouse production entity capable of commanding national commercials, high-end music films, and bold cinematic narratives.
+            </p>
+          </div>
+
+          <div class="leader-spotlight__specs">
+            <div class="leader-spotlight__spec">
+              <span class="spec-label">Leadership</span>
+              <span class="spec-value">Owner & Managing Director</span>
+            </div>
+            <div class="leader-spotlight__spec">
+              <span class="spec-label">Focus</span>
+              <span class="spec-value">Executive Production & Studio Scale</span>
+            </div>
+            <div class="leader-spotlight__spec">
+              <span class="spec-label">Base</span>
+              <span class="spec-value">Gayaji, Bihar • Pan-India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── DIRECTION & TECH INNOVATION SPOTLIGHT ─── -->
+    <section class="action-spotlight" id="director-spotlight">
+      <div class="action-spotlight__bg" aria-hidden="true">
+        <img src="./images/team/shrey-vishnoi.jpg" alt="Shreyank Vishnoi - Commercial Direction & Technical Systems" loading="lazy" />
+        <div class="action-spotlight__overlay"></div>
+      </div>
+
+      <div class="action-spotlight__content" data-reveal="fade-up">
+        <span class="action-spotlight__tag">Direction & Innovation // Leadership</span>
+        <h2 class="action-spotlight__statement">
+          "Bridging cinematic storytelling<br />with the frontiers of technical precision."
+        </h2>
+        <p class="action-spotlight__author">— Shreyank Vishnoi, Director & Technical Head</p>
+
+        <div class="action-spotlight__specs">
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Director & Tech Head</span>
+            <span class="spec-value">Shreyank Vishnoi</span>
+          </div>
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Specialty</span>
+            <span class="spec-value">Commercial Direction & Tech Systems</span>
+          </div>
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Key Productions</span>
+            <span class="spec-value">Samsung India, SkyHop Airlines, Rider Mania</span>
+          </div>
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Studio Discipline</span>
+            <span class="spec-value">Direction • Post-Pipelines • Innovation</span>
+          </div>
+        </div>
+
+        <!-- Director Instagram Hub -->
+        <div style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/shreybishnoi/" target="_blank" rel="noopener noreferrer" class="projects__linktree-btn" data-magnetic>
+            <span class="btn-dot"></span>
+            <span>Explore Director's Work on Instagram</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" data-reveal></div>
+
+    <!-- ─── CINEMATOGRAPHY IN ACTION / BEHIND THE SCENES ─── -->
+    <section class="action-spotlight" id="vision-action">
+      <!-- Background camera action image that fades in and out on scroll -->
+      <div class="action-spotlight__bg" aria-hidden="true">
+        <img src="./images/team/vikrant-camera.jpg" alt="Vikrant Yadav behind Libec Cinema Rig" loading="lazy" />
+        <div class="action-spotlight__overlay"></div>
+      </div>
+
+      <div class="action-spotlight__content" data-reveal="fade-up">
+        <span class="action-spotlight__tag">Behind The Scenes // Cinematography</span>
+        <h2 class="action-spotlight__statement">
+          "We don't merely capture light.<br />We sculpt shadows to reveal the soul of the story."
+        </h2>
+        <p class="action-spotlight__author">— Vikrant Yadav (Yadhuvanshi), Director of Photography</p>
+
+        <div class="action-spotlight__specs">
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Director of Photography</span>
+            <span class="spec-value">Vikrant Yadav (Yadhuvanshi)</span>
+          </div>
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Cinema Rig & Optics</span>
+            <span class="spec-value">Libec Cinema Rig & Prime Glass</span>
+          </div>
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Craft Specialty</span>
+            <span class="spec-value">Behind The Scenes & Live Camera Grammar</span>
+          </div>
+          <div class="action-spotlight__spec">
+            <span class="spec-label">Base Location</span>
+            <span class="spec-value">Gayaji, Bihar • Pan-India</span>
+          </div>
+        </div>
+
+        <!-- Cinematographer Linktree Hub -->
+        <div style="margin-top: 2rem;">
+          <a href="https://linktr.ee/vekrantyadhuvanshi" target="_blank" rel="noopener noreferrer" class="projects__linktree-btn" data-magnetic>
+            <span class="btn-dot"></span>
+            <span>Explore Cinematographer Works on Linktree</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── MISE CREW & PRODUCTION UNIT EMBLEM ─── -->
+    <div class="crew-emblem" data-reveal="fade-up" style="max-width: 1200px; margin: 3rem auto; padding: 1.5rem 2rem; background: rgba(20, 21, 26, 0.7); border: 1px solid rgba(212,168,83,0.25); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #d4a853; border: 1px solid rgba(212,168,83,0.4); padding: 0.2rem 0.55rem; border-radius: 2px;">UNIT 04</span>
+        <div>
+          <strong style="font-family: var(--font-serif); font-size: 1.25rem; color: #faf6f0; display: block;">Mise Production & Creative Crew</strong>
+          <span style="font-size: 0.75rem; color: #9ba2b4;">Direction • Camera Ops • Libec Rigging • DI Color Grading • Foley Sound Design</span>
+        </div>
+      </div>
+      <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #d4a853; letter-spacing: 0.1em;">PAN-INDIA CELLULOID CO-PRODUCTIONS</span>
+    </div>
+
+    <div class="divider" data-reveal></div>
+
+    
+
+    <!-- ─── SERVICES ─────────────────────────────────────── -->
+    <section class="services" id="services">
+      <div class="section__header" data-reveal="fade-up">
+        <div>
+          <span class="section__label">What We Do</span>
+          <h2 class="section__title">Our Craft</h2>
+        </div>
+      </div>
+
+      <div class="service-row" data-reveal="fade-up" data-craft-filter="feature-films">
+        <img class="service-row__preview-img" src="./images/projects/bam-bhole.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <span class="service-row__number">01</span>
+        <div class="service-row__body">
+          <h3 class="service-row__title">Feature Films</h3>
+          <p class="service-row__desc">End-to-end production from development through post — we bring stories to the screen with full creative partnership.</p>
+        </div>
+        <div class="service-row__action">
+          <span>Explore Works</span>
+          <span class="arrow">↗</span>
+        </div>
+      </div>
+      <div class="service-row" data-reveal="fade-up" data-craft-filter="commercials">
+        <img class="service-row__preview-img" src="./images/projects/poster-samsung.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <span class="service-row__number">02</span>
+        <div class="service-row__body">
+          <h3 class="service-row__title">Commercials & Brand Films</h3>
+          <p class="service-row__desc">Cinematic brand storytelling that transcends the brief. We don't make ads — we make films that happen to sell.</p>
+        </div>
+        <div class="service-row__action">
+          <span>Explore Works</span>
+          <span class="arrow">↗</span>
+        </div>
+      </div>
+      <div class="service-row" data-reveal="fade-up" data-craft-filter="music-videos">
+        <img class="service-row__preview-img" src="./images/projects/two-number.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <span class="service-row__number">03</span>
+        <div class="service-row__body">
+          <h3 class="service-row__title">Music Videos</h3>
+          <p class="service-row__desc">Visual narratives that amplify the music. Bold concepts, meticulous execution, unforgettable imagery.</p>
+        </div>
+        <div class="service-row__action">
+          <span>Explore Works</span>
+          <span class="arrow">↗</span>
+        </div>
+      </div>
+      <div class="service-row" data-reveal="fade-up" data-craft-filter="documentaries">
+        <img class="service-row__preview-img" src="./images/projects/cinema-neoclassic-jamboree.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <span class="service-row__number">04</span>
+        <div class="service-row__body">
+          <h3 class="service-row__title">Documentaries</h3>
+          <p class="service-row__desc">Real stories, told with the visual craft and emotional depth of narrative cinema.</p>
+        </div>
+        <div class="service-row__action">
+          <span>Explore Works</span>
+          <span class="arrow">↗</span>
+        </div>
+      </div>
+      <div class="service-row" data-reveal="fade-up" data-craft-filter="post-production">
+        <img class="service-row__preview-img" src="./images/projects/poster-skyhop.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <span class="service-row__number">05</span>
+        <div class="service-row__body">
+          <h3 class="service-row__title">Post-Production</h3>
+          <p class="service-row__desc">Color grading, sound design, VFX — the invisible work that makes everything feel right.</p>
+        </div>
+        <div class="service-row__action">
+          <span>Explore Works</span>
+          <span class="arrow">↗</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CLIENTS & COLLABORATORS ──────────────────────── -->
+    <section class="clients-strip" data-reveal="fade-up">
+      <div class="clients-strip__label">Trusted By Leading Brands</div>
+      <div class="clients-strip__logos">
+
+        <!-- Samsung India -->
+        <div class="clients-strip__logo" title="Samsung India">
+          <img src="./images/logos/SAMSUNG.png" alt="Samsung India" loading="lazy" />
+        </div>
+
+        <!-- SkyHop Airlines -->
+        <div class="clients-strip__logo" title="SkyHop Airlines">
+          <img src="./images/logos/SKYHOP.png" alt="SkyHop Airlines" loading="lazy" />
+        </div>
+
+        <!-- BOBMC Rider Mania -->
+        <div class="clients-strip__logo" title="BOBMC Rider Mania">
+          <img src="./images/logos/BOBMC.png" alt="BOBMC Rider Mania" loading="lazy" />
+        </div>
+
+        <!-- Icon World of Tile -->
+        <div class="clients-strip__logo" title="Icon World of Tile">
+          <img src="./images/logos/ICONWORLDOFTILE.png" alt="Icon World of Tile" loading="lazy" />
+        </div>
+
+        <!-- Madhurban Glamping -->
+        <div class="clients-strip__logo" title="Madhurban Glamping">
+          <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" aria-label="Madhurban Glamping">
+            <text x="100" y="22" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="20" font-weight="600" letter-spacing="0.08em" fill="currentColor">Madhurban</text>
+            <text x="100" y="34" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="500" letter-spacing="0.3em" fill="currentColor" opacity="0.5">GLAMPING</text>
+          </svg>
+        </div>
+
+        <!-- Neoclassic Studios -->
+        <div class="clients-strip__logo" title="Neoclassic Studios">
+          <img src="./images/logos/NEOCLASSIC.png" alt="Neoclassic Studios" loading="lazy" />
+        </div>
+
+        <!-- VYRL Haryanvi -->
+        <div class="clients-strip__logo">
+          <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" aria-label="VYRL Haryanvi">
+            <text x="80" y="23" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" letter-spacing="0.04em" fill="currentColor">VYRL</text>
+            <text x="80" y="35" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="400" letter-spacing="0.25em" fill="currentColor" opacity="0.5">HARYANVI</text>
+          </svg>
+        </div>
+
+        <!-- Billionaire Boys Records -->
+        <div class="clients-strip__logo">
+          <svg viewBox="0 0 210 40" xmlns="http://www.w3.org/2000/svg" aria-label="Billionaire Boys Records">
+            <text x="105" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700" letter-spacing="0.1em" fill="currentColor">BILLIONAIRE BOYS</text>
+            <text x="105" y="34" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="400" letter-spacing="0.2em" fill="currentColor" opacity="0.5">RECORDS</text>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── QUOTE ────────────────────────────────────────── -->
+    <section class="quote-section" data-reveal="fade-up">
+      <div class="quote-section__mark">"</div>
+      <blockquote class="quote-section__text">
+        Cinema is a matter of what's in the frame and what's out.
+      </blockquote>
+      <cite class="quote-section__author">— Martin Scorsese</cite>
+    </section>
+
+    <div class="divider" data-reveal></div>
+
+    <!-- ─── CONTACT CTA ──────────────────────────────────── -->
+    <section class="contact" id="contact" data-reveal="fade-up">
+      <h2 class="contact__heading">Let's make<br />something remarkable</h2>
+      <div class="contact__actions">
+        <a href="tel:+919504600078" class="contact__cta" data-magnetic>
+          <span>Call +91 95046 00078</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="mailto:hello@misefilms.com" class="contact__cta" data-magnetic>
+          <span>Start a conversation</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://wa.me/919504600078?text=Hi%20Mise%20Films%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="contact__cta contact__cta--whatsapp" data-magnetic>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span>Chat on WhatsApp</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+      <p class="contact__location">Based in GAYAJI, BIHAR</p>
+    </section>
+
+    <!-- ─── FOOTER ───────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="footer__brand">
+        <div class="footer__logo">Mise Films</div>
+        <p class="footer__tagline">Cinematic storytelling, frame by frame.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Navigation</h4>
+        <div class="footer__col-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#bihar-baithak">Bihar Baithak</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Studio</h4>
+        <div class="footer__col-links">
+          <span style="color: var(--white, #f5f0eb);">GAYAJI, BIHAR</span>
+          <span style="color: var(--grey-mid, #7e8391);">India</span>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Contact</h4>
+        <div class="footer__col-links">
+          <a href="tel:+919504600078">+91 95046 00078</a>
+          <a href="mailto:hello@misefilms.com">hello@misefilms.com</a>
+          <span style="color: var(--grey-mid, #7e8391);">GAYAJI, BIHAR</span>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2024–2026 Mise Films Pvt Ltd. All rights reserved.</span>
+        <span>Crafted with obsessive attention to detail.</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SOUND TOGGLE (never autoplay)                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <button class="sound-toggle" id="sound-toggle" aria-label="Toggle ambient sound">
+    <div class="sound-toggle__bars">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <span>Sound</span>
+  </button>
+
+  <!-- Film grain canvas overlay -->
+  <canvas class="grain-overlay" id="grain-canvas"></canvas>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CINEMATIC VIDEO LIGHTBOX MODAL                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="video-modal" id="video-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="video-modal__backdrop" id="video-modal-backdrop"></div>
+    <div class="video-modal__dialog">
+      <div class="video-modal__header">
+        <div class="video-modal__meta">
+          <span class="video-modal__badge" id="video-modal-badge">Featured Production</span>
+          <h3 class="video-modal__title" id="video-modal-title">Project Title</h3>
+        </div>
+        <div class="video-modal__controls">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="video-modal__ext-link" id="video-modal-ext" title="Open on original platform">
+            <span id="video-modal-ext-text">Watch on Platform</span>
+            <span class="arrow">↗</span>
+          </a>
+          <button class="video-modal__close" id="video-modal-close" aria-label="Close video (Esc)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="video-modal__player-wrap" id="video-modal-player-wrap">
+        <!-- Injected dynamically on click -->
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

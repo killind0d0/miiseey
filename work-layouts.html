@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mise Films — Portfolio Layout Laboratory (Options 1, 2, 3, 4)</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/src/css/main.scss" />
+</head>
+<body class="theme-cinema">
+
+  <!-- ─── STICKY LAB TOOLBAR ─── -->
+  <header class="layout-lab-toolbar">
+    <div class="layout-lab-toolbar__inner">
+      <div class="layout-lab-toolbar__brand">
+        <span class="lab-tag">MISE LAB</span>
+        <h1>Portfolio Layout Comparison</h1>
+      </div>
+
+      <nav class="layout-lab-toolbar__nav" aria-label="Layout Selector">
+        <button class="layout-tab-btn is-active" data-layout-target="opt-1" type="button">Option 1: Vault Grid</button>
+        <button class="layout-tab-btn" data-layout-target="opt-2" type="button">Option 2: Director's Suite</button>
+        <button class="layout-tab-btn" data-layout-target="opt-3" type="button">Option 3: Auteur Shelves</button>
+        <button class="layout-tab-btn" data-layout-target="opt-4" type="button">Option 4: Criterion Archive</button>
+        <button class="layout-tab-btn" data-layout-target="all" type="button">View All Stacked</button>
+      </nav>
+
+      <a href="/#work" class="layout-lab-toolbar__return-btn">
+        <span>← Live Site</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="layouts-container">
+
+    <!-- ═════════════════════════════════════════════════════════════
+         OPTION 1: CELLULOID VAULT (MEDIUM 3-COLUMN GRID + MODAL)
+         ═════════════════════════════════════════════════════════════ -->
+    <section class="layout-demo-section" data-layout="opt-1" id="section-opt-1">
+      <div class="layout-option-banner">
+        <div class="layout-option-banner__left">
+          <span class="layout-option-banner__num">OPTION 01</span>
+          <h2 class="layout-option-banner__name">Celluloid Vault (Compact 3-Column Grid)</h2>
+          <p class="layout-option-banner__desc">Balanced medium 16:10 cards with viewfinder HUD corners, roll tags, and fast in-site modal player for Instagram MP4s & YouTube.</p>
+        </div>
+        <span class="layout-option-banner__badge">Grid Layout • Fast Scannability</span>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects">
+        <!-- 1: 2 NUMBER -->
+        <div class="project-card js-play-cinema" data-yt-id="RhhNh-UzQDI" data-title="2 NUMBER — DG Immortals x Parmish Verma" data-platform="YouTube">
+          <div class="project-card__media">
+            <img src="./images/projects/two-number.jpg" alt="2 NUMBER" loading="lazy" />
+          </div>
+          <div class="project-card__hud-bar">
+            <span class="project-card__hud-take">ROLL 01 // VYRL</span>
+            <span class="project-card__hud-dp">DOP. VIKRANT YADAV</span>
+          </div>
+          <span class="project-card__hud-corner project-card__hud-corner--tl"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--tr"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--bl"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--br"></span>
+          <div class="project-card__lens-flare"></div>
+          <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+          <div class="project-card__overlay"></div>
+          <div class="project-card__content">
+            <div class="project-card__tags">
+              <span class="project-card__category">Music Video</span>
+              <span class="project-card__badge-pill">Hit Track</span>
+            </div>
+            <h3 class="project-card__title">2 NUMBER — DG Immortals</h3>
+            <p class="project-card__credits">Cinematography: Vikrant Yadav</p>
+            <div class="project-card__footer">
+              <span class="project-card__year">2024</span>
+              <span class="project-card__cta">Play Cinema <span class="arrow">▶</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2: SkyHop Airlines (INSTAGRAM LOCAL) -->
+        <div class="project-card js-play-cinema" data-video-src="./videos/commercial-skyhop.mp4" data-post-url="https://www.instagram.com/reel/DZLiZc5ze_1/" data-title="SkyHop Airlines — Testing Campaign BTS" data-platform="Instagram">
+          <div class="project-card__media">
+            <img src="./images/projects/cinema-skyhop-airlines.jpg" alt="SkyHop Airlines" loading="lazy" />
+          </div>
+          <div class="project-card__hud-bar">
+            <span class="project-card__hud-take">ROLL 02 // AVIATION</span>
+            <span class="project-card__hud-dp">DIR. SHREYANK VISHNOI</span>
+          </div>
+          <span class="project-card__hud-corner project-card__hud-corner--tl"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--tr"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--bl"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--br"></span>
+          <div class="project-card__lens-flare"></div>
+          <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+          <div class="project-card__overlay"></div>
+          <div class="project-card__content">
+            <div class="project-card__tags">
+              <span class="project-card__category">Commercial BTS</span>
+              <a href="https://www.instagram.com/reel/DZLiZc5ze_1/" target="_blank" rel="noopener noreferrer" class="project-card__insta-badge">Instagram ↗</a>
+            </div>
+            <h3 class="project-card__title">SkyHop Airlines — Testing BTS</h3>
+            <p class="project-card__credits">Directed by Shreyank Vishnoi</p>
+            <div class="project-card__footer">
+              <span class="project-card__year">2026 • Local MP4</span>
+              <span class="project-card__cta">Play Reel <span class="arrow">▶</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3: BOBMC Rider Mania (INSTAGRAM LOCAL) -->
+        <div class="project-card js-play-cinema" data-video-src="./videos/commercial-ridermania.mp4" data-post-url="https://www.instagram.com/reel/DUfEul5Eodc/" data-title="BOBMC Rider Mania — Day 2 Energy" data-platform="Instagram">
+          <div class="project-card__media">
+            <img src="./images/projects/cinema-bobmc-rider-mania.jpg" alt="Rider Mania" loading="lazy" />
+          </div>
+          <div class="project-card__hud-bar">
+            <span class="project-card__hud-take">ROLL 03 // FESTIVAL</span>
+            <span class="project-card__hud-dp">DIR. SHREYANK VISHNOI</span>
+          </div>
+          <span class="project-card__hud-corner project-card__hud-corner--tl"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--tr"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--bl"></span>
+          <span class="project-card__hud-corner project-card__hud-corner--br"></span>
+          <div class="project-card__lens-flare"></div>
+          <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+          <div class="project-card__overlay"></div>
+          <div class="project-card__content">
+            <div class="project-card__tags">
+              <span class="project-card__category">Automotive Film</span>
+              <a href="https://www.instagram.com/reel/DUfEul5Eodc/" target="_blank" rel="noopener noreferrer" class="project-card__insta-badge">Instagram ↗</a>
+            </div>
+            <h3 class="project-card__title">BOBMC Rider Mania — Day 2</h3>
+            <p class="project-card__credits">Direction: Shreyank Vishnoi</p>
+            <div class="project-card__footer">
+              <span class="project-card__year">2026 • Local MP4</span>
+              <span class="project-card__cta">Play Reel <span class="arrow">▶</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════════════════
+         OPTION 2: DIRECTOR'S SUITE (MASTER MONITOR + PLAYLIST)
+         ═════════════════════════════════════════════════════════════ -->
+    <section class="layout-demo-section" data-layout="opt-2" id="section-opt-2" style="display: none;">
+      <div class="layout-option-banner">
+        <div class="layout-option-banner__left">
+          <span class="layout-option-banner__num">OPTION 02</span>
+          <h2 class="layout-option-banner__name">Director's Suite (Split-Screen Master Monitor)</h2>
+          <p class="layout-option-banner__desc">Interactive editing suite feel. Click any video in the right playlist shelf to instantly stream it inside the 21:9 master cinema monitor without leaving the page.</p>
+        </div>
+        <span class="layout-option-banner__badge">All-In-One Player • Zero Modals</span>
+      </div>
+
+      <div class="suite-container">
+        <!-- Master Monitor (Left) -->
+        <div class="suite-master">
+          <div class="suite-master__hud-top">
+            <span>● LIVE PLAYBACK // 24 FPS CELLULOID</span>
+            <span>DIRECTOR'S SUITE V1</span>
+          </div>
+
+          <div class="suite-master__stage">
+            <video id="suite-master-video" src="./videos/commercial-samsung.mp4" controls autoplay muted playsinline loop></video>
+            <div id="suite-iframe-wrap" class="suite-iframe-wrap" style="display: none;">
+              <iframe id="suite-master-iframe" src="" frameborder="0" allow="autoplay; fullscreen"></iframe>
+            </div>
+          </div>
+
+          <div class="suite-master__info">
+            <div class="suite-master__meta">
+              <span class="suite-master__badge" id="suite-badge">COMMERCIAL CAMPAIGN • SAMSUNG INDIA</span>
+              <h3 class="suite-master__title" id="suite-title">Galaxy Z Fold8 Ultra — Commercial Campaign</h3>
+              <p class="suite-master__credits" id="suite-credits">Direction & Technical Head: Shreyank Vishnoi • Mise Films</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=_YoNR9RlDjw" target="_blank" rel="noopener noreferrer" class="suite-master__link" id="suite-link">
+              <span id="suite-link-text">Watch on YouTube</span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Playlist Shelf (Right) -->
+        <div class="suite-playlist">
+          <div class="suite-playlist__header">
+            <span>Production Queue (Click to Play)</span>
+            <span>6 Featured Reels</span>
+          </div>
+
+          <div class="suite-playlist__items">
+            <!-- Item 1: Samsung -->
+            <div class="suite-playlist__item is-active" data-video-type="local" data-video-src="./videos/commercial-samsung.mp4" data-title="Galaxy Z Fold8 Ultra — Commercial Campaign" data-badge="COMMERCIAL CAMPAIGN • SAMSUNG INDIA" data-credits="Direction & Technical Direction: Shreyank Vishnoi • Mise Films" data-post-url="https://www.youtube.com/watch?v=_YoNR9RlDjw" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/poster-samsung.jpg" alt="Samsung" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>Samsung Galaxy Z Fold8</strong>
+                <span>Dir. Shreyank Vishnoi • Commercial</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 2: SkyHop Airlines -->
+            <div class="suite-playlist__item" data-video-type="local" data-video-src="./videos/commercial-skyhop.mp4" data-title="SkyHop Airlines — Testing Campaign BTS" data-badge="AVIATION CAMPAIGN & BTS • SCENE BANANA" data-credits="Directed by Shreyank Vishnoi • Aerial Motion & Cinematic BTS" data-post-url="https://www.instagram.com/reel/DZLiZc5ze_1/" data-platform="Instagram">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/poster-skyhop.jpg" alt="SkyHop" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>SkyHop Airlines BTS</strong>
+                <span>Dir. Shreyank Vishnoi • Aviation</span>
+              </div>
+              <span class="suite-playlist__tag">Instagram</span>
+            </div>
+
+            <!-- Item 3: 2 NUMBER -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="RhhNh-UzQDI" data-title="2 NUMBER — DG Immortals x Parmish Verma" data-badge="HIT MUSIC VIDEO • VYRL HARYANVI" data-credits="Cinematography: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=RhhNh-UzQDI" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/two-number.jpg" alt="2 NUMBER" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>2 NUMBER — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 4: Rider Mania -->
+            <div class="suite-playlist__item" data-video-type="local" data-video-src="./videos/commercial-ridermania.mp4" data-title="BOBMC Rider Mania — Day 2 Energy" data-badge="FESTIVAL FILM • RIDER MANIA 2026" data-credits="Cinematics & Direction: Shreyank Vishnoi • Feral Automotive Adrenaline" data-post-url="https://www.instagram.com/reel/DUfEul5Eodc/" data-platform="Instagram">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/poster-ridermania.jpg" alt="Rider Mania" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>BOBMC Rider Mania</strong>
+                <span>Dir. Shreyank Vishnoi • Automotive</span>
+              </div>
+              <span class="suite-playlist__tag">Instagram</span>
+            </div>
+
+            <!-- Item 5: Icon World of Tile -->
+            <div class="suite-playlist__item" data-video-type="local" data-video-src="./videos/commercial-iconworld.mp4" data-title="Icon World Of Tile — Store Launch Film" data-badge="ARCHITECTURAL COMMERCIAL • ICON PRIMA" data-credits="Commercial Direction: Shreyank Vishnoi • Luxury Interior Aesthetics" data-post-url="https://www.instagram.com/reel/DSpOyLXE3Zo/" data-platform="Instagram">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/poster-iconworld.jpg" alt="Icon World" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>Icon World of Tile</strong>
+                <span>Dir. Shreyank Vishnoi • Commercial</span>
+              </div>
+              <span class="suite-playlist__tag">Instagram</span>
+            </div>
+
+            <!-- Item 6: ROOM MEIN -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="UZ_MVDo74lI" data-title="ROOM MEIN — YABHA" data-badge="OFFICIAL MUSIC VIDEO • FEALES MUSIC" data-credits="Directed by Shreyank Vishnoi • YABHA The Album" data-post-url="https://www.youtube.com/watch?v=UZ_MVDo74lI" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/yabha-room-mein.jpg" alt="Room Mein" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>ROOM MEIN — YABHA</strong>
+                <span>Dir. Shreyank Vishnoi • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 7: Madhurban Glamping -->
+            <div class="suite-playlist__item" data-video-type="local" data-video-src="./videos/project-madhurban.mp4" data-title="Madhurban Glamping — Evolution Film" data-badge="HOSPITALITY COMMERCIAL • MADHURBAN" data-credits="Visual Direction & Edit: Shreyank Vishnoi • Scenic Luxury Experience" data-post-url="https://www.instagram.com/reel/DTkhowGEQYm/" data-platform="Instagram">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/cinema-madhurban-glamping.jpg" alt="Madhurban" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>Madhurban Glamping</strong>
+                <span>Dir. Shreyank Vishnoi • Experience</span>
+              </div>
+              <span class="suite-playlist__tag">Instagram</span>
+            </div>
+
+            <!-- Item 8: NAWAB -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="-QpLmA6AKQ4" data-title="NAWAB — Nrip Malhan" data-badge="OFFICIAL TRACK • PROD. KAYOS" data-credits="Cinematography: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=-QpLmA6AKQ4" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/nawab.jpg" alt="Nawab" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>NAWAB — Nrip Malhan</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 9: Jamboree CM Event -->
+            <div class="suite-playlist__item" data-video-type="local" data-video-src="./videos/project-jamboree.mp4" data-title="Jamboree — CM Live Event Coverage" data-badge="LIVE CINEMATICS • NEOCLASSIC STUDIOS" data-credits="Direction & Production: Shreyank Vishnoi • Ground Event Capture" data-post-url="https://www.instagram.com/reel/DRhPZO6kl1Z/" data-platform="Instagram">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/cinema-neoclassic-jamboree.jpg" alt="Jamboree" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>Jamboree Live Event</strong>
+                <span>Dir. Shreyank Vishnoi • Live Coverage</span>
+              </div>
+              <span class="suite-playlist__tag">Instagram</span>
+            </div>
+
+            <!-- Item 10: BYE -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="DbiRVNeZPnw" data-title="BYE — Aditya Bhardwaj" data-badge="OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ" data-credits="DOP & Visual Direction: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=DbiRVNeZPnw" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/bye.jpg" alt="Bye" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>BYE — Aditya Bhardwaj</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 11: TEDI TEDI -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="om5ktfnFfVs" data-title="TEDI TEDI — DG Immortals" data-badge="OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS" data-credits="Cinematography: Vikrant Yadav • Mise Films Production" data-post-url="https://www.youtube.com/watch?v=om5ktfnFfVs" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/tedi-tedi.jpg" alt="TEDI TEDI" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>TEDI TEDI — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 12: BERETTA -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="amjhURwi-WE" data-title="BERETTA — DG Immortals" data-badge="OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS" data-credits="Visuals & DOP: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=amjhURwi-WE" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/beretta.jpg" alt="Beretta" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>BERETTA — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 13: PSYCO JAATNI -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="1N-J8m-1nJg" data-title="PSYCO JAATNI — DG Immortals" data-badge="OFFICIAL VIDEO • IMMORTAL ERA" data-credits="Visual Craft: Vikrant Yadav • Billionaire Boys" data-post-url="https://www.youtube.com/watch?v=1N-J8m-1nJg" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/psyco-jaatni.jpg" alt="Psyco Jaatni" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>PSYCO JAATNI — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 14: BAM BHOLE -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="kYQaTnenRfI" data-title="BAM BHOLE — DG Immortals" data-badge="DEVOTIONAL CELLULOID • IMMORTAL ERA" data-credits="Visual Production: Mise Films & Abhishek Raina" data-post-url="https://www.youtube.com/watch?v=kYQaTnenRfI" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/bam-bhole.jpg" alt="Bam Bhole" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>BAM BHOLE — DG Immortals</strong>
+                <span>Devotional & Feature • Mise Films</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+
+            <!-- Item 15: COLLEGE WALE GATE PE -->
+            <div class="suite-playlist__item" data-video-type="youtube" data-yt-id="PPB5CAzVqZ4" data-title="College Wale Gate Pe — Aditya Bhardwaj" data-badge="OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ" data-credits="Visual Production: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=PPB5CAzVqZ4" data-platform="YouTube">
+              <div class="suite-playlist__thumb">
+                <img src="./images/projects/college-wale-gate-pe.jpg" alt="College Wale" loading="lazy" />
+                <div class="suite-playlist__thumb-indicator">▶</div>
+              </div>
+              <div class="suite-playlist__info">
+                <strong>College Wale Gate Pe</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+              <span class="suite-playlist__tag">YouTube</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════════════════
+         OPTION 3: AUTEUR FILM SHELVES (HORIZONTAL GENRE TRACKS)
+         ═════════════════════════════════════════════════════════════ -->
+    <section class="layout-demo-section" data-layout="opt-3" id="section-opt-3" style="display: none;">
+      <div class="layout-option-banner">
+        <div class="layout-option-banner__left">
+          <span class="layout-option-banner__num">OPTION 03</span>
+          <h2 class="layout-option-banner__name">Auteur Film Shelves (Horizontal Genre Tracks)</h2>
+          <p class="layout-option-banner__desc">Streaming-style categorized rails with smooth horizontal navigation arrows. Organizes projects by genre (Commercials, Music Videos, Documentaries) with zero vertical scroll clutter.</p>
+        </div>
+        <span class="layout-option-banner__badge">Horizontal Carousels • Curated Genres</span>
+      </div>
+
+      <div class="shelf-group">
+        <!-- Shelf 1: Commercials & Brand Films -->
+        <div class="shelf-row">
+          <div class="shelf-row__header">
+            <div class="shelf-row__title">
+              <h3>Commercials & Brand Campaigns</h3>
+              <span>5 Selected Productions</span>
+            </div>
+            <div class="shelf-row__controls">
+              <button class="shelf-arrow shelf-arrow--prev" type="button" aria-label="Scroll left">‹</button>
+              <button class="shelf-arrow shelf-arrow--next" type="button" aria-label="Scroll right">›</button>
+            </div>
+          </div>
+
+          <div class="shelf-carousel-wrap">
+            <div class="shelf-carousel">
+              <!-- Samsung -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-video-src="./videos/commercial-samsung.mp4" data-post-url="https://www.youtube.com/watch?v=_YoNR9RlDjw" data-title="Galaxy Z Fold8 Ultra" data-platform="YouTube">
+                  <div class="project-card__media"><img src="./images/projects/poster-samsung.jpg" alt="Samsung" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">4K COMMERCIAL</span><span class="project-card__hud-dp">SHREYANK V.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Brand Campaign</span></div>
+                    <h3 class="project-card__title">Samsung Galaxy Z Fold8</h3>
+                    <p class="project-card__credits">Dir. Shreyank Vishnoi</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SkyHop -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-video-src="./videos/commercial-skyhop.mp4" data-post-url="https://www.instagram.com/reel/DZLiZc5ze_1/" data-title="SkyHop Airlines BTS" data-platform="Instagram">
+                  <div class="project-card__media"><img src="./images/projects/poster-skyhop.jpg" alt="SkyHop" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">INSTA REEL</span><span class="project-card__hud-dp">SHREYANK V.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Aviation BTS</span></div>
+                    <h3 class="project-card__title">SkyHop Airlines Testing</h3>
+                    <p class="project-card__credits">Dir. Shreyank Vishnoi</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rider Mania -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-video-src="./videos/commercial-ridermania.mp4" data-post-url="https://www.instagram.com/reel/DUfEul5Eodc/" data-title="BOBMC Rider Mania" data-platform="Instagram">
+                  <div class="project-card__media"><img src="./images/projects/poster-ridermania.jpg" alt="Rider Mania" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">INSTA REEL</span><span class="project-card__hud-dp">SHREYANK V.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Festival Automotive</span></div>
+                    <h3 class="project-card__title">BOBMC Rider Mania</h3>
+                    <p class="project-card__credits">Cinematics: Shreyank Vishnoi</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Icon World -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-video-src="./videos/commercial-iconworld.mp4" data-post-url="https://www.instagram.com/reel/DSpOyLXE3Zo/" data-title="Icon World of Tile" data-platform="Instagram">
+                  <div class="project-card__media"><img src="./images/projects/poster-iconworld.jpg" alt="Icon World" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">INSTA REEL</span><span class="project-card__hud-dp">SHREYANK V.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Architecture</span></div>
+                    <h3 class="project-card__title">Icon World Of Tile</h3>
+                    <p class="project-card__credits">Dir. Shreyank Vishnoi</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Madhurban -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-video-src="./videos/project-madhurban.mp4" data-post-url="https://www.instagram.com/reel/DTkhowGEQYm/" data-title="Madhurban Glamping" data-platform="Instagram">
+                  <div class="project-card__media"><img src="./images/projects/cinema-madhurban-glamping.jpg" alt="Madhurban" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">INSTA REEL</span><span class="project-card__hud-dp">SHREYANK V.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Hospitality</span></div>
+                    <h3 class="project-card__title">Madhurban Glamping</h3>
+                    <p class="project-card__credits">Edit: Shreyank Vishnoi</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shelf 2: Music Videos & Hits -->
+        <div class="shelf-row">
+          <div class="shelf-row__header">
+            <div class="shelf-row__title">
+              <h3>Music Videos & Visual Narratives</h3>
+              <span>8 Hit Productions</span>
+            </div>
+            <div class="shelf-row__controls">
+              <button class="shelf-arrow shelf-arrow--prev" type="button" aria-label="Scroll left">‹</button>
+              <button class="shelf-arrow shelf-arrow--next" type="button" aria-label="Scroll right">›</button>
+            </div>
+          </div>
+
+          <div class="shelf-carousel-wrap">
+            <div class="shelf-carousel">
+              <!-- 2 Number -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-yt-id="RhhNh-UzQDI" data-title="2 NUMBER — DG Immortals" data-platform="YouTube">
+                  <div class="project-card__media"><img src="./images/projects/two-number.jpg" alt="2 Number" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">VYRL</span><span class="project-card__hud-dp">VIKRANT Y.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Music Video</span></div>
+                    <h3 class="project-card__title">2 NUMBER — DG Immortals</h3>
+                    <p class="project-card__credits">DOP: Vikrant Yadav</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Room Mein -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-yt-id="UZ_MVDo74lI" data-title="ROOM MEIN — YABHA" data-platform="YouTube">
+                  <div class="project-card__media"><img src="./images/projects/yabha-room-mein.jpg" alt="Room Mein" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">FEALES</span><span class="project-card__hud-dp">SHREYANK V.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">The Album</span></div>
+                    <h3 class="project-card__title">ROOM MEIN — YABHA</h3>
+                    <p class="project-card__credits">Dir. Shreyank Vishnoi</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Nawab -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-yt-id="-QpLmA6AKQ4" data-title="NAWAB — Nrip Malhan" data-platform="YouTube">
+                  <div class="project-card__media"><img src="./images/projects/nawab.jpg" alt="Nawab" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">KAYOS</span><span class="project-card__hud-dp">VIKRANT Y.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Official Track</span></div>
+                    <h3 class="project-card__title">NAWAB — Nrip Malhan</h3>
+                    <p class="project-card__credits">Cinematography: Vikrant Yadav</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bye -->
+              <div class="shelf-card">
+                <div class="project-card js-play-cinema" data-yt-id="DbiRVNeZPnw" data-title="BYE — Aditya Bhardwaj" data-platform="YouTube">
+                  <div class="project-card__media"><img src="./images/projects/bye.jpg" alt="Bye" /></div>
+                  <div class="project-card__hud-bar"><span class="project-card__hud-take">SOUL</span><span class="project-card__hud-dp">VIKRANT Y.</span></div>
+                  <div class="project-card__play-badge"><span class="play-badge__ring"></span><span class="play-badge__icon">▶</span></div>
+                  <div class="project-card__overlay"></div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags"><span class="project-card__category">Melodic</span></div>
+                    <h3 class="project-card__title">BYE — Aditya Bhardwaj</h3>
+                    <p class="project-card__credits">DOP: Vikrant Yadav</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════════════════
+         OPTION 4: CRITERION ARCHIVE (EDITORIAL TABLE + SPOTLIGHT)
+         ═════════════════════════════════════════════════════════════ -->
+    <section class="layout-demo-section" data-layout="opt-4" id="section-opt-4" style="display: none;">
+      <div class="layout-option-banner">
+        <div class="layout-option-banner__left">
+          <span class="layout-option-banner__num">OPTION 04</span>
+          <h2 class="layout-option-banner__name">Criterion Archive (Editorial List + Small Thumbnails + Live Spotlight)</h2>
+          <p class="layout-option-banner__desc">Boutique auteur catalog aesthetic. Each row now includes a sleek mini video thumbnail. Hovering over any row on the left instantly updates the live cinema spotlight viewport on the right.</p>
+        </div>
+        <span class="layout-option-banner__badge">Mini Thumbnails • Editorial Luxury</span>
+      </div>
+
+      <div class="criterion-wrap">
+        <!-- Editorial Index Table (Left) with Small Thumbnails -->
+        <div class="criterion-table">
+          <!-- Row 1: Samsung -->
+          <div class="criterion-row is-active" data-video-src="./videos/commercial-samsung.mp4" data-title="Galaxy Z Fold8 Ultra — Commercial Campaign" data-badge="COMMERCIAL CAMPAIGN • SAMSUNG INDIA" data-credits="Direction: Shreyank Vishnoi • 4K Celluloid Playback" data-post-url="https://www.youtube.com/watch?v=_YoNR9RlDjw" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">01</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/poster-samsung.jpg" alt="Samsung" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>Galaxy Z Fold8 Ultra</strong>
+                <span>Dir. Shreyank Vishnoi • Commercial Campaign</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2026</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 2: SkyHop Airlines -->
+          <div class="criterion-row" data-video-src="./videos/commercial-skyhop.mp4" data-title="SkyHop Airlines — Testing Campaign BTS" data-badge="AVIATION CAMPAIGN • SCENE BANANA" data-credits="Directed by Shreyank Vishnoi • Aerial Motion & BTS" data-post-url="https://www.instagram.com/reel/DZLiZc5ze_1/" data-platform="Instagram">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">02</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/poster-skyhop.jpg" alt="SkyHop" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>SkyHop Airlines Testing BTS</strong>
+                <span>Dir. Shreyank Vishnoi • Aviation & Aerials</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2026</span>
+              <span class="criterion-row__badge criterion-row__badge--insta">Instagram</span>
+            </div>
+          </div>
+
+          <!-- Row 3: 2 NUMBER -->
+          <div class="criterion-row" data-poster="./images/projects/two-number.jpg" data-yt-id="RhhNh-UzQDI" data-title="2 NUMBER — DG Immortals x Parmish Verma" data-badge="HIT MUSIC VIDEO • VYRL HARYANVI" data-credits="Cinematography: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=RhhNh-UzQDI" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">03</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/two-number.jpg" alt="2 NUMBER" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>2 NUMBER — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 4: BOBMC Rider Mania -->
+          <div class="criterion-row" data-video-src="./videos/commercial-ridermania.mp4" data-title="BOBMC Rider Mania — Day 2 Energy" data-badge="FESTIVAL FILM • RIDER MANIA 2026" data-credits="Cinematics & Direction: Shreyank Vishnoi" data-post-url="https://www.instagram.com/reel/DUfEul5Eodc/" data-platform="Instagram">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">04</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/poster-ridermania.jpg" alt="Rider Mania" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>BOBMC Rider Mania — Day 2</strong>
+                <span>Dir. Shreyank Vishnoi • Automotive Adrenaline</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2026</span>
+              <span class="criterion-row__badge criterion-row__badge--insta">Instagram</span>
+            </div>
+          </div>
+
+          <!-- Row 5: Icon World of Tile -->
+          <div class="criterion-row" data-video-src="./videos/commercial-iconworld.mp4" data-title="Icon World of Tile — Store Launch Film" data-badge="ARCHITECTURAL COMMERCIAL • ICON PRIMA" data-credits="Commercial Direction: Shreyank Vishnoi" data-post-url="https://www.instagram.com/reel/DSpOyLXE3Zo/" data-platform="Instagram">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">05</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/poster-iconworld.jpg" alt="Icon World" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>Icon World Of Tile Store Launch</strong>
+                <span>Dir. Shreyank Vishnoi • Luxury Interior</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2025</span>
+              <span class="criterion-row__badge criterion-row__badge--insta">Instagram</span>
+            </div>
+          </div>
+
+          <!-- Row 6: ROOM MEIN -->
+          <div class="criterion-row" data-poster="./images/projects/yabha-room-mein.jpg" data-yt-id="UZ_MVDo74lI" data-title="ROOM MEIN — YABHA" data-badge="OFFICIAL MUSIC VIDEO • FEALES MUSIC" data-credits="Directed by Shreyank Vishnoi • YABHA THE ALBUM" data-post-url="https://www.youtube.com/watch?v=UZ_MVDo74lI" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">06</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/yabha-room-mein.jpg" alt="Room Mein" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>ROOM MEIN — YABHA</strong>
+                <span>Dir. Shreyank Vishnoi • The Album</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2025</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 7: Madhurban Glamping -->
+          <div class="criterion-row" data-video-src="./videos/project-madhurban.mp4" data-title="Madhurban Glamping — Evolution" data-badge="HOSPITALITY COMMERCIAL • MADHURBAN" data-credits="Visual Direction & Edit: Shreyank Vishnoi" data-post-url="https://www.instagram.com/reel/DTkhowGEQYm/" data-platform="Instagram">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">07</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/cinema-madhurban-glamping.jpg" alt="Madhurban" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>Madhurban Glamping Evolution</strong>
+                <span>Dir. Shreyank Vishnoi • Hospitality & Nature</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2026</span>
+              <span class="criterion-row__badge criterion-row__badge--insta">Instagram</span>
+            </div>
+          </div>
+
+          <!-- Row 8: NAWAB -->
+          <div class="criterion-row" data-poster="./images/projects/nawab.jpg" data-yt-id="-QpLmA6AKQ4" data-title="NAWAB — Nrip Malhan" data-badge="OFFICIAL MUSIC VIDEO • PROD. KAYOS" data-credits="Cinematography: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=-QpLmA6AKQ4" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">08</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/nawab.jpg" alt="Nawab" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>NAWAB — Nrip Malhan</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 9: Jamboree Live Event -->
+          <div class="criterion-row" data-video-src="./videos/project-jamboree.mp4" data-title="Jamboree — CM Live Event Coverage" data-badge="LIVE CINEMATICS • NEOCLASSIC STUDIOS" data-credits="Direction & Production: Shreyank Vishnoi" data-post-url="https://www.instagram.com/reel/DRhPZO6kl1Z/" data-platform="Instagram">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">09</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/cinema-neoclassic-jamboree.jpg" alt="Jamboree" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>Jamboree CM Live Event</strong>
+                <span>Dir. Shreyank Vishnoi • Ground Coverage</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2025</span>
+              <span class="criterion-row__badge criterion-row__badge--insta">Instagram</span>
+            </div>
+          </div>
+
+          <!-- Row 10: BYE -->
+          <div class="criterion-row" data-poster="./images/projects/bye.jpg" data-yt-id="DbiRVNeZPnw" data-title="BYE — Aditya Bhardwaj" data-badge="OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ" data-credits="DOP & Visual Direction: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=DbiRVNeZPnw" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">10</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/bye.jpg" alt="Bye" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>BYE — Aditya Bhardwaj</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 11: TEDI TEDI -->
+          <div class="criterion-row" data-poster="./images/projects/tedi-tedi.jpg" data-yt-id="om5ktfnFfVs" data-title="TEDI TEDI — DG Immortals" data-badge="OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS" data-credits="Cinematography: Vikrant Yadav • Mise Films Production" data-post-url="https://www.youtube.com/watch?v=om5ktfnFfVs" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">11</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/tedi-tedi.jpg" alt="Tedi Tedi" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>TEDI TEDI — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 12: BERETTA -->
+          <div class="criterion-row" data-poster="./images/projects/beretta.jpg" data-yt-id="amjhURwi-WE" data-title="BERETTA — DG Immortals" data-badge="OFFICIAL VIDEO • BILLIONAIRE BOYS RECORDS" data-credits="Visuals & DOP: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=amjhURwi-WE" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">12</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/beretta.jpg" alt="Beretta" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>BERETTA — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Action Cinema</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 13: PSYCO JAATNI -->
+          <div class="criterion-row" data-poster="./images/projects/psyco-jaatni.jpg" data-yt-id="1N-J8m-1nJg" data-title="PSYCO JAATNI — DG Immortals" data-badge="OFFICIAL VIDEO • IMMORTAL ERA" data-credits="Visual Craft: Vikrant Yadav • Billionaire Boys" data-post-url="https://www.youtube.com/watch?v=1N-J8m-1nJg" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">13</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/psyco-jaatni.jpg" alt="Psyco Jaatni" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>PSYCO JAATNI — DG Immortals</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 14: BAM BHOLE -->
+          <div class="criterion-row" data-poster="./images/projects/bam-bhole.jpg" data-yt-id="kYQaTnenRfI" data-title="BAM BHOLE — DG Immortals" data-badge="DEVOTIONAL CELLULOID • IMMORTAL ERA" data-credits="Visual Production: Mise Films & Abhishek Raina" data-post-url="https://www.youtube.com/watch?v=kYQaTnenRfI" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">14</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/bam-bhole.jpg" alt="Bam Bhole" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>BAM BHOLE — DG Immortals</strong>
+                <span>Devotional & Feature • Mise Films</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+
+          <!-- Row 15: COLLEGE WALE GATE PE -->
+          <div class="criterion-row" data-poster="./images/projects/college-wale-gate-pe.jpg" data-yt-id="PPB5CAzVqZ4" data-title="College Wale Gate Pe — Aditya Bhardwaj" data-badge="OFFICIAL MUSIC VIDEO • ADITYA BHARDWAJ" data-credits="Visual Production: Vikrant Yadav • Mise Films" data-post-url="https://www.youtube.com/watch?v=PPB5CAzVqZ4" data-platform="YouTube">
+            <div class="criterion-row__left">
+              <span class="criterion-row__num">15</span>
+              <div class="criterion-row__thumb">
+                <img src="./images/projects/college-wale-gate-pe.jpg" alt="College Wale" loading="lazy" />
+                <span class="criterion-row__play-icon">▶</span>
+              </div>
+              <div class="criterion-row__title-wrap">
+                <strong>College Wale Gate Pe</strong>
+                <span>DOP. Vikrant Yadav • Music Video</span>
+              </div>
+            </div>
+            <div class="criterion-row__right">
+              <span class="criterion-row__year">2024</span>
+              <span class="criterion-row__badge">YouTube 4K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Cinema Spotlight (Right) -->
+        <div class="criterion-spotlight">
+          <div class="criterion-spotlight__screen">
+            <video id="spotlight-video" src="./videos/commercial-samsung.mp4" autoplay muted playsinline loop></video>
+            <img id="spotlight-img" src="./images/projects/poster-samsung.jpg" alt="Preview" style="display: none;" />
+          </div>
+          <div class="criterion-spotlight__info">
+            <span class="criterion-spotlight__badge" id="spotlight-badge">COMMERCIAL CAMPAIGN • SAMSUNG INDIA</span>
+            <h3 class="criterion-spotlight__title" id="spotlight-title">Galaxy Z Fold8 Ultra — Commercial Campaign</h3>
+            <p class="criterion-spotlight__credits" id="spotlight-credits">Direction: Shreyank Vishnoi • 4K Celluloid Playback</p>
+            <div class="criterion-spotlight__actions">
+              <button class="criterion-spotlight__btn-play" id="spotlight-play-btn" type="button">▶ Play Full Reel</button>
+              <a href="https://www.youtube.com/watch?v=_YoNR9RlDjw" target="_blank" rel="noopener noreferrer" class="criterion-spotlight__btn-link" id="spotlight-link">
+                <span id="spotlight-link-text">Watch on YouTube</span>
+                <span class="arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── UNIVERSAL IN-SITE CINEMA VIDEO MODAL ─── -->
+  <div class="cinema-modal" id="cinema-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cinema-modal__backdrop" id="cinema-modal-backdrop"></div>
+    <div class="cinema-modal__window">
+      <div class="cinema-modal__header">
+        <div class="cinema-modal__meta">
+          <span class="cinema-modal__tag">DIRECT CINEMA PLAYBACK // MISE FILMS</span>
+          <h3 class="cinema-modal__title" id="modal-video-title">Project Video</h3>
+        </div>
+        <div class="cinema-modal__actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="cinema-modal__external-btn" id="modal-external-link">
+            <span id="modal-external-text">Open Post</span>
+            <span class="arrow">↗</span>
+          </a>
+          <button class="cinema-modal__close-btn" id="modal-close-btn" type="button" aria-label="Close Player">✕</button>
+        </div>
+      </div>
+
+      <div class="cinema-modal__stage">
+        <video id="modal-video-player" controls playsinline preload="auto" class="cinema-modal__video"></video>
+        <div id="modal-youtube-wrap" class="cinema-modal__iframe-wrap" style="display: none;">
+          <iframe id="modal-youtube-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/work-layouts.js"></script>
+</body>
+</html>
