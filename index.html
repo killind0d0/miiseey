@@ -166,6 +166,26 @@
 
           <!-- Text Manifesto Column (Center Column) -->
           <div class="hero__content">
+            <!-- Mobile Viewfinder Corner Brackets & Center Crosshair (Active on Mobile, Hidden on Desktop >= 1024px) -->
+            <span class="hero__vf-corner hero__vf-corner--tl" aria-hidden="true"></span>
+            <span class="hero__vf-corner hero__vf-corner--tr" aria-hidden="true"></span>
+            <span class="hero__vf-corner hero__vf-corner--bl" aria-hidden="true"></span>
+            <span class="hero__vf-corner hero__vf-corner--br" aria-hidden="true"></span>
+            <div class="hero__vf-cross" aria-hidden="true"></div>
+
+            <!-- Mobile Sweeping Light Beam & Ambient Glow (Active on Mobile, Hidden on Desktop >= 1024px) -->
+            <div class="hero__light-beam" aria-hidden="true"></div>
+            <div class="hero__beam-glow" aria-hidden="true"></div>
+
+            <!-- Mobile Top HUD Bar (REC + Timecode) (Active on Mobile, Hidden on Desktop >= 1024px) -->
+            <div class="hero__vf-hud-top" aria-hidden="true">
+              <div class="hero__vf-rec">
+                <span class="hero__vf-rec-dot"></span>
+                <span>REC</span>
+              </div>
+              <div class="hero__vf-timecode" id="hero-live-tc">TC 01:24:08:14</div>
+            </div>
+
             <div class="hero__eyebrow">// AUTEUR PRODUCTION HOUSE • GAYAJI, BIHAR</div>
             <h1 class="hero__title" data-split-text>
               Cinema Sculpted<br />in Light & Truth
@@ -177,6 +197,15 @@
               <span class="hero__badge">35MM / LARGE FORMAT</span>
               <span class="hero__badge">ANAMORPHIC GLASS</span>
               <span class="hero__badge">RAW CELLULOID POETRY</span>
+            </div>
+
+            <!-- Mobile Bottom HUD Bar (Camera Telemetry) (Active on Mobile, Hidden on Desktop >= 1024px) -->
+            <div class="hero__vf-hud-bottom" aria-hidden="true">
+              <span>FPS: <strong class="val">24.00</strong></span>
+              <span>SHUTTER: <strong class="val">180.0°</strong></span>
+              <span>ISO: <strong class="val">800</strong></span>
+              <span>RES: <strong class="val">4K DCI</strong></span>
+              <span>WB: <strong class="val">3200K</strong></span>
             </div>
           </div>
 
@@ -2685,13 +2714,13 @@
       </div>
     </section>
 
-    <!-- ─── QUOTE ────────────────────────────────────────── -->
+    <!-- ─── QUOTE (Auto-rotating cinema quotes) ───────── -->
     <section class="quote-section" data-reveal="fade-up">
       <div class="quote-section__mark">"</div>
-      <blockquote class="quote-section__text">
+      <blockquote class="quote-section__text" id="quote-text">
         Cinema is a matter of what's in the frame and what's out.
       </blockquote>
-      <cite class="quote-section__author">— Martin Scorsese</cite>
+      <cite class="quote-section__author" id="quote-author">— Martin Scorsese</cite>
     </section>
 
     <div class="divider" data-reveal></div>
@@ -2700,7 +2729,7 @@
     <section class="contact" id="contact" data-reveal="fade-up">
       <h2 class="contact__heading">Let's make<br />something remarkable</h2>
       <div class="contact__actions">
-        <a href="tel:+919504600078" class="contact__cta" data-magnetic>
+        <a href="tel:+919504600078" class="contact__cta contact__cta--mobile-only" data-magnetic>
           <span>Call +91 95046 00078</span>
           <span class="arrow">↗</span>
         </a>
@@ -2749,6 +2778,96 @@
           <a href="tel:+919504600078">+91 95046 00078</a>
           <a href="mailto:hello@misefilms.com">hello@misefilms.com</a>
           <span style="color: var(--grey-mid, #7e8391);">GAYAJI, BIHAR</span>
+        </div>
+      </div>
+
+      <!-- ─── INTERACTIVE COCKPIT ROW: CLAPPERBOARD + SJ DIGITALS PROMO (Single Line on Desktop) ─── -->
+      <div class="footer__partner-row">
+        <!-- Col 1: Interactive Clapperboard Like Slate -->
+        <div class="footer__clapper-col" id="clapper-section">
+          <div class="clapper-card" id="clapper-board" role="button" tabindex="0" aria-label="Tap clapperboard to like Mise Films">
+            <!-- Top hinged striped stick (resting closed at 0deg) -->
+            <div class="clapper-stick-top" id="clapper-stick"></div>
+            <div class="clapper-stick-bottom"></div>
+            
+            <div class="clapper-body">
+              <div class="clapper-header">
+                <span class="clapper-prod">PROD: MISE FILMS</span>
+                <span class="clapper-dir">DIR: AUTEUR</span>
+                <span class="clapper-fps">FPS: 24</span>
+              </div>
+              
+              <div class="clapper-grid">
+                <div class="clapper-cell">
+                  <span class="clapper-cell-lbl">ROLL</span>
+                  <span class="clapper-cell-val">01</span>
+                </div>
+                <div class="clapper-cell clapper-cell--viewers">
+                  <span class="clapper-cell-lbl">VIEWERS</span>
+                  <span class="clapper-cell-val" id="clapper-viewer-count">1,429</span>
+                </div>
+                <div class="clapper-cell clapper-cell--take">
+                  <span class="clapper-cell-lbl">TAKE / LIKES</span>
+                  <span class="clapper-cell-val" id="clapper-like-count">842</span>
+                </div>
+              </div>
+
+              <div class="clapper-prompt" id="clapper-prompt">
+                <span class="clapper-icon">🎬</span>
+                <span class="clapper-text" id="clapper-action-txt">TAP SLATE TO LIKE THIS PRODUCTION</span>
+              </div>
+            </div>
+          </div>
+          <p class="footer__clapper-note" id="clapper-feedback-note">Unique visits tracked live • Clicking logs 1 like per session</p>
+        </div>
+
+        <!-- Col 2: Luxury SJ Digitals Agency Promo Banner -->
+        <div class="footer__agency-col">
+          <a href="https://sjdigitals.vercel.app" target="_blank" rel="noopener noreferrer" title="Visit SJ Digitals — Creative Engineering & Web Architecture Studio" class="sj-promo-card">
+            <!-- Top Anamorphic Light Sheen -->
+            <div class="sj-promo-card__sheen" aria-hidden="true"></div>
+
+            <!-- Desktop-only: Full card background logo, fades in on hover -->
+            <img src="./images/bg-wide.png" alt="" aria-hidden="true" class="sj-promo-card__bg-logo" />
+
+            <div class="sj-promo-card__inner">
+              <!-- Top Row: Kicker & Live Status Pill -->
+              <div class="sj-promo-card__meta-bar">
+                <span class="sj-promo-card__kicker">CREATIVE TECH & DIGITAL FLAGSHIPS // SJ DIGITALS</span>
+                <span class="sj-promo-card__status">
+                  <span class="sj-promo-card__status-dot"></span> Available for Projects
+                </span>
+              </div>
+
+              <!-- Main Content: Logo Pedestal + Copy + CTA -->
+              <div class="sj-promo-card__main">
+                <div class="sj-promo-card__logo-wrap">
+                  <img src="./images/sjdigitals-logo.png" alt="SJ Digitals" class="sj-promo-card__logo-img" />
+                </div>
+
+                <div class="sj-promo-card__body">
+                  <h4 class="sj-promo-card__title">
+                    Digital Flagship Designed & Engineered by <span class="sj-promo-card__highlight">SJ Digitals</span>
+                  </h4>
+                  <p class="sj-promo-card__tagline">
+                    We architect high-performance, bespoke digital flagships with cinematically fluid 60 FPS interactions and conversion-engineered systems for visionary brands and institutions.
+                  </p>
+                  <div class="sj-promo-card__tags">
+                    <span class="sj-tag">✦ Bespoke Full-Stack</span>
+                    <span class="sj-tag">✦ 60 FPS Micro-Interactions</span>
+                    <span class="sj-tag">✦ Conversion UI/UX</span>
+                  </div>
+                </div>
+
+                <div class="sj-promo-card__action">
+                  <div class="sj-promo-card__cta">
+                    <span>Get Your Website Built</span>
+                    <span class="arrow">↗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
 

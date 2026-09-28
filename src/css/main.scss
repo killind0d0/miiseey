@@ -656,6 +656,211 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    // Mobile Viewfinder & Light Beam frame (ONLY < 1024px)
+    @media (max-width: 1023px) {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: clamp(1.4rem, 1.1rem + 2vw, 2.2rem) clamp(1rem, 0.8rem + 1.5vw, 1.6rem);
+      background: rgba(14, 16, 21, 0.82);
+      border: 1px solid rgba(212, 168, 83, 0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+    }
+  }
+
+  // Mobile Viewfinder Corner Crosshairs (Hidden on Desktop >= 1024px)
+  &__vf-corner {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: $amber;
+      pointer-events: none;
+      z-index: 3;
+
+      &--tl {
+        top: -1px;
+        left: -1px;
+        border-top: 2px solid $amber;
+        border-left: 2px solid $amber;
+      }
+      &--tr {
+        top: -1px;
+        right: -1px;
+        border-top: 2px solid $amber;
+        border-right: 2px solid $amber;
+      }
+      &--bl {
+        bottom: -1px;
+        left: -1px;
+        border-bottom: 2px solid $amber;
+        border-left: 2px solid $amber;
+      }
+      &--br {
+        bottom: -1px;
+        right: -1px;
+        border-bottom: 2px solid $amber;
+        border-right: 2px solid $amber;
+      }
+    }
+  }
+
+  // Center Crosshair (Mobile only)
+  &__vf-cross {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 22px;
+      pointer-events: none;
+      opacity: 0.15;
+      z-index: 1;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        background: $amber;
+      }
+      &::before {
+        top: 10px;
+        left: 0;
+        width: 22px;
+        height: 2px;
+      }
+      &::after {
+        top: 0;
+        left: 10px;
+        width: 2px;
+        height: 22px;
+      }
+    }
+  }
+
+  // Mobile Sweeping Light Beam & Glow (Hidden on Desktop >= 1024px)
+  &__light-beam {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: block;
+      position: absolute;
+      top: -60%;
+      left: -120%;
+      width: 65%;
+      height: 220%;
+      background: linear-gradient(
+        75deg,
+        transparent 0%,
+        rgba(212, 168, 83, 0.02) 20%,
+        rgba(255, 225, 140, 0.18) 50%,
+        rgba(212, 168, 83, 0.02) 80%,
+        transparent 100%
+      );
+      transform: rotate(20deg);
+      pointer-events: none;
+      animation: heroSweepBeam 5s ease-in-out infinite;
+      filter: blur(14px);
+      z-index: 1;
+    }
+  }
+
+  &__beam-glow {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(48px);
+      z-index: 0;
+    }
+  }
+
+  // Mobile Top HUD Bar (REC + Timecode) (Hidden on Desktop >= 1024px)
+  &__vf-hud-top {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      border-bottom: 1px dashed rgba(212, 168, 83, 0.22);
+      padding-bottom: 0.5rem;
+      margin-bottom: $space-md;
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &__vf-rec {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #ff3344;
+    font-weight: 600;
+  }
+
+  &__vf-rec-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ff3344;
+    box-shadow: 0 0 6px rgba(255, 51, 68, 0.8);
+    animation: heroBlinkRec 1s steps(1) infinite;
+  }
+
+  &__vf-timecode {
+    color: $amber-light;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+  }
+
+  // Mobile Bottom HUD Bar (Camera Telemetry) (Hidden on Desktop >= 1024px)
+  &__vf-hud-bottom {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-family: $font-mono;
+      font-size: 0.58rem;
+      color: $grey-mid;
+      letter-spacing: 0.1em;
+      border-top: 1px dashed rgba(212, 168, 83, 0.22);
+      padding-top: 0.55rem;
+      margin-top: $space-md;
+      position: relative;
+      z-index: 2;
+
+      strong.val {
+        color: $amber;
+        font-weight: 500;
+      }
+    }
   }
 
   &__eyebrow {
@@ -666,6 +871,8 @@
     text-transform: uppercase;
     margin-bottom: $space-md;
     opacity: 0.92;
+    position: relative;
+    z-index: 2;
   }
 
   &__title {
@@ -674,10 +881,16 @@
     line-height: 1.05;
     color: $white-pure;
     margin-bottom: $space-lg;
+    position: relative;
+    z-index: 2;
 
     .word {
       display: inline-block;
       color: $white-pure;
+    }
+
+    @media (max-width: 1023px) {
+      animation: heroTitleGlow 5s ease-in-out infinite;
     }
   }
 
@@ -3251,15 +3464,34 @@ a.project-card,
     font-size: $text-2xl;
     color: $white;
     font-style: italic;
+    min-height: 3.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+
+    &.is-changing {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
   }
 
   &__author {
-    margin-top: $space-xl;
+    margin-top: $space-lg;
     font-family: $font-sans;
     font-size: $text-xs;
     color: $grey-mid;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    display: inline-block;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+
+    &.is-changing {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
   }
 }
 
@@ -3357,6 +3589,14 @@ a.project-card,
       transform: translateX(4px);
     }
 
+    &--mobile-only {
+      display: none !important;
+
+      @media (max-width: 768px) {
+        display: inline-flex !important;
+      }
+    }
+
     &--whatsapp {
       border-color: #25D366;
       color: #25D366;
@@ -3387,17 +3627,18 @@ a.project-card,
 // FOOTER
 // ═══════════════════════════════════════════════════════════════
 .footer {
-  padding: $space-2xl $gutter $space-xl;
+  padding: clamp(3rem, 2.5rem + 1.5vw, 4.5rem) $gutter 1.5rem;
   border-top: 1px solid $black-border;
 
   @include respond(lg) {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: $space-xl;
+    column-gap: $space-xl;
+    row-gap: 1.25rem;
   }
 
   &__brand {
-    margin-bottom: $space-xl;
+    margin-bottom: $space-lg;
 
     @include respond(lg) {
       margin-bottom: 0;
@@ -3434,7 +3675,7 @@ a.project-card,
   }
 
   &__col {
-    margin-bottom: $space-lg;
+    margin-bottom: $space-md;
 
     @include respond(lg) {
       margin-bottom: 0;
@@ -3471,15 +3712,550 @@ a.project-card,
     display: flex;
     flex-direction: column;
     gap: $space-sm;
-    padding-top: $space-xl;
-    margin-top: $space-xl;
-    border-top: 1px solid $black-border;
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: $text-xs;
     color: $grey-mid;
 
     @include respond(md) {
       flex-direction: row;
       justify-content: space-between;
+    }
+  }
+}
+
+// ── Keyframes for Mobile Hero Viewfinder & Light Beam ──
+@keyframes heroBlinkRec {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes heroSweepBeam {
+  0% { left: -120%; }
+  35%, 100% { left: 160%; }
+}
+
+@keyframes heroTitleGlow {
+  0%, 100% { text-shadow: 0 0 0 rgba(212, 168, 83, 0); }
+  18% { text-shadow: 0 0 22px rgba(212, 168, 83, 0.45); }
+  30% { text-shadow: 0 0 0 rgba(212, 168, 83, 0); }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// FOOTER PARTNER COCKPIT ROW (Clapperboard + SJ Digitals Promo)
+// Unified single-line row on desktop, stacked on mobile
+// ═══════════════════════════════════════════════════════════════
+.footer__partner-row {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 1.25rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: visible;
+
+  @include respond(lg) {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+.footer__clapper-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible !important;
+  padding-top: 30px; // Headroom so swinging upper stick is never cut off!
+
+  @include respond(lg) {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .clapper-card {
+    width: 100%;
+    max-width: 380px;
+    border: none !important; // Borderless to eliminate any edge cropping
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: visible !important; // Fully unconstrained swing
+
+    @include respond(lg) {
+      max-width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .clapper-body {
+    background: #111318;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+
+    @include respond(lg) {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
+
+.footer__agency-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Interactive Clapperboard Like Card (Universal unconstrained full swing) ──
+.clapper-card {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 8px;
+  overflow: visible !important;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible .clapper-body {
+    outline: 2px solid $amber;
+  }
+
+  &:active {
+    transform: scale(0.985);
+  }
+
+  &.is-liked .clapper-body {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 168, 83, 0.2);
+  }
+}
+
+// Top hinged striped stick: Resting closed (0deg) with uncropped swing arc
+.clapper-stick-top {
+  height: 28px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #faf6f0 0,
+    #faf6f0 14px,
+    #15171c 14px,
+    #15171c 28px
+  );
+  transform-origin: left bottom;
+  transform: rotate(0deg);
+  border-radius: 4px 4px 0 0;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+// Keyframes: Full Open and Clap Cycle (Swings freely into clear headroom)
+@keyframes clapperFullCycle {
+  0% { transform: rotate(0deg); }
+  26% { transform: rotate(-24deg); }
+  40% { transform: rotate(-25deg); }
+  66% { transform: rotate(0deg); }
+  78% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.clapper-card.is-clapping-cycle .clapper-stick-top {
+  animation: clapperFullCycle 0.46s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+
+.clapper-stick-bottom {
+  height: 20px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #faf6f0 0,
+    #faf6f0 14px,
+    #15171c 14px,
+    #15171c 28px
+  );
+  border-bottom: 2px solid #000;
+  border-radius: 4px 4px 0 0;
+}
+
+.clapper-body {
+  padding: 14px 16px;
+  background: #111318;
+}
+
+.clapper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: $amber;
+  margin-bottom: 10px;
+}
+
+.clapper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1.15fr;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 8px 6px;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.clapper-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &-lbl {
+    font-family: $font-mono;
+    font-size: 0.58rem;
+    color: $grey-mid;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  &-val {
+    font-family: $font-mono;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: $white-pure;
+    letter-spacing: 0.05em;
+    transition: transform 0.22s ease, color 0.22s ease;
+  }
+
+  &--viewers .clapper-cell-val {
+    color: #e2e8f0;
+  }
+
+  &--take .clapper-cell-val {
+    color: $amber-light;
+  }
+}
+
+.clapper-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: $amber;
+  transition: all 0.25s ease;
+
+  .clapper-card:hover & {
+    background: rgba(212, 168, 83, 0.16);
+    border-color: rgba(212, 168, 83, 0.5);
+    color: $white-pure;
+  }
+
+  .clapper-card.is-liked & {
+    background: rgba(212, 168, 83, 0.25);
+    border-color: $amber;
+    color: $amber-light;
+    font-weight: 600;
+  }
+}
+
+.footer__clapper-note {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  color: $grey-mid;
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SJ DIGITALS HIGH-END BESPOKE PROMO BANNER
+// Ultra-luxury creative tech & engineering studio showcase
+// ═══════════════════════════════════════════════════════════════
+.sj-promo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-decoration: none;
+  border-radius: 8px;
+  background: radial-gradient(
+    ellipse 90% 75% at 85% -15%,
+    rgba(212, 168, 83, 0.16) 0%,
+    rgba(18, 21, 29, 0.96) 50%,
+    #0c0d12 100%
+  );
+  border: 1px solid rgba(212, 168, 83, 0.32);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 35px rgba(212, 168, 83, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+
+  &__sheen {
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.85), transparent);
+    pointer-events: none;
+  }
+
+  transform: none !important; // Fixed firmly in place, no moving around
+
+  &:hover {
+    border-color: rgba(212, 168, 83, 0.65);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85), 0 0 45px rgba(212, 168, 83, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    // Desktop hover: fade in the background logo across the entire card
+    .sj-promo-card__bg-logo {
+      opacity: 0.22;
+    }
+
+    .sj-promo-card__cta {
+      background: linear-gradient(135deg, $amber-light 0%, $amber 100%);
+      box-shadow: 0 6px 22px rgba(212, 168, 83, 0.45);
+
+      .arrow {
+        transform: translate(2px, -2px);
+      }
+    }
+
+    .sj-promo-card__highlight {
+      color: $amber-light;
+      text-shadow: 0 0 12px rgba(212, 168, 83, 0.5);
+    }
+  }
+
+  &__inner {
+    padding: 1.15rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 0.9rem;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      padding: 1.1rem 1rem;
+      gap: 1rem;
+    }
+  }
+
+  &__meta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.5rem;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+  }
+
+  &__kicker {
+    font-family: $font-mono;
+    font-size: 0.58rem;
+    color: $amber;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    font-family: $font-mono;
+    font-size: 0.58rem;
+    color: #6ee7b7;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+
+    &-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 7px #10b981;
+      animation: recPulse 1.2s ease-in-out infinite;
+    }
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.4rem;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+  }
+
+  &__logo-wrap {
+    flex-shrink: 0;
+    height: 48px;
+    max-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    background: linear-gradient(145deg, rgba(28, 32, 42, 0.8) 0%, rgba(13, 15, 20, 0.95) 100%);
+    border: 1px solid rgba(212, 168, 83, 0.4);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 1023px) {
+      align-self: flex-start;
+    }
+  }
+
+  &__logo-img {
+    max-height: 38px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: $font-sans;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: $white-pure;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    margin: 0 0 0.3rem;
+  }
+
+  &__highlight {
+    color: $amber;
+    font-weight: 700;
+    transition: all 0.25s ease;
+  }
+
+  &__tagline {
+    font-family: $font-sans;
+    font-size: 0.76rem;
+    color: $grey-light;
+    line-height: 1.45;
+    margin: 0 0 0.5rem;
+    max-width: 620px;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sj-tag {
+    font-family: $font-mono;
+    font-size: 0.58rem;
+    color: $amber-light;
+    background: rgba(212, 168, 83, 0.08);
+    border: 1px solid rgba(212, 168, 83, 0.22);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  // Background logo — absolutely positioned behind all card content
+  // Desktop: hidden by default, purely fades in on hover, fades out on mouse leave
+  // Mobile: always hidden
+  &__bg-logo {
+    display: none; // Hidden on mobile
+
+    @include respond(lg) {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      opacity: 0;
+      transform: none;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 0;
+    }
+  }
+
+  &__action {
+    flex-shrink: 0;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, $amber 0%, #b8862d 100%);
+    color: #0b0c10;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.72rem 1.35rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(212, 168, 83, 0.32);
+    transition: all 0.25s ease;
+    white-space: nowrap;
+
+    .arrow {
+      transition: transform 0.2s ease;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      padding: 0.75rem 1rem;
     }
   }
 }
@@ -5551,8 +6327,30 @@ a.project-card,
     }
   }
 
-  &.is-flipped .slipcase-flipper {
-    transform: rotateY(180deg);
+  &.is-flipped {
+    &:hover .slipcase-artwork img {
+      transform: none;
+    }
+
+    .slipcase-flipper {
+      transform: rotateY(180deg);
+    }
+
+    .slipcase-face--front {
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transition-delay: 0.12s;
+    }
+
+    .slipcase-face--back {
+      z-index: 10;
+      pointer-events: auto;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transition-delay: 0.12s;
+    }
   }
 
   @include reduced-motion {
@@ -5586,7 +6384,6 @@ a.project-card,
   position: absolute;
   inset: 0;
   border-radius: 6px;
-  overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border: 1px solid rgba(212, 168, 83, 0.28);
@@ -5594,12 +6391,18 @@ a.project-card,
   display: flex;
   flex-direction: column;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* ── FRONT FACE (DIGIPAK COVER) ── */
 .slipcase-face--front {
+  transform: rotateY(0deg) translateZ(1px);
   z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .slipcase-spine-edge {
@@ -5806,66 +6609,92 @@ a.project-card,
 
 /* ── BACK FACE (TECHNICAL CAMERA SPEC SHEET) ── */
 .slipcase-face--back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
   background: #111216;
-  padding: 1.4rem;
+  padding: 0.85rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-color: $amber;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(212, 168, 83, 0.4);
+    border-radius: 2px;
+  }
 
   .slipcase-back-header {
     border-bottom: 1px solid rgba(212, 168, 83, 0.3);
-    padding-bottom: 0.65rem;
+    padding-bottom: 0.35rem;
+    flex-shrink: 0;
 
     .slipcase-back-spine-tag {
       font-family: $font-mono;
-      font-size: 0.62rem;
+      font-size: 0.56rem;
       color: $amber;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       display: block;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.15rem;
     }
 
     .slipcase-back-title {
       @include serif-heading;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.2;
       color: $white;
-      margin: 0;
+      margin: 0 0 0.15rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .slipcase-back-sub {
-      font-size: 0.7rem;
+      font-size: 0.62rem;
       color: $grey-mid;
       display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
   .slipcase-back-body {
-    margin: 0.8rem 0;
+    margin: 0.35rem 0;
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.25rem;
+    flex-shrink: 0;
 
     .slipcase-back-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
-      padding-bottom: 0.25rem;
+      padding-bottom: 0.18rem;
 
       span {
         font-family: $font-mono;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         color: $grey-mid;
       }
 
       strong {
-        font-size: 0.72rem;
+        font-size: 0.66rem;
         color: $white;
         font-weight: 500;
         text-align: right;
@@ -5880,16 +6709,18 @@ a.project-card,
   .slipcase-back-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.3rem;
+    margin-top: auto;
+    flex-shrink: 0;
 
     .box-btn-master {
       background: $amber;
       color: $black-deep;
       border: none;
       font-family: $font-mono;
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       font-weight: 700;
-      padding: 0.55rem;
+      padding: 0.42rem 0.5rem;
       border-radius: 2px;
       cursor: pointer;
       text-align: center;
@@ -5906,8 +6737,8 @@ a.project-card,
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: $grey-mid;
       font-family: $font-mono;
-      font-size: 0.65rem;
-      padding: 0.4rem;
+      font-size: 0.6rem;
+      padding: 0.32rem 0.4rem;
       border-radius: 2px;
       cursor: pointer;
       text-align: center;

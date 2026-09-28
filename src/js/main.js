@@ -18,6 +18,7 @@ import { AmbientSound } from './sound.js';
 import { MobileMenu } from './mobile-menu.js';
 import { VideoModal } from './video-modal.js';
 import { WorkShowcase } from './work-showcase.js';
+import { ClapperLike } from './clapper-like.js';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -242,8 +243,95 @@ class MiseFilmsApp {
       console.warn('[Mise Films] Hero intro video controller error:', err);
     }
 
+    try {
+      new ClapperLike();
+    } catch (err) {
+      console.warn('[Mise Films] ClapperLike error:', err);
+    }
+
+    this.initViewfinderTimecode();
+    this.initQuoteRotator();
+
     // Refresh ScrollTrigger after all content is ready
     ScrollTrigger.refresh();
+  }
+
+  initQuoteRotator() {
+    const textEl = document.getElementById('quote-text');
+    const authorEl = document.getElementById('quote-author');
+    if (!textEl || !authorEl) return;
+
+    const quotes = [
+      {
+        text: "Cinema is a matter of what's in the frame and what's out.",
+        author: "— Martin Scorsese"
+      },
+      {
+        text: "Cinema is truth 24 frames-per-second.",
+        author: "— Jean-Luc Godard"
+      },
+      {
+        text: "If it can be written, or thought, it can be filmed.",
+        author: "— Stanley Kubrick"
+      },
+      {
+        text: "A film is never really good unless the camera is an eye in the head of a poet.",
+        author: "— Orson Welles"
+      },
+      {
+        text: "There are no rules in filmmaking. Only sins. And the cardinal sin is dullness.",
+        author: "— Frank Capra"
+      },
+      {
+        text: "To make a film is to improve on life, to arrange movement as you would arrange a room.",
+        author: "— François Truffaut"
+      },
+      {
+        text: "When people ask me if I went to film school, I tell them, 'No, I went to films.'",
+        author: "— Quentin Tarantino"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % quotes.length;
+      const nextQuote = quotes[currentIndex];
+
+      textEl.classList.add('is-changing');
+      authorEl.classList.add('is-changing');
+
+      setTimeout(() => {
+        textEl.textContent = nextQuote.text;
+        authorEl.textContent = nextQuote.author;
+        textEl.classList.remove('is-changing');
+        authorEl.classList.remove('is-changing');
+      }, 500);
+    }, 6500);
+  }
+
+  initViewfinderTimecode() {
+    const tcEl = document.getElementById('hero-live-tc');
+    if (!tcEl) return;
+
+    let h = 1, m = 24, s = 8, f = 14;
+    setInterval(() => {
+      f++;
+      if (f >= 24) {
+        f = 0;
+        s++;
+        if (s >= 60) {
+          s = 0;
+          m++;
+          if (m >= 60) {
+            m = 0;
+            h++;
+          }
+        }
+      }
+      const pad = (n) => String(n).padStart(2, '0');
+      tcEl.textContent = `TC ${pad(h)}:${pad(m)}:${pad(s)}:${pad(f)}`;
+    }, 1000 / 24);
   }
 
   initLenis() {
