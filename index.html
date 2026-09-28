@@ -2714,8 +2714,13 @@
       </div>
     </section>
 
-    <!-- ─── QUOTE (Auto-rotating cinema quotes) ───────── -->
+    <!-- ─── QUOTE (Auto-rotating cinema quotes with portraits & dot indicators) ───────── -->
     <section class="quote-section" data-reveal="fade-up">
+      <!-- Ambient Director Portrait Watermark (Feathered with subtle opacity) -->
+      <div class="quote-section__portrait-wrap" aria-hidden="true">
+        <div class="quote-section__portrait" id="quote-portrait"></div>
+      </div>
+
       <div class="quote-section__mark">"</div>
       <blockquote class="quote-section__text" id="quote-text">
         Cinema is a matter of what's in the frame and what's out.
@@ -2826,6 +2831,9 @@
           <a href="https://sjdigitals.vercel.app" target="_blank" rel="noopener noreferrer" title="Visit SJ Digitals — Creative Engineering & Web Architecture Studio" class="sj-promo-card">
             <!-- Top Anamorphic Light Sheen -->
             <div class="sj-promo-card__sheen" aria-hidden="true"></div>
+
+            <!-- Mobile-only Sweeping Light Beam (Matches hero title shine) -->
+            <div class="sj-promo-card__light-beam" aria-hidden="true"></div>
 
             <!-- Desktop-only: Full card background logo, fades in on hover -->
             <img src="./images/bg-wide.png" alt="" aria-hidden="true" class="sj-promo-card__bg-logo" />

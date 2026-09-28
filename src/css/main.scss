@@ -3449,6 +3449,40 @@ a.project-card,
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  // Ambient Director Portrait Watermark (Subtle opacity behind quote)
+  &__portrait-wrap {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__portrait {
+    width: 100%;
+    height: 100%;
+    max-width: 580px;
+    max-height: 440px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.22;
+    filter: grayscale(100%) contrast(1.2) brightness(0.9);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 25%, transparent 75%);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+
+    &.is-changing {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
 
   &__mark {
     @include serif-heading;
@@ -3457,6 +3491,8 @@ a.project-card,
     line-height: 0.8;
     opacity: 0.3;
     margin-bottom: $space-lg;
+    position: relative;
+    z-index: 1;
   }
 
   &__text {
@@ -3468,6 +3504,8 @@ a.project-card,
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 
@@ -3485,6 +3523,8 @@ a.project-card,
     letter-spacing: 0.15em;
     text-transform: uppercase;
     display: inline-block;
+    position: relative;
+    z-index: 1;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 
@@ -3990,6 +4030,33 @@ a.project-card,
   transition: color 0.3s ease;
 }
 
+// Floating Badge Particle when tapping Clapper Slate
+.clapper-floating-badge {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, $amber-light 0%, $amber 100%);
+  color: #0b0c10;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(212, 168, 83, 0.7);
+  pointer-events: none;
+  z-index: 25;
+  animation: clapperFloatUp 1.05s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes clapperFloatUp {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.7); }
+  22% { opacity: 1; transform: translate(-50%, -15px) scale(1.1); }
+  65% { opacity: 1; transform: translate(-50%, -35px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -55px) scale(0.9); }
+}
+
 // ═══════════════════════════════════════════════════════════════
 // SJ DIGITALS HIGH-END BESPOKE PROMO BANNER
 // Ultra-luxury creative tech & engineering studio showcase
@@ -4021,6 +4088,34 @@ a.project-card,
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.85), transparent);
     pointer-events: none;
+  }
+
+  // Mobile Sweeping Light Beam (Mobile Only < 1024px)
+  // Matches the golden light beam animation on the hero title
+  &__light-beam {
+    display: none;
+
+    @media (max-width: 1023px) {
+      display: block;
+      position: absolute;
+      top: -60%;
+      left: -130%;
+      width: 55%;
+      height: 240%;
+      background: linear-gradient(
+        75deg,
+        transparent 0%,
+        rgba(212, 168, 83, 0.02) 20%,
+        rgba(255, 235, 170, 0.24) 50%,
+        rgba(212, 168, 83, 0.02) 80%,
+        transparent 100%
+      );
+      transform: rotate(22deg);
+      pointer-events: none;
+      animation: sjPromoBeamSweep 5s ease-in-out infinite;
+      filter: blur(14px);
+      z-index: 1;
+    }
   }
 
   transform: none !important; // Fixed firmly in place, no moving around
@@ -4057,7 +4152,7 @@ a.project-card,
     height: 100%;
     gap: 0.9rem;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     @media (max-width: 768px) {
       padding: 1.1rem 1rem;
@@ -4258,6 +4353,12 @@ a.project-card,
       padding: 0.75rem 1rem;
     }
   }
+}
+
+// Mobile Sweeping Light Beam Animation for SJ Promo Card
+@keyframes sjPromoBeamSweep {
+  0% { left: -140%; }
+  35%, 100% { left: 160%; }
 }
 
 // ═══════════════════════════════════════════════════════════════

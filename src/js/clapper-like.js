@@ -1,10 +1,11 @@
-// ─── Clapperboard Like Component ─────────────────────────────
-// Interactive film production slate at page end.
+// ─── Clapperboard Interactive Component ─────────────────────────────
+// Film production slate at the footer.
 // Works on all devices (mobile, tablet, desktop).
 // - Resting state: CLOSED (0deg)
 // - On click: full open-and-clap cycle (-28deg open -> snaps shut 0deg)
-// - Viewers count: increments +1 per site visit (persisted in localStorage)
-// - Likes count: increments +1 only once per session (persisted in localStorage)
+// - Viewers count: increments on visit, animates count-up on scroll
+// - Likes count: INCREASES ONLY ONCE PER SESSION as requested
+// - Tactile snap audio + haptic feedback on every clap
 
 export class ClapperLike {
   constructor() {
@@ -13,10 +14,13 @@ export class ClapperLike {
     this.viewerCountEl = document.getElementById('clapper-viewer-count');
     this.btnText = document.getElementById('clapper-action-txt');
     this.statusNote = document.getElementById('clapper-feedback-note');
+    this.stickTop = document.getElementById('clapper-stick');
     this.audio = null;
     this.isAnimating = false;
+    this.hasCountedUp = false;
 
-    if (!this.board) return;
+    if (!this.board || this.board.dataset.clapperInit) return;
+    this.board.dataset.clapperInit = 'true';
 
     this.baseLikes = 842;
     this.baseViewers = 1428;
@@ -28,6 +32,7 @@ export class ClapperLike {
     this.initAudio();
     this.loadState();
     this.bindEvents();
+    this.initIntersectionObserver();
   }
 
   initAudio() {
@@ -38,26 +43,27 @@ export class ClapperLike {
   }
 
   loadState() {
-    // 1. Viewer count logic (+1 per new visit)
+    // 1. Viewer count logic (+1 per unique page load, saved in localStorage)
     let savedViewers = localStorage.getItem(this.storageKeyViewers);
     let currentViewers = savedViewers ? parseInt(savedViewers, 10) : this.baseViewers;
-
+    
     const hasVisitedSession = sessionStorage.getItem(this.sessionKeyVisited) === 'true';
     if (!hasVisitedSession) {
       currentViewers += 1;
       localStorage.setItem(this.storageKeyViewers, currentViewers);
       sessionStorage.setItem(this.sessionKeyVisited, 'true');
     }
+    this.currentViewers = currentViewers;
 
-    if (this.viewerCountEl) {
-      this.viewerCountEl.textContent = currentViewers.toLocaleString();
-    }
-
-    // 2. Likes count logic
-    const savedLikes = localStorage.getItem(this.storageKeyLikes);
+    // 2. Likes count logic (persisted in localStorage)
+    let savedLikes = localStorage.getItem(this.storageKeyLikes);
     this.currentLikes = savedLikes ? parseInt(savedLikes, 10) : this.baseLikes;
     this.hasLikedInSession = sessionStorage.getItem(this.sessionKeyLiked) === 'true';
 
+    // Set initial values
+    if (this.viewerCountEl) {
+      this.viewerCountEl.textContent = this.currentViewers.toLocaleString();
+    }
     if (this.likeCountEl) {
       this.likeCountEl.textContent = this.currentLikes.toLocaleString();
     }
@@ -65,6 +71,44 @@ export class ClapperLike {
     if (this.hasLikedInSession) {
       this.setLikedUI(false);
     }
+  }
+
+  initIntersectionObserver() {
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !this.hasCountedUp) {
+          this.hasCountedUp = true;
+          this.animateCountUp();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(this.board);
+  }
+
+  animateCountUp() {
+    if (!this.viewerCountEl) return;
+    const target = this.currentViewers;
+    const start = Math.max(0, target - 50);
+    const duration = 1200; // ms
+    const startTime = performance.now();
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.floor(start + (target - start) * ease);
+      this.viewerCountEl.textContent = current.toLocaleString();
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        this.viewerCountEl.textContent = target.toLocaleString();
+      }
+    };
+    requestAnimationFrame(step);
   }
 
   bindEvents() {
@@ -99,43 +143,48 @@ export class ClapperLike {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(180, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(35, ctx.currentTime + 0.07);
-      gain.gain.setValueAtTime(0.5, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
+      osc.frequency.setValueAtTime(220, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.6, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
-      osc.stop(ctx.currentTime + 0.08);
+      osc.stop(ctx.currentTime + 0.09);
     } catch {}
+  }
+
+  spawnFloatingBadge(text) {
+    const badge = document.createElement('div');
+    badge.className = 'clapper-floating-badge';
+    badge.textContent = text;
+    this.board.appendChild(badge);
+
+    setTimeout(() => {
+      badge.remove();
+    }, 1100);
   }
 
   clap() {
     if (this.isAnimating) return;
     this.isAnimating = true;
 
-    // 1. Full Open and Clap Animation Cycle (Starts closed, opens to ~-28deg, snaps shut to 0deg)
+    // 1. Full Open and Clap Animation Cycle (Starts closed, opens, snaps shut)
     this.board.classList.remove('is-clapping-cycle');
     void this.board.offsetWidth; // Force reflow
     this.board.classList.add('is-clapping-cycle');
 
-    // Tactile sound and haptic vibration at the exact moment of closure (~280ms into cycle)
+    // 2. Audio & Haptic feedback at impact (~260ms)
     setTimeout(() => {
       this.playSnapSound();
       if (navigator.vibrate) {
         try {
-          navigator.vibrate([25, 30, 45]);
+          navigator.vibrate([30, 40, 50]);
         } catch {}
       }
-    }, 280);
+    }, 260);
 
-    // End of cycle (~480ms)
-    setTimeout(() => {
-      this.board.classList.remove('is-clapping-cycle');
-      this.isAnimating = false;
-    }, 500);
-
-    // 2. Session check: only 1 like per session
+    // 3. Increment Likes ONLY ONCE PER SESSION
     if (!this.hasLikedInSession) {
       this.hasLikedInSession = true;
       sessionStorage.setItem(this.sessionKeyLiked, 'true');
@@ -143,38 +192,53 @@ export class ClapperLike {
       this.currentLikes += 1;
       localStorage.setItem(this.storageKeyLikes, this.currentLikes);
 
-      // Number pop animation at the moment of the snap
       setTimeout(() => {
         if (this.likeCountEl) {
-          this.likeCountEl.style.transform = 'scale(1.3)';
+          this.likeCountEl.style.transform = 'scale(1.35)';
+          this.likeCountEl.style.color = '#f5d794';
+          this.likeCountEl.style.textShadow = '0 0 16px rgba(212, 168, 83, 0.8)';
           this.likeCountEl.textContent = this.currentLikes.toLocaleString();
+
           setTimeout(() => {
             this.likeCountEl.style.transform = 'none';
-          }, 240);
+            this.likeCountEl.style.color = '';
+            this.likeCountEl.style.textShadow = '';
+          }, 280);
         }
+
+        this.spawnFloatingBadge('+1 LIKE 🎬');
         this.setLikedUI(true);
-      }, 280);
+      }, 270);
     } else {
-      // Feedback if already clicked in this session
-      if (this.statusNote) {
-        this.statusNote.textContent = 'Take already approved in this session! Thank you for watching.';
-        this.statusNote.style.color = '#f0d28d';
-        setTimeout(() => {
-          this.statusNote.style.color = '';
-        }, 2600);
-      }
+      // Already liked in this session — celebrate with snap without incrementing counter
+      setTimeout(() => {
+        this.spawnFloatingBadge('CLAP! 🎬');
+        if (this.statusNote) {
+          this.statusNote.textContent = '✓ Take already approved in this session • Thank you!';
+          this.statusNote.style.color = '#f5d794';
+          setTimeout(() => {
+            if (this.statusNote) this.statusNote.style.color = '';
+          }, 2600);
+        }
+      }, 270);
     }
+
+    // Reset animation state
+    setTimeout(() => {
+      this.board.classList.remove('is-clapping-cycle');
+      this.isAnimating = false;
+    }, 500);
   }
 
   setLikedUI(isNew) {
     this.board.classList.add('is-liked');
     if (this.btnText) {
-      this.btnText.textContent = '✓ TAKE APPROVED // YOU LIKED THIS';
+      this.btnText.textContent = `✓ TAKE APPROVED // ${this.currentLikes.toLocaleString()} LIKES`;
     }
     if (this.statusNote) {
       this.statusNote.textContent = isNew
-        ? '✓ Take approved! Your like has been registered for this session.'
-        : 'Take approved • Liked for this session';
+        ? `✓ Take approved! Total production likes: ${this.currentLikes.toLocaleString()}`
+        : `Take approved • Liked for this session`;
     }
   }
 }

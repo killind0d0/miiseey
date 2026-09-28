@@ -96,6 +96,10 @@ class MiseFilmsApp {
 
   init() {
     try {
+      try {
+        new ClapperLike();
+      } catch (e) {}
+
       // 1. Split text before any animations reference the split elements
       new TextSplitter();
 
@@ -259,55 +263,103 @@ class MiseFilmsApp {
   initQuoteRotator() {
     const textEl = document.getElementById('quote-text');
     const authorEl = document.getElementById('quote-author');
+    const portraitEl = document.getElementById('quote-portrait');
     if (!textEl || !authorEl) return;
 
     const quotes = [
       {
+        id: 'scorsese',
+        name: 'Martin Scorsese',
         text: "Cinema is a matter of what's in the frame and what's out.",
-        author: "— Martin Scorsese"
+        author: "— Martin Scorsese",
+        photo: './images/directors/scorsese.webp'
       },
       {
+        id: 'godard',
+        name: 'Jean-Luc Godard',
         text: "Cinema is truth 24 frames-per-second.",
-        author: "— Jean-Luc Godard"
+        author: "— Jean-Luc Godard",
+        photo: './images/directors/godard.webp'
       },
       {
+        id: 'kubrick',
+        name: 'Stanley Kubrick',
         text: "If it can be written, or thought, it can be filmed.",
-        author: "— Stanley Kubrick"
+        author: "— Stanley Kubrick",
+        photo: './images/directors/kubrick.webp'
       },
       {
+        id: 'welles',
+        name: 'Orson Welles',
         text: "A film is never really good unless the camera is an eye in the head of a poet.",
-        author: "— Orson Welles"
+        author: "— Orson Welles",
+        photo: './images/directors/welles.webp'
       },
       {
+        id: 'capra',
+        name: 'Frank Capra',
         text: "There are no rules in filmmaking. Only sins. And the cardinal sin is dullness.",
-        author: "— Frank Capra"
+        author: "— Frank Capra",
+        photo: './images/directors/capra.webp'
       },
       {
+        id: 'truffaut',
+        name: 'François Truffaut',
         text: "To make a film is to improve on life, to arrange movement as you would arrange a room.",
-        author: "— François Truffaut"
+        author: "— François Truffaut",
+        photo: './images/directors/truffaut.webp'
       },
       {
+        id: 'tarantino',
+        name: 'Quentin Tarantino',
         text: "When people ask me if I went to film school, I tell them, 'No, I went to films.'",
-        author: "— Quentin Tarantino"
+        author: "— Quentin Tarantino",
+        photo: './images/directors/tarantino.webp'
       }
     ];
 
     let currentIndex = 0;
+    let timer = null;
 
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % quotes.length;
+    const goToQuote = (nextIdx) => {
+      currentIndex = nextIdx;
       const nextQuote = quotes[currentIndex];
 
       textEl.classList.add('is-changing');
       authorEl.classList.add('is-changing');
+      if (portraitEl) portraitEl.classList.add('is-changing');
 
       setTimeout(() => {
         textEl.textContent = nextQuote.text;
         authorEl.textContent = nextQuote.author;
+        if (portraitEl) {
+          if (nextQuote.photo) {
+            portraitEl.style.backgroundImage = `url(${nextQuote.photo})`;
+            portraitEl.style.display = 'block';
+          } else {
+            portraitEl.style.backgroundImage = 'none';
+          }
+          portraitEl.classList.remove('is-changing');
+        }
         textEl.classList.remove('is-changing');
         authorEl.classList.remove('is-changing');
-      }, 500);
-    }, 6500);
+      }, 450);
+    };
+
+    const restartTimer = () => {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        const nextIdx = (currentIndex + 1) % quotes.length;
+        goToQuote(nextIdx);
+      }, 6500);
+    };
+
+    // Initial setup
+    if (portraitEl && quotes[0].photo) {
+      portraitEl.style.backgroundImage = `url(${quotes[0].photo})`;
+      portraitEl.style.display = 'block';
+    }
+    restartTimer();
   }
 
   initViewfinderTimecode() {

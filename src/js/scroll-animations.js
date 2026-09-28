@@ -210,47 +210,101 @@ export class ScrollAnimations {
 
   actionSpotlightParallax() {
     const sections = document.querySelectorAll('.action-spotlight');
-    sections.forEach((section) => {
-      const bgWrap = section.querySelector('.action-spotlight__bg');
-      const bgImg = section.querySelector('.action-spotlight__bg img');
-      if (!bgWrap) return;
+    if (!sections.length) return;
 
-      // Timeline for fade-in, sustain, and fade-out on scroll
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 90%',
-          end: 'bottom 10%',
-          scrub: 0.8,
-        },
-      });
+    ScrollTrigger.matchMedia({
+      // Desktop (>= 1024px): Photo sustains much longer across the section and only fades out late
+      '(min-width: 1024px)': () => {
+        sections.forEach((section) => {
+          const bgWrap = section.querySelector('.action-spotlight__bg');
+          const bgImg = section.querySelector('.action-spotlight__bg img');
+          if (!bgWrap) return;
 
-      tl.fromTo(
-        bgWrap,
-        { opacity: 0 },
-        { opacity: 0.65, duration: 1, ease: 'power2.inOut' }
-      )
-        .to(bgWrap, { opacity: 0.65, duration: 1.4 })
-        .to(bgWrap, { opacity: 0, duration: 1, ease: 'power2.inOut' });
-
-      // Subtle parallax motion on the camera image
-      if (bgImg) {
-        gsap.fromTo(
-          bgImg,
-          { scale: 1, y: '-6%' },
-          {
-            scale: 1.08,
-            y: '6%',
-            ease: 'none',
+          // Desktop timeline: Enters at top 85%, reaches full opacity,
+          // sustains visibility throughout the entire reading experience,
+          // and only gently fades out when the section exits towards the top
+          const tl = gsap.timeline({
             scrollTrigger: {
               trigger: section,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.5,
+              start: 'top 85%',
+              end: 'bottom 5%',
+              scrub: 0.8,
             },
+          });
+
+          tl.fromTo(
+            bgWrap,
+            { opacity: 0 },
+            { opacity: 0.72, duration: 1, ease: 'power2.out' }
+          )
+            // Extended sustain window so Shrey and Vikrant photos remain clearly visible while reading
+            .to(bgWrap, { opacity: 0.72, duration: 4.5 })
+            // Soft late fade out only as section exits viewport
+            .to(bgWrap, { opacity: 0, duration: 1.2, ease: 'power2.in' });
+
+          if (bgImg) {
+            gsap.fromTo(
+              bgImg,
+              { scale: 1, y: '-8%' },
+              {
+                scale: 1.08,
+                y: '8%',
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: section,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: 0.5,
+                },
+              }
+            );
           }
-        );
-      }
+        });
+      },
+
+      // Mobile / Tablet (< 1024px): Flawless timing kept exactly untouched
+      '(max-width: 1023px)': () => {
+        sections.forEach((section) => {
+          const bgWrap = section.querySelector('.action-spotlight__bg');
+          const bgImg = section.querySelector('.action-spotlight__bg img');
+          if (!bgWrap) return;
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 90%',
+              end: 'bottom 10%',
+              scrub: 0.8,
+            },
+          });
+
+          tl.fromTo(
+            bgWrap,
+            { opacity: 0 },
+            { opacity: 0.65, duration: 1, ease: 'power2.inOut' }
+          )
+            .to(bgWrap, { opacity: 0.65, duration: 1.4 })
+            .to(bgWrap, { opacity: 0, duration: 1, ease: 'power2.inOut' });
+
+          if (bgImg) {
+            gsap.fromTo(
+              bgImg,
+              { scale: 1, y: '-6%' },
+              {
+                scale: 1.08,
+                y: '6%',
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: section,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: 0.5,
+                },
+              }
+            );
+          }
+        });
+      },
     });
   }
 
