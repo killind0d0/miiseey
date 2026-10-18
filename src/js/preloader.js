@@ -1,16 +1,3 @@
-// ─── Cinematic Entry Animation Controller ──────────────────────
-// Part 1: B&W Scratched Celluloid Universal Countdown Leader (3 -> 2 -> 1 -> 0)
-// Part 2: Pure White Optical Arc-Lamp Flash to Video Transition (No Red Curtain)
-//
-// Features:
-//   - Frame-accurate 360° pie-wipe & sweeping clock hand per tick
-//   - Authentic celluloid scratches, dust specks, bulb flicker & gate jitter
-//   - Synced 1000Hz cinema sync beep / optical click foley on each tick (3, 2, 1, 0)
-//   - High-intensity full-screen white flash on "0"
-//   - Instantaneous intro video play and seamless white-to-video dissolve
-//   - Immediate scroll unlocking and component initialization
-//   - Complete DOM cleanup upon completion
-
 import gsap from 'gsap';
 
 export class CinematicEntry {
@@ -38,7 +25,6 @@ export class CinematicEntry {
       return;
     }
 
-    // Lock scroll while countdown is active
     document.documentElement.classList.add('is-locked');
 
     this.init();
@@ -48,7 +34,6 @@ export class CinematicEntry {
     this.initAudio();
     this.startCountdown();
 
-    // Safety timeout: Never freeze the page past 4.5 seconds
     this._failsafeTimer = setTimeout(() => {
       if (!this.isComplete) {
         console.warn('[CinematicEntry] Max safety timeout reached, forcing finish');
@@ -65,7 +50,6 @@ export class CinematicEntry {
   }
 
   playSyncBeep(isFinal = false) {
-    // 1. Mechanical click foley
     try {
       if (this.audioTick) {
         const tick = this.audioTick.cloneNode();
@@ -74,7 +58,6 @@ export class CinematicEntry {
       }
     } catch {}
 
-    // 2. Synthesize authentic SMPTE 1000Hz sync tone via Web Audio API
     try {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (AudioContextClass) {
@@ -99,7 +82,6 @@ export class CinematicEntry {
     const startTime = performance.now();
     const totalCountdownTime = this.stepDuration * this.totalSteps; // 2400ms
 
-    // Initial audio cue & number (3)
     this.playSyncBeep(false);
     this.pulseNumeral(3);
 
@@ -109,7 +91,6 @@ export class CinematicEntry {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / totalCountdownTime, 1);
 
-      // Current numeral (3 -> 2 -> 1 -> 0)
       const stepIndex = Math.min(Math.floor(elapsed / this.stepDuration), 3);
       const stepNumber = 3 - stepIndex;
 
@@ -119,7 +100,6 @@ export class CinematicEntry {
         this.playSyncBeep(stepNumber === 0);
       }
 
-      // Rotate clock hand and pie wipe (360° per tick)
       const stepElapsed = elapsed - (stepIndex * this.stepDuration);
       const stepProgress = Math.min(stepElapsed / this.stepDuration, 1);
       const angle = stepProgress * 360;
@@ -128,7 +108,6 @@ export class CinematicEntry {
       if (this.pieEl) this.pieEl.style.transform = `rotate(${angle}deg)`;
 
       if (progress >= 1) {
-        // Countdown reached the end of '0' -> Trigger full-screen white flash
         this.onCountdownEnd();
         return;
       }
@@ -154,12 +133,10 @@ export class CinematicEntry {
   }
 
   onCountdownEnd() {
-    // 1. Immediately trigger full-screen brilliant white flash
     if (this.flashEl) {
       this.flashEl.style.opacity = '1';
     }
 
-    // 2. Hide leader overlay graphics behind the flash so cut is optical and clean
     if (this.leader) {
       this.leader.style.background = 'transparent';
       const reticle = this.leader.querySelector('.cine-leader__reticle');
@@ -172,7 +149,6 @@ export class CinematicEntry {
       metas.forEach((m) => (m.style.opacity = '0'));
     }
 
-    // 3. Start playing the edge-to-edge intro video immediately
     try {
       const heroVideo = document.getElementById('hero-intro-video') || document.querySelector('.hero__video');
       if (heroVideo) {
@@ -181,13 +157,11 @@ export class CinematicEntry {
       }
     } catch {}
 
-    // 4. Immediately unlock scroll and notify parent so components wake up
     document.documentElement.classList.remove('is-locked');
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     this.onCurtainOpen?.();
 
-    // 5. Smoothly dissolve the full-screen white flash to reveal the playing intro video
     if (this.flashEl) {
       gsap.to(this.flashEl, {
         opacity: 0,
@@ -207,17 +181,14 @@ export class CinematicEntry {
     this.isComplete = true;
     clearTimeout(this._failsafeTimer);
 
-    // Unlock scroll
     document.documentElement.classList.remove('is-locked');
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
 
-    // Completely remove the entry animation element from the DOM
     if (this.root && this.root.parentNode) {
       this.root.remove();
     }
 
-    // Trigger completion
     this.onComplete?.();
   }
 }

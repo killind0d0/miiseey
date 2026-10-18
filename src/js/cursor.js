@@ -1,8 +1,3 @@
-// ─── Custom Cursor with Magnetic Hover ─────────────────────────
-// Dot + ring cursor with GSAP smooth following.
-// Magnetic effect pulls cursor toward hoverable elements.
-// Respects prefers-reduced-motion and touch devices.
-
 import gsap from 'gsap';
 
 export class CustomCursor {
@@ -13,7 +8,6 @@ export class CustomCursor {
     this.dot = this.cursor.querySelector('.cursor__dot');
     this.ring = this.cursor.querySelector('.cursor__ring');
 
-    // Skip on touch devices or reduced motion
     if (this.isTouchDevice() || this.prefersReducedMotion()) {
       this.cursor.style.display = 'none';
       return;
@@ -38,24 +32,19 @@ export class CustomCursor {
   }
 
   init() {
-    // Mouse move
     document.addEventListener('mousemove', (e) => {
       this.mouse.x = e.clientX;
       this.mouse.y = e.clientY;
     });
 
-    // Track hoverable elements
     this.bindHoverables();
 
-    // Bind magnetic elements
     this.bindMagnetics();
 
-    // Start render loop
     this.render();
   }
 
   bindHoverables() {
-    // Links, buttons, and any [data-cursor] elements
     const hoverables = document.querySelectorAll(
       'a, button, [data-cursor], .project-card'
     );
@@ -108,13 +97,11 @@ export class CustomCursor {
   }
 
   render() {
-    // Dot follows mouse exactly
     gsap.set(this.dot, {
       x: this.mouse.x,
       y: this.mouse.y,
     });
 
-    // Ring lags behind
     this.pos.x += (this.mouse.x - this.pos.x) * this.speed;
     this.pos.y += (this.mouse.y - this.pos.y) * this.speed;
 

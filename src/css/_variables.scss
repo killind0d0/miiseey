@@ -1,8 +1,4 @@
-// ─── Design Tokens ───────────────────────────────────────────
-// Mise Films — Cinematic Dark Theme
-// Color palette: near-black base + warm amber accent
-
-// ── Colors ──
+/* Colors */
 $black:          #16171a;
 $black-deep:     #101114;
 $black-card:     #1d1f25;
@@ -14,7 +10,6 @@ $grey-light:     #d5d9e4; // Crisp, high-contrast readable body (was #abb0bc)
 $white:          #faf6f0; // Warm cinematic ivory
 $white-pure:     #ffffff;
 
-// Accent — warm amber (cinematic, like tungsten light)
 $amber:          #d4a853;
 $amber-light:    #f0d28d;
 $amber-dark:     #b8912e;
@@ -23,14 +18,11 @@ $accent:         $amber;
 $accent-light:   $amber-light;
 $accent-dark:    $amber-dark;
 
-// ── Typography ──
-// Serif: Cormorant Garamond — elegant, editorial, cinematic
-// Sans:  Plus Jakarta Sans — geometric, modern, clean
+/* Typography */
 $font-serif:     'Cormorant Garamond', 'Georgia', serif;
 $font-sans:      'Plus Jakarta Sans', 'Helvetica Neue', sans-serif;
 $font-mono:      'JetBrains Mono', monospace;
 
-// Scale (fluid, clamp-based) - enlarged for superior legibility and impact
 $text-xs:        clamp(0.72rem, 0.68rem + 0.25vw, 0.85rem);
 $text-sm:        clamp(0.85rem, 0.8rem + 0.3vw, 1rem);
 $text-base:      clamp(1rem, 0.94rem + 0.35vw, 1.18rem);
@@ -41,7 +33,7 @@ $text-3xl:       clamp(2.4rem, 1.8rem + 2.5vw, 4rem);
 $text-4xl:       clamp(3rem, 2rem + 4vw, 5.5rem);
 $text-hero:      clamp(3.5rem, 2.5rem + 5vw, 8.5rem);
 
-// ── Spacing ──
+/* Spacing */
 $space-xs:       0.25rem;
 $space-sm:       0.5rem;
 $space-md:       1rem;
@@ -50,11 +42,11 @@ $space-xl:       4rem;
 $space-2xl:      8rem;
 $space-3xl:      12rem;
 
-// ── Layout ──
+/* Layout */
 $max-width:      1440px;
 $gutter:         clamp(1rem, 2vw, 3rem);
 
-// ── Animation ──
+/* Animation */
 $ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
 $ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
 $ease-smooth:    cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -64,21 +56,21 @@ $duration-base:  0.6s;
 $duration-slow:  1.2s;
 $duration-reveal: 1.8s;
 
-// ── Z-index ──
+/* Z-index */
 $z-cursor:       9999;
 $z-preloader:    9000;
 $z-nav:          1000;
 $z-overlay:      500;
 $z-content:      1;
 
-// ── Breakpoints ──
+/* Breakpoints */
 $bp-sm:          480px;
 $bp-md:          768px;
 $bp-lg:          1024px;
 $bp-xl:          1440px;
 $bp-2xl:         1920px;
 
-// ── Mixins ──
+/* Mixins */
 @mixin respond($bp) {
   @if $bp == sm  { @media (min-width: $bp-sm)  { @content; } }
   @if $bp == md  { @media (min-width: $bp-md)  { @content; } }

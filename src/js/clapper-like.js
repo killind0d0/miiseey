@@ -1,12 +1,3 @@
-// ─── Clapperboard Interactive Component ─────────────────────────────
-// Film production slate at the footer.
-// Works on all devices (mobile, tablet, desktop).
-// - Resting state: CLOSED (0deg)
-// - On click: full open-and-clap cycle (-28deg open -> snaps shut 0deg)
-// - Viewers count: increments on visit, animates count-up on scroll
-// - Likes count: INCREASES ONLY ONCE PER SESSION as requested
-// - Tactile snap audio + haptic feedback on every clap
-
 export class ClapperLike {
   constructor() {
     this.board = document.getElementById('clapper-board');
@@ -43,7 +34,6 @@ export class ClapperLike {
   }
 
   loadState() {
-    // 1. Viewer count logic (+1 per unique page load, saved in localStorage)
     let savedViewers = localStorage.getItem(this.storageKeyViewers);
     let currentViewers = savedViewers ? parseInt(savedViewers, 10) : this.baseViewers;
     
@@ -55,12 +45,10 @@ export class ClapperLike {
     }
     this.currentViewers = currentViewers;
 
-    // 2. Likes count logic (persisted in localStorage)
     let savedLikes = localStorage.getItem(this.storageKeyLikes);
     this.currentLikes = savedLikes ? parseInt(savedLikes, 10) : this.baseLikes;
     this.hasLikedInSession = sessionStorage.getItem(this.sessionKeyLiked) === 'true';
 
-    // Set initial values
     if (this.viewerCountEl) {
       this.viewerCountEl.textContent = this.currentViewers.toLocaleString();
     }
@@ -169,12 +157,10 @@ export class ClapperLike {
     if (this.isAnimating) return;
     this.isAnimating = true;
 
-    // 1. Full Open and Clap Animation Cycle (Starts closed, opens, snaps shut)
     this.board.classList.remove('is-clapping-cycle');
     void this.board.offsetWidth; // Force reflow
     this.board.classList.add('is-clapping-cycle');
 
-    // 2. Audio & Haptic feedback at impact (~260ms)
     setTimeout(() => {
       this.playSnapSound();
       if (navigator.vibrate) {
@@ -184,7 +170,6 @@ export class ClapperLike {
       }
     }, 260);
 
-    // 3. Increment Likes ONLY ONCE PER SESSION
     if (!this.hasLikedInSession) {
       this.hasLikedInSession = true;
       sessionStorage.setItem(this.sessionKeyLiked, 'true');
@@ -210,7 +195,6 @@ export class ClapperLike {
         this.setLikedUI(true);
       }, 270);
     } else {
-      // Already liked in this session — celebrate with snap without incrementing counter
       setTimeout(() => {
         this.spawnFloatingBadge('CLAP! 🎬');
         if (this.statusNote) {
@@ -223,7 +207,6 @@ export class ClapperLike {
       }, 270);
     }
 
-    // Reset animation state
     setTimeout(() => {
       this.board.classList.remove('is-clapping-cycle');
       this.isAnimating = false;

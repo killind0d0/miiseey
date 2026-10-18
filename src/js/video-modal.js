@@ -1,9 +1,3 @@
-// ─── Video Lightbox Modal ──────────────────────────────────────
-// Plays YouTube and Instagram Reels directly inside the website
-// without redirecting to external sites.
-// Includes foley sound integration, ambient sound pausing,
-// responsive aspect ratio handling, and smooth GSAP entrance/exit.
-
 import gsap from 'gsap';
 
 export class VideoModal {
@@ -24,52 +18,45 @@ export class VideoModal {
     this.wasAmbientPlaying = false;
 
     if (!this.modal) return;
-
     this.init();
   }
 
   init() {
-    // Backdrop click closes modal
     this.backdrop?.addEventListener('click', () => this.close());
-
-    // Close button click
     this.closeBtn?.addEventListener('click', () => this.close());
 
-    // Escape key listener
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isOpen) {
         this.close();
       }
     });
 
-    // Intercept project cards that link to YouTube or Instagram
     this.bindProjectCards();
   }
 
   bindProjectCards() {
-    const cards = document.querySelectorAll('.project-card');
+    const cards = document.querySelectorAll('.project-card, .bts-reel-card, [data-video-url]');
 
     cards.forEach((card) => {
       card.addEventListener('click', (e) => {
-        // Allow ctrl/cmd + click to open in new tab if user explicitly intends to
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
-          return;
-        }
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
 
-        const href = card.getAttribute('href');
+        const href = card.getAttribute('data-video-url') || card.getAttribute('href');
         if (!href) return;
 
         const videoInfo = this.parseVideoUrl(href);
         if (videoInfo) {
           e.preventDefault();
 
-          const title = card.querySelector('.project-card__title')?.textContent || 'Mise Films Production';
-          const category = card.querySelector('.project-card__category')?.textContent || 'Featured Film';
+          const title = card.getAttribute('data-video-title') || card.querySelector('.project-card__title, .bts-reel-card__title')?.textContent || 'Mise Films Production';
+          const category = card.getAttribute('data-video-category') || card.querySelector('.project-card__category, .bts-reel-card__badge')?.textContent || 'Featured Film';
+          const poster = card.getAttribute('data-video-poster') || '';
 
           this.open({
             url: href,
             title,
             category,
+            poster,
             ...videoInfo,
           });
         }
@@ -80,36 +67,31 @@ export class VideoModal {
   parseVideoUrl(url) {
     if (!url) return null;
 
-    // YouTube formats: watch?v=ID, youtu.be/ID, embed/ID, shorts/ID
     const ytMatch = url.match(
       /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
     );
     if (ytMatch) {
-      return {
-        type: 'youtube',
-        id: ytMatch[1],
-      };
+      return { type: 'youtube', id: ytMatch[1] };
     }
 
-    // Instagram formats: /reel/ID/, /p/ID/, /tv/ID/
     const igMatch = url.match(
       /instagram\.com\/(?:reel|p|tv)\/([a-zA-Z0-9_-]+)/
     );
     if (igMatch) {
-      return {
-        type: 'instagram',
-        id: igMatch[1],
-      };
+      return { type: 'instagram', id: igMatch[1] };
+    }
+
+    if (url.match(/\.(mp4|webm)($|\?)/i) || url.includes('/videos/')) {
+      return { type: 'local', id: url };
     }
 
     return null;
   }
 
-  open({ url, title, category, type, id }) {
+  open({ url, title, category, type, id, poster = '' }) {
     if (this.isOpen) return;
     this.isOpen = true;
 
-    // Sound effect
     if (this.soundManager) {
       this.soundManager.playFoley('mechanical', 0.4);
       if (this.soundManager.isAmbientPlaying) {
@@ -118,27 +100,32 @@ export class VideoModal {
       }
     }
 
-    // Stop Lenis smooth scroll while watching
     if (this.lenis) {
       this.lenis.stop();
     }
     document.documentElement.style.overflow = 'hidden';
 
-    // Update modal meta
     if (this.titleEl) this.titleEl.textContent = title;
     if (this.badgeEl) this.badgeEl.textContent = category;
     if (this.extLink) {
-      this.extLink.href = url;
-      if (this.extText) {
-        this.extText.textContent = type === 'instagram' ? 'Watch on Instagram' : 'Watch on YouTube';
+      if (type === 'local') {
+        this.extLink.href = url;
+        this.extLink.setAttribute('download', '');
+        if (this.extText) {
+          this.extText.textContent = 'High-Bitrate Celluloid Cut';
+        }
+      } else {
+        this.extLink.href = url;
+        this.extLink.removeAttribute('download');
+        if (this.extText) {
+          this.extText.textContent = type === 'instagram' ? 'Watch on Instagram' : 'Watch on YouTube';
+        }
       }
     }
 
-    // Configure dialog classes based on video type
-    this.modal.classList.remove('video-modal--youtube', 'video-modal--instagram');
+    this.modal.classList.remove('video-modal--youtube', 'video-modal--instagram', 'video-modal--local');
     this.modal.classList.add(`video-modal--${type}`);
 
-    // Build responsive iframe
     let iframeHtml = '';
     if (type === 'youtube') {
       iframeHtml = `
@@ -163,13 +150,26 @@ export class VideoModal {
           allowfullscreen
         ></iframe>
       `;
+    } else if (type === 'local') {
+      iframeHtml = `
+        <div class="video-modal__local-wrap">
+          <video
+            class="video-modal__video"
+            src="${url}"
+            ${poster ? `poster="${poster}"` : ''}
+            controls
+            autoplay
+            playsinline
+            preload="auto"
+          ></video>
+        </div>
+      `;
     }
 
     if (this.playerWrap) {
       this.playerWrap.innerHTML = iframeHtml;
     }
 
-    // Animate modal in
     this.modal.setAttribute('aria-hidden', 'false');
     this.modal.classList.add('is-active');
 
@@ -207,18 +207,21 @@ export class VideoModal {
         this.modal.classList.remove('is-active');
         this.modal.setAttribute('aria-hidden', 'true');
 
-        // Destroy iframe to stop video & sound immediately
         if (this.playerWrap) {
+          const vid = this.playerWrap.querySelector('video');
+          if (vid) {
+            vid.pause();
+            vid.src = '';
+            vid.load();
+          }
           this.playerWrap.innerHTML = '';
         }
 
-        // Restore scroll
         document.documentElement.style.overflow = '';
         if (this.lenis) {
           this.lenis.start();
         }
 
-        // Resume ambient audio if it was running prior to opening
         if (this.wasAmbientPlaying && this.soundManager) {
           this.soundManager.startAmbient();
           this.wasAmbientPlaying = false;

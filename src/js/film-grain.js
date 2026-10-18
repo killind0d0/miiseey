@@ -1,14 +1,8 @@
-// ─── Film Grain Overlay — Canvas-based ─────────────────────────
-// Generates a real-time film grain effect using canvas noise.
-// More authentic than a CSS background-image loop and fully
-// controllable (opacity, density, speed). Minimal perf cost.
-
 export class FilmGrain {
   constructor() {
     this.canvas = document.getElementById('grain-canvas');
     if (!this.canvas) return;
 
-    // Skip on reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
@@ -28,7 +22,6 @@ export class FilmGrain {
   }
 
   resize() {
-    // Use half resolution for performance
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.canvas.width = window.innerWidth * dpr * 0.5;
     this.canvas.height = window.innerHeight * dpr * 0.5;

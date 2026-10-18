@@ -1,10 +1,8 @@
-// ─── Mise Films — Main Stylesheet ─────────────────────────────
 @use 'variables' as *;
 @use 'reset';
 
-// ═══════════════════════════════════════════════════════════════
-// CUSTOM CURSOR
-// ═══════════════════════════════════════════════════════════════
+/* CUSTOM CURSOR */
+
 .cursor {
   position: fixed;
   top: 0;
@@ -46,7 +44,6 @@
                 border-color 0.3s ease;
   }
 
-  // Magnetic hover state
   &.is-hovering {
     .cursor__dot {
       width: 12px;
@@ -60,7 +57,6 @@
     }
   }
 
-  // Video/CTA hover
   &.is-play {
     .cursor__dot {
       width: 80px;
@@ -76,9 +72,8 @@
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// SCROLL PROGRESS BAR
-// ═══════════════════════════════════════════════════════════════
+/* SCROLL PROGRESS BAR */
+
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -92,9 +87,8 @@
   box-shadow: 0 0 8px rgba(212, 168, 83, 0.6), 0 0 20px rgba(212, 168, 83, 0.2);
 }
 
-// ═══════════════════════════════════════════════════════════════
-// TEXT SELECTION
-// ═══════════════════════════════════════════════════════════════
+/* TEXT SELECTION */
+
 ::selection {
   background: rgba(212, 168, 83, 0.35);
   color: $white-pure;
@@ -109,9 +103,8 @@
   scroll-margin-top: 5rem;
 }
 
-// ═══════════════════════════════════════════════════════════════
-// CINEMATIC ENTRY: B&W 35MM LEADER & RED VELVET CURTAIN
-// ═══════════════════════════════════════════════════════════════
+/* CINEMATIC ENTRY: B&W 35MM LEADER & RED VELVET CURTAIN */
+
 .cine-entry {
   position: fixed;
   inset: 0;
@@ -125,9 +118,8 @@
   pointer-events: auto;
 }
 
-// ─────────────────────────────────────────────────────────────
-// Part 1: B&W Scratched Celluloid Countdown Leader (~2.5s)
-// ─────────────────────────────────────────────────────────────
+/* Part 1: B&W Scratched Celluloid Countdown Leader (~2.5s) */
+
 .cine-leader {
   position: absolute;
   inset: 0;
@@ -148,7 +140,6 @@
     pointer-events: none;
   }
 
-  // Authentic Film Damage Layer: Scratches, Dust & Bulb Flicker
   &__film-gate {
     position: absolute;
     inset: 0;
@@ -201,7 +192,6 @@
     animation: bulb-brightness-flicker 0.16s infinite alternate;
   }
 
-  // Corner SMPTE Telemetry
   &__meta {
     position: absolute;
     font-family: 'Courier New', Courier, monospace;
@@ -229,7 +219,6 @@
     }
   }
 
-  // Crosshairs with Optical Ticks
   &__crosshair {
     position: absolute;
     background: rgba(255, 255, 255, 0.35);
@@ -253,7 +242,6 @@
     }
   }
 
-  // Central Reticle
   &__reticle {
     position: relative;
     width: clamp(260px, 42vw, 350px);
@@ -264,7 +252,6 @@
     z-index: 3;
   }
 
-  // Concentric White Rings
   &__circle {
     position: absolute;
     border-radius: 50%;
@@ -282,7 +269,6 @@
     }
   }
 
-  // 360° Rotating Sweeping Pie Wedge
   &__pie-wedge {
     position: absolute;
     inset: 0;
@@ -294,7 +280,6 @@
     mix-blend-mode: screen;
   }
 
-  // Sweeping Clock Hand
   &__clock-hand {
     position: absolute;
     top: 0;
@@ -308,7 +293,6 @@
     pointer-events: none;
   }
 
-  // Bold Worn Stencil Optical Numeral
   &__numeral {
     position: relative;
     z-index: 4;
@@ -322,7 +306,6 @@
     will-change: transform, opacity;
   }
 
-  // Full-Screen Pure White Optical Arc-Lamp Flash
   &__flash {
     position: fixed;
     inset: 0;
@@ -335,9 +318,8 @@
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-// Film Damage Animations (Scratches, Jitter, Flicker)
-// ─────────────────────────────────────────────────────────────
+/* Film Damage Animations (Scratches, Jitter, Flicker) */
+
 @keyframes leader-gate-jitter {
   0%   { transform: translate(0, 0); }
   25%  { transform: translate(-0.6px, 0.5px); }
@@ -386,9 +368,8 @@
   100% { opacity: 0.04; }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════════════════════════
+/* NAVIGATION */
+
 .nav {
   position: fixed;
   top: 0;
@@ -536,9 +517,8 @@
   100% { height: 12px; }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// HERO SECTION
-// ═══════════════════════════════════════════════════════════════
+/* HERO SECTION */
+
 .hero {
   position: relative;
   width: 100%;
@@ -610,7 +590,6 @@
     }
   }
 
-  // Cinematic Statement — Located strictly BELOW the video with zero overlap
   &__statement {
     position: relative;
     width: 100%;
@@ -657,7 +636,6 @@
     flex-direction: column;
     align-items: center;
 
-    // Mobile Viewfinder & Light Beam frame (ONLY < 1024px)
     @media (max-width: 1023px) {
       max-width: 480px;
       margin: 0 auto;
@@ -672,7 +650,6 @@
     }
   }
 
-  // Mobile Viewfinder Corner Crosshairs (Hidden on Desktop >= 1024px)
   &__vf-corner {
     display: none;
 
@@ -712,7 +689,6 @@
     }
   }
 
-  // Center Crosshair (Mobile only)
   &__vf-cross {
     display: none;
 
@@ -749,7 +725,6 @@
     }
   }
 
-  // Mobile Sweeping Light Beam & Glow (Hidden on Desktop >= 1024px)
   &__light-beam {
     display: none;
 
@@ -794,7 +769,6 @@
     }
   }
 
-  // Mobile Top HUD Bar (REC + Timecode) (Hidden on Desktop >= 1024px)
   &__vf-hud-top {
     display: none;
 
@@ -837,7 +811,6 @@
     letter-spacing: 0.12em;
   }
 
-  // Mobile Bottom HUD Bar (Camera Telemetry) (Hidden on Desktop >= 1024px)
   &__vf-hud-bottom {
     display: none;
 
@@ -1076,9 +1049,8 @@
   50%      { opacity: 0.3; transform: scaleY(0.5); }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// SHOWREEL / FEATURED WORK
-// ═══════════════════════════════════════════════════════════════
+/* SHOWREEL / FEATURED WORK */
+
 .section {
   padding: clamp(3.5rem, 2.5rem + 2.5vw, 5.5rem) $gutter;
   position: relative;
@@ -1136,9 +1108,8 @@
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// PROJECTS LAYOUT COMPARISON BANNER
-// ═══════════════════════════════════════════════════════════════
+/* PROJECTS LAYOUT COMPARISON BANNER */
+
 .projects-layout-compare-banner {
   background: rgba(22, 23, 26, 0.7);
   border: 1px solid rgba(212, 168, 83, 0.35);
@@ -1208,9 +1179,8 @@
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// PROJECTS FILTER BAR
-// ═══════════════════════════════════════════════════════════════
+/* PROJECTS FILTER BAR */
+
 .projects-filter {
   margin-bottom: $space-xl;
   display: flex;
@@ -1298,9 +1268,8 @@
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// FEATURED WIDE COMMERCIAL VIDEO SCREEN (SHREY'S 4 COMMERCIALS)
-// ═══════════════════════════════════════════════════════════════
+/* FEATURED WIDE COMMERCIAL VIDEO SCREEN (SHREY'S 4 COMMERCIALS) */
+
 .commercial-screen {
   position: relative;
   margin-bottom: $space-2xl;
@@ -1408,7 +1377,6 @@
     pointer-events: none;
   }
 
-  // Viewfinder corners inside video
   .screen-hud-corner {
     position: absolute;
     width: 18px;
@@ -1532,7 +1500,6 @@
     }
   }
 
-  // Interactive 4 Commercial Selector Tabs
   &__tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1648,9 +1615,8 @@
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// PROJECT CARDS (MEDIUM CINEMA HUD & OPENING EFFECTS)
-// ═══════════════════════════════════════════════════════════════
+/* PROJECT CARDS (MEDIUM CINEMA HUD & OPENING EFFECTS) */
+
 .projects {
   display: grid;
   grid-template-columns: 1fr;
@@ -1700,7 +1666,6 @@ a.project-card,
     }
   }
 
-  // Top HUD Bar with Roll number and DP tag
   &__hud-bar {
     position: absolute;
     top: 0.65rem;
@@ -1735,7 +1700,6 @@ a.project-card,
     border: 1px solid rgba(212, 168, 83, 0.35);
   }
 
-  // Cinema Viewfinder 4-Corner HUD Brackets (⌜ ⌝ ⌞ ⌟)
   &__hud-corner {
     position: absolute;
     width: 12px;
@@ -1771,7 +1735,6 @@ a.project-card,
     }
   }
 
-  // Anamorphic Lens Flare Line that glides across on hover
   &__lens-flare {
     position: absolute;
     top: 50%;
@@ -1792,7 +1755,6 @@ a.project-card,
     transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  // Centered Aperture Play Badge that opens on hover
   &__play-badge {
     position: absolute;
     top: 50%;
@@ -1953,7 +1915,6 @@ a.project-card,
     }
   }
 
-  // ── Cinema Hover / Opening States ──
   &:hover {
     border-color: rgba(212, 168, 83, 0.55);
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 168, 83, 0.15);
@@ -2017,9 +1978,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// IN-SITE CINEMA VIDEO MODAL
-// ═══════════════════════════════════════════════════════════════
+/* IN-SITE CINEMA VIDEO MODAL */
+
 .cinema-modal {
   position: fixed;
   inset: 0;
@@ -2253,9 +2213,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// ABOUT / CINEMATIC PHILOSOPHY
-// ═══════════════════════════════════════════════════════════════
+/* ABOUT / CINEMATIC PHILOSOPHY */
+
 .about {
   min-height: auto;
   position: relative;
@@ -2332,7 +2291,6 @@ a.project-card,
     }
   }
 
-  // 2-Column Editorial Grid
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -2345,7 +2303,6 @@ a.project-card,
     }
   }
 
-  // Left: Mise-en-Scène Slate Card
   &__slate {
     position: relative;
     background: rgba(18, 20, 26, 0.75);
@@ -2358,7 +2315,6 @@ a.project-card,
     flex-direction: column;
     justify-content: space-between;
 
-    // Viewfinder optical corner marks
     &-corner {
       position: absolute;
       font-family: $font-mono;
@@ -2498,7 +2454,6 @@ a.project-card,
     }
   }
 
-  // Right: Narrative Prose Cards
   &__narrative {
     display: flex;
     flex-direction: column;
@@ -2565,7 +2520,6 @@ a.project-card,
     color: $white !important;
   }
 
-  // Bottom Stats Grid
   &__stats {
     display: grid;
     grid-template-columns: 1fr;
@@ -2660,7 +2614,6 @@ a.project-card,
   }
 }
 
-// ─── Owner & Managing Director Spotlight: Vivek Kumar ───────────────
 .leader-spotlight {
   padding: clamp(3.5rem, 2.5rem + 2vw, 5rem) $gutter;
   max-width: $max-width;
@@ -2760,7 +2713,6 @@ a.project-card,
   }
 }
 
-// Keep 3D Cutout styling accessible in leader-spotlight
 .about__portrait-3d {
   position: relative;
   width: 100%;
@@ -3051,9 +3003,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// ACTION SPOTLIGHT (Scroll-driven background fade-in / fade-out)
-// ═══════════════════════════════════════════════════════════════
+/* ACTION SPOTLIGHT (Scroll-driven background fade-in / fade-out) */
+
 .action-spotlight {
   position: relative;
   min-height: 70vh;
@@ -3196,9 +3147,545 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// SERVICES
-// ═══════════════════════════════════════════════════════════════
+/* BEHIND THE SCENES // ON-SET CHRONICLES (.bts-section) */
+
+.bts-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, rgba(212, 168, 83, 0.05) 0%, transparent 60%),
+              $black-deep;
+  padding: clamp(3.5rem, 5vw, 6.5rem) $gutter;
+  overflow: hidden;
+
+  .bts-telemetry {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 1.5vw, 2rem);
+    padding: 0.85rem 1.4rem;
+    margin: 1.5rem auto 3rem;
+    max-width: 1100px;
+    background: rgba(18, 20, 24, 0.85);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+    font-family: $font-mono;
+    font-size: clamp(0.68rem, 0.65rem + 0.15vw, 0.78rem);
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &--rec {
+        color: #ff3b30;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+      }
+    }
+
+    .bts-rec-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff3b30;
+      box-shadow: 0 0 10px #ff3b30;
+      animation: recPulse 1.2s infinite ease-in-out;
+    }
+
+    &__label {
+      color: $amber;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+    }
+
+    &__val {
+      color: $grey-light;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .bts-hero-rig {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+    background: rgba(20, 22, 28, 0.75);
+    border: 1px solid rgba(212, 168, 83, 0.22);
+    border-radius: 6px;
+    padding: clamp(1.2rem, 2vw, 2rem);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+
+    &__media {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      aspect-ratio: 16 / 9;
+      background: #000;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: contrast(105%) brightness(98%);
+        transition: transform 0.8s $ease-out-expo;
+      }
+
+      &:hover img {
+        transform: scale(1.03);
+      }
+    }
+
+    &__reticle {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+
+      .reticle-corner {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-color: rgba(212, 168, 83, 0.65);
+        border-style: solid;
+
+        &--tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+        &--tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+        &--bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+        &--br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+      }
+
+      .reticle-crosshair {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 18px;
+        height: 18px;
+        transform: translate(-50%, -50%);
+        border: 1px dashed rgba(212, 168, 83, 0.4);
+        border-radius: 50%;
+
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          background: rgba(212, 168, 83, 0.5);
+        }
+        &::before {
+          top: 50%;
+          left: -4px;
+          right: -4px;
+          height: 1px;
+          transform: translateY(-50%);
+        }
+        &::after {
+          left: 50%;
+          top: -4px;
+          bottom: -4px;
+          width: 1px;
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    &__osd {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .osd-item {
+        font-family: $font-mono;
+        font-size: 0.62rem;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 2px 6px;
+        border-radius: 2px;
+        display: inline-block;
+
+        &--tr, &--br {
+          align-self: flex-end;
+        }
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    &__badge {
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: $amber;
+      text-transform: uppercase;
+    }
+
+    &__title {
+      @include serif-heading;
+      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2.3rem);
+      color: $white;
+      line-height: 1.2;
+    }
+
+    &__desc {
+      font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.98rem);
+      line-height: 1.6;
+      color: $grey-mid;
+    }
+
+    &__specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      .rig-spec {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        background: rgba(0, 0, 0, 0.25);
+        padding: 0.6rem 0.8rem;
+        border-radius: 3px;
+        border-left: 2px solid $amber;
+
+        &__k {
+          font-family: $font-mono;
+          font-size: 0.62rem;
+          color: $amber;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        &__v {
+          font-size: 0.76rem;
+          color: $white;
+          letter-spacing: 0.02em;
+        }
+      }
+    }
+  }
+
+  .bts-reels-header {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    &__tag {
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      color: $amber;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    &__title {
+      @include serif-heading;
+      font-size: clamp(1.3rem, 1.1rem + 1vw, 2rem);
+      color: $white;
+    }
+
+    &__hint {
+      font-family: $font-mono;
+      font-size: 0.7rem;
+      color: $grey-mid;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .bts-reels-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.2rem, 2vw, 2rem);
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .bts-reel-card {
+    background: rgba(18, 20, 24, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.35s $ease-out-expo, border-color 0.35s ease, box-shadow 0.35s ease;
+
+    &:hover,
+    &:focus-visible,
+    &.is-previewing {
+      transform: translateY(-6px);
+      border-color: rgba(212, 168, 83, 0.55);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 168, 83, 0.12);
+
+      .bts-reel-card__play-btn {
+        background: $amber;
+        color: $black-deep;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .b-corner {
+        border-color: $amber;
+      }
+
+      .bts-reel-card__action {
+        color: $amber;
+      }
+    }
+
+    &__viewport {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      overflow: hidden;
+    }
+
+    &__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s $ease-out-expo;
+    }
+
+    &:hover &__video {
+      transform: scale(1.04);
+    }
+
+    &__osd {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
+    &__osd-top,
+    &__osd-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: $font-mono;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .bts-reel-rec {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #ff3b30;
+      font-weight: 700;
+
+      .rec-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ff3b30;
+        animation: recPulse 1.2s infinite ease-in-out;
+      }
+    }
+
+    .bts-reel-roll {
+      color: $amber;
+    }
+
+    .bts-reel-dur,
+    .bts-reel-fps {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2px 6px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    &__brackets {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+
+      .b-corner {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-color: rgba(255, 255, 255, 0.35);
+        border-style: solid;
+        transition: border-color 0.3s ease;
+
+        &--tl { top: 12px; left: 12px; border-width: 1.5px 0 0 1.5px; }
+        &--tr { top: 12px; right: 12px; border-width: 1.5px 1.5px 0 0; }
+        &--bl { bottom: 12px; left: 12px; border-width: 0 0 1.5px 1.5px; }
+        &--br { bottom: 12px; right: 12px; border-width: 0 1.5px 1.5px 0; }
+      }
+    }
+
+    &__play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(14, 16, 20, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 168, 83, 0.4);
+      color: $amber;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      pointer-events: none;
+      transition: all 0.3s $ease-out-expo;
+
+      svg {
+        margin-left: 2px;
+      }
+    }
+
+    &__sound-btn {
+      position: absolute;
+      bottom: 44px;
+      right: 12px;
+      z-index: 5;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      .icon-sound { display: none; }
+      .icon-mute { display: block; }
+
+      &.is-unmuted {
+        background: rgba(212, 168, 83, 0.25);
+        border-color: $amber;
+        color: $amber;
+
+        .icon-sound { display: block; }
+        .icon-mute { display: none; }
+      }
+
+      &:hover {
+        background: rgba(212, 168, 83, 0.35);
+        border-color: $amber;
+      }
+    }
+
+    &__meta {
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+      background: rgba(16, 18, 22, 0.95);
+    }
+
+    &__badge {
+      font-family: $font-mono;
+      font-size: 0.65rem;
+      color: $amber;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    &__title {
+      @include serif-heading;
+      font-size: 1.25rem;
+      color: $white;
+      line-height: 1.2;
+    }
+
+    &__desc {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: $grey-mid;
+      margin-bottom: 0.5rem;
+      flex-grow: 1;
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: $font-mono;
+      font-size: 0.65rem;
+    }
+
+    &__tag {
+      color: $grey-dark;
+      letter-spacing: 0.08em;
+    }
+
+    &__action {
+      color: $grey-light;
+      letter-spacing: 0.05em;
+      transition: color 0.25s ease;
+    }
+  }
+}
+
+@keyframes recPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+/* SERVICES */
+
 .services {
   padding: clamp(3.5rem, 2.5rem + 2.5vw, 5.5rem) $gutter;
   border-top: 1px solid $black-border;
@@ -3316,7 +3803,6 @@ a.project-card,
   }
 }
 
-// Service hover image preview
 .service-row {
   position: relative;
   overflow: hidden;
@@ -3352,16 +3838,14 @@ a.project-card,
     transform: scale(1);
   }
 
-  // Ensure text stays above image
   &__number, &__body, &__action {
     position: relative;
     z-index: 1;
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// CLIENTS & COLLABORATORS LOGO STRIP
-// ═══════════════════════════════════════════════════════════════
+/* CLIENTS & COLLABORATORS LOGO STRIP */
+
 .clients-strip {
   padding: $space-xl $gutter;
   text-align: center;
@@ -3479,9 +3963,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// TESTIMONIAL / QUOTE
-// ═══════════════════════════════════════════════════════════════
+/* TESTIMONIAL / QUOTE */
+
 .quote-section {
   padding: $space-3xl $gutter;
   text-align: center;
@@ -3490,7 +3973,6 @@ a.project-card,
   position: relative;
   overflow: hidden;
 
-  // Ambient Director Portrait Watermark (Subtle opacity behind quote)
   &__portrait-wrap {
     position: absolute;
     inset: 0;
@@ -3573,9 +4055,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// CONTACT / CTA
-// ═══════════════════════════════════════════════════════════════
+/* CONTACT / CTA */
+
 .contact {
   padding: clamp(3.5rem, 2.5rem + 2.5vw, 5.5rem) $gutter;
   text-align: center;
@@ -3701,9 +4182,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// FOOTER
-// ═══════════════════════════════════════════════════════════════
+/* FOOTER */
+
 .footer {
   padding: clamp(3rem, 2.5rem + 1.5vw, 4.5rem) $gutter 1.5rem;
   border-top: 1px solid $black-border;
@@ -3803,7 +4283,6 @@ a.project-card,
   }
 }
 
-// ── Keyframes for Mobile Hero Viewfinder & Light Beam ──
 @keyframes heroBlinkRec {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
@@ -3819,11 +4298,6 @@ a.project-card,
   18% { text-shadow: 0 0 22px rgba(212, 168, 83, 0.45); }
   30% { text-shadow: 0 0 0 rgba(212, 168, 83, 0); }
 }
-
-// ═══════════════════════════════════════════════════════════════
-// FOOTER PARTNER COCKPIT ROW (Clapperboard + SJ Digitals Promo)
-// Unified single-line row on desktop, stacked on mobile
-// ═══════════════════════════════════════════════════════════════
 .footer__partner-row {
   grid-column: 1 / -1;
   width: 100%;
@@ -3892,7 +4366,6 @@ a.project-card,
   flex-direction: column;
 }
 
-// ── Interactive Clapperboard Like Card (Universal unconstrained full swing) ──
 .clapper-card {
   border: none !important;
   box-shadow: none !important;
@@ -3922,7 +4395,6 @@ a.project-card,
   }
 }
 
-// Top hinged striped stick: Resting closed (0deg) with uncropped swing arc
 .clapper-stick-top {
   height: 28px;
   background: repeating-linear-gradient(
@@ -3938,7 +4410,6 @@ a.project-card,
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-// Keyframes: Full Open and Clap Cycle (Swings freely into clear headroom)
 @keyframes clapperFullCycle {
   0% { transform: rotate(0deg); }
   26% { transform: rotate(-24deg); }
@@ -4068,7 +4539,6 @@ a.project-card,
   transition: color 0.3s ease;
 }
 
-// Floating Badge Particle when tapping Clapper Slate
 .clapper-floating-badge {
   position: absolute;
   top: 35%;
@@ -4094,11 +4564,6 @@ a.project-card,
   65% { opacity: 1; transform: translate(-50%, -35px) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -55px) scale(0.9); }
 }
-
-// ═══════════════════════════════════════════════════════════════
-// SJ DIGITALS HIGH-END BESPOKE PROMO BANNER
-// Ultra-luxury creative tech & engineering studio showcase
-// ═══════════════════════════════════════════════════════════════
 .sj-promo-card {
   display: flex;
   flex-direction: column;
@@ -4128,8 +4593,6 @@ a.project-card,
     pointer-events: none;
   }
 
-  // Mobile Sweeping Light Beam (Mobile Only < 1024px)
-  // Matches the golden light beam animation on the hero title
   &__light-beam {
     display: none;
 
@@ -4162,7 +4625,6 @@ a.project-card,
     border-color: rgba(212, 168, 83, 0.65);
     box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85), 0 0 45px rgba(212, 168, 83, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
-    // Desktop hover: fade in the background logo across the entire card
     .sj-promo-card__bg-logo {
       opacity: 0.22;
     }
@@ -4333,9 +4795,6 @@ a.project-card,
     letter-spacing: 0.05em;
   }
 
-  // Background logo — absolutely positioned behind all card content
-  // Desktop: hidden by default, purely fades in on hover, fades out on mouse leave
-  // Mobile: always hidden
   &__bg-logo {
     display: none; // Hidden on mobile
 
@@ -4393,15 +4852,13 @@ a.project-card,
   }
 }
 
-// Mobile Sweeping Light Beam Animation for SJ Promo Card
 @keyframes sjPromoBeamSweep {
   0% { left: -140%; }
   35%, 100% { left: 160%; }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// FILM GRAIN OVERLAY (Background only, never over content)
-// ═══════════════════════════════════════════════════════════════
+/* FILM GRAIN OVERLAY (Background only, never over content) */
+
 #smooth-content {
   position: relative;
   z-index: 1;
@@ -4419,9 +4876,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// SCROLL REVEAL UTILITIES
-// ═══════════════════════════════════════════════════════════════
+/* SCROLL REVEAL UTILITIES */
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(40px);
@@ -4437,7 +4893,6 @@ a.project-card,
   transform: translateY(0);
 }
 
-// Horizontal divider reveal
 .divider {
   height: 1px;
   background: $black-border;
@@ -4450,9 +4905,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// MOBILE MENU OVERLAY
-// ═══════════════════════════════════════════════════════════════
+/* MOBILE MENU OVERLAY */
+
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -4484,9 +4938,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// AMBIENT SOUND TOGGLE
-// ═══════════════════════════════════════════════════════════════
+/* AMBIENT SOUND TOGGLE */
+
 .sound-toggle {
   position: fixed;
   bottom: $space-lg;
@@ -4530,9 +4983,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// CINEMATIC VIDEO LIGHTBOX MODAL
-// ═══════════════════════════════════════════════════════════════
+/* CINEMATIC VIDEO LIGHTBOX MODAL */
+
 .video-modal {
   position: fixed;
   inset: 0;
@@ -4685,6 +5137,34 @@ a.project-card,
     background: #000;
   }
 
+  &--local &__dialog {
+    max-width: 520px;
+  }
+
+  &--local &__player-wrap {
+    height: 78vh;
+    max-height: 720px;
+    background: #000;
+  }
+
+  &__local-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    background: #000;
+    outline: none;
+  }
+
   &__iframe {
     width: 100%;
     height: 100%;
@@ -4703,7 +5183,6 @@ a.project-card,
   }
 }
 
-// ─── Bihar Baithak (Sister Media House) ─────────────────────────────
 .bihar-baithak {
   position: relative;
 
@@ -4981,11 +5460,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// WORK LAYOUTS LABORATORY (OPTIONS 1, 2, 3, 4 SHOWCASE)
-// ═══════════════════════════════════════════════════════════════
+/* WORK LAYOUTS LABORATORY (OPTIONS 1, 2, 3, 4 SHOWCASE) */
 
-// Sticky Top Switcher Toolbar
 .layout-lab-toolbar {
   position: sticky;
   top: 0;
@@ -5096,7 +5572,6 @@ a.project-card,
   }
 }
 
-// Layout Demo Section Container & Banner
 .layout-demo-section {
   padding: $space-2xl $gutter;
   max-width: $max-width;
@@ -5169,7 +5644,6 @@ a.project-card,
   }
 }
 
-// ── OPTION 2: DIRECTOR'S SUITE (SPLIT MONITOR + PLAYLIST) ──
 .suite-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -5440,7 +5914,6 @@ a.project-card,
   }
 }
 
-// ── OPTION 3: AUTEUR FILM SHELVES (HORIZONTAL CAROUSELS) ──
 .shelf-group {
   display: flex;
   flex-direction: column;
@@ -5539,7 +6012,6 @@ a.project-card,
   }
 }
 
-// ── OPTION 4: CRITERION ARCHIVE (EDITORIAL TABLE + SPOTLIGHT) ──
 .criterion-wrap {
   display: grid;
   grid-template-columns: 1fr;
@@ -5567,8 +6039,6 @@ a.project-card,
   cursor: pointer;
   transition: background 0.25s ease, border-color 0.25s ease;
 
-  // ── Override: When criterion-row is used as a Digipak slipcase box,
-  //    completely neutralize the flat-row layout so the slipcase CSS takes over.
   &.criterion-slipcase-box {
     display: block;
     padding: 0;
@@ -5683,7 +6153,6 @@ a.project-card,
     }
   }
 
-  // Only apply hover/active row highlight for non-slipcase layouts
   &:hover:not(.criterion-slipcase-box),
   &.is-active:not(.criterion-slipcase-box) {
     background: rgba(212, 168, 83, 0.08);
@@ -5804,9 +6273,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// MOVIE CAMERA PREVIEW MONITOR & HYBRID ARCHIVE DRAWER
-// ═══════════════════════════════════════════════════════════════
+/* MOVIE CAMERA PREVIEW MONITOR & HYBRID ARCHIVE DRAWER */
+
 .hybrid-suite {
   display: flex;
   flex-direction: column;
@@ -5817,7 +6285,6 @@ a.project-card,
   isolation: isolate;
 }
 
-// ── Cinematic Movie Camera Preview Monitor (ARRI / RED Inspired) ──
 .cine-camera-monitor {
   background: #0d0e11;
   border: 1px solid rgba(212, 168, 83, 0.4);
@@ -5987,7 +6454,6 @@ a.project-card,
   }
 }
 
-// ── Camera Viewfinder OSD Telemetry Overlays ──
 .camera-osd {
   position: absolute;
   inset: 0;
@@ -6136,7 +6602,6 @@ a.project-card,
   }
 }
 
-// ── Bottom Camera Control Deck ──
 .camera-monitor__deck {
   padding: 1.25rem 1.5rem;
   background: linear-gradient(180deg, #111216 0%, #0a0b0d 100%);
@@ -6243,12 +6708,10 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// CRITERION ARCHIVE DRAWER (ACCORDION OPEN / CLOSE)
-// ═══════════════════════════════════════════════════════════════
-// ═══════════════════════════════════════════════════════════════
-// AUTEUR EXHIBITION TAPE & HORIZONTAL CRITERION VAULT (CONCEPT A)
-// ═══════════════════════════════════════════════════════════════
+/* CRITERION ARCHIVE DRAWER (ACCORDION OPEN / CLOSE) */
+
+/* AUTEUR EXHIBITION TAPE & HORIZONTAL CRITERION VAULT (CONCEPT A) */
+
 .exhibition-tape {
   display: flex;
   flex-direction: column;
@@ -6398,7 +6861,6 @@ a.project-card,
     flex: 0 0 300px;
   }
 
-  // Active screening glowing beacon
   .box-screening-pill {
     position: absolute;
     top: 10px;
@@ -6891,9 +7353,8 @@ a.project-card,
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// HAUTE-COUTURE CINEMA VIDEO PLAYER UI
-// ═══════════════════════════════════════════════════════════════
+/* HAUTE-COUTURE CINEMA VIDEO PLAYER UI */
+
 .cinema-modal__stage {
   position: relative;
   width: 100%;
@@ -7077,7 +7538,6 @@ a.project-card,
   }
 }
 
-// ARRI Viewfinder Monitor Audio Deck
 .cam-audio-deck {
   display: inline-flex;
   align-items: center;
@@ -7103,17 +7563,8 @@ a.project-card,
   }
 }
 
+/* COMPREHENSIVE MOBILE RESPONSIVE FIXES */
 
-
-
-
-
-
-// ═══════════════════════════════════════════════════════════════
-// COMPREHENSIVE MOBILE RESPONSIVE FIXES
-// ═══════════════════════════════════════════════════════════════
-
-// ── Mobile Menu: Lock body scroll when open ──
 .mobile-menu.is-open ~ #smooth-content,
 html.menu-open {
   overflow: hidden;
@@ -7131,7 +7582,6 @@ html.menu-open {
   }
 }
 
-// ── Hero: Telemetry text overflow on narrow screens ──
 .hero__cam-telemetry {
   @media (max-width: 380px) {
     .cam-tlm-tag,
@@ -7143,21 +7593,18 @@ html.menu-open {
   }
 }
 
-// ── Hero: Statement padding on small phones ──
 .hero__statement {
   @media (max-width: 479px) {
     padding: clamp(2rem, 1.5rem + 1.5vw, 3rem) $gutter;
   }
 }
 
-// ── Hero: Title sizing for very small phones ──
 .hero__title {
   @media (max-width: 380px) {
     font-size: clamp(2rem, 1.6rem + 2.5vw, 3rem) !important;
   }
 }
 
-// ── Hero: Badges wrap properly on narrow screens ──
 .hero__badges {
   @media (max-width: 479px) {
     gap: 0.45rem;
@@ -7170,7 +7617,6 @@ html.menu-open {
   }
 }
 
-// ── Commercial Screen: HUD overflow on mobile ──
 .commercial-screen {
   @media (max-width: $bp-md) {
     &__hud-top {
@@ -7217,7 +7663,6 @@ html.menu-open {
   }
 }
 
-// ── Commercial Tabs: Compact on mobile ──
 .commercial-screen__tabs {
   @media (max-width: $bp-md) {
     .comm-tab {
@@ -7241,7 +7686,6 @@ html.menu-open {
   }
 }
 
-// ── Project Cards: Better touch targets on mobile ──
 a.project-card,
 .project-card {
   @media (max-width: $bp-sm) {
@@ -7267,7 +7711,6 @@ a.project-card,
   }
 }
 
-// ── Criterion Slipcase: Responsive for mobile ──
 .criterion-slipcase-box {
   @media (max-width: $bp-sm) {
     flex: 0 0 240px;
@@ -7280,7 +7723,6 @@ a.project-card,
   }
 }
 
-// ── Exhibition Tape: Track padding on mobile ──
 .exhibition-tape__track {
   @media (max-width: $bp-sm) {
     gap: 1rem;
@@ -7304,7 +7746,6 @@ a.project-card,
   }
 }
 
-// ── Camera Monitor: Responsive layout for mobile ──
 .camera-monitor__top-bar {
   @media (max-width: $bp-md) {
     padding: 0.45rem 0.75rem;
@@ -7348,7 +7789,6 @@ a.project-card,
   }
 }
 
-// ── Camera OSD: Simplify overlays on small mobile ──
 .camera-osd {
   @media (max-width: $bp-sm) {
     &__framelines {
@@ -7378,7 +7818,6 @@ a.project-card,
   }
 }
 
-// ── Video Modal: Full-bleed mobile layout ──
 .video-modal {
   @media (max-width: $bp-md) {
     padding: 0.5rem;
@@ -7409,7 +7848,6 @@ a.project-card,
   }
 }
 
-// ── Cinema Modal: Full-bleed on mobile ──
 .cinema-modal {
   @media (max-width: $bp-md) {
     padding: 0.5rem;
@@ -7435,7 +7873,6 @@ a.project-card,
   }
 }
 
-// ── Cinema Player Bar: Touch-friendly sizing ──
 .cine-player-bar {
   @media (max-width: $bp-md) {
     gap: 0.5rem;
@@ -7458,7 +7895,6 @@ a.project-card,
 }
 
 .cine-scrubber {
-  // Make scrubber easier to hit on touch
   @media (hover: none) and (pointer: coarse) {
     height: 36px;
 
@@ -7474,7 +7910,6 @@ a.project-card,
   }
 }
 
-// ── About Section: Portrait sizing for mobile ──
 .about__cutout-img {
   @media (max-width: $bp-md) {
     max-width: 320px;
@@ -7487,7 +7922,6 @@ a.project-card,
   }
 }
 
-// ── About: Slate card on mobile ──
 .about__slate {
   @media (max-width: $bp-sm) {
     padding: clamp(1.2rem, 1rem + 0.5vw, 1.5rem);
@@ -7514,7 +7948,6 @@ a.project-card,
   }
 }
 
-// ── Leader Spotlight: Stack better on mobile ──
 .leader-spotlight {
   @media (max-width: $bp-md) {
     padding: clamp(2.5rem, 2rem + 1.5vw, 3.5rem) $gutter;
@@ -7533,7 +7966,6 @@ a.project-card,
   }
 }
 
-// ── Team Tiers: Better mobile layout ──
 .team-tier {
   @media (max-width: $bp-sm) {
     grid-template-columns: 1fr;
@@ -7558,7 +7990,6 @@ a.project-card,
   }
 }
 
-// ── Action Spotlight: Reduce height and ensure strict containment on mobile ──
 .action-spotlight {
   @media (max-width: $bp-md) {
     min-height: 55vh;
@@ -7617,7 +8048,6 @@ a.project-card,
   }
 }
 
-// ── Services: Row padding on mobile ──
 .service-row {
   @media (max-width: $bp-md) {
     padding: $space-lg 0;
@@ -7632,7 +8062,6 @@ a.project-card,
   }
 }
 
-// ── Clients Logo Strip: Better grid on very small ──
 .clients-strip__logos {
   @media (max-width: 380px) {
     grid-template-columns: repeat(2, 1fr);
@@ -7640,7 +8069,6 @@ a.project-card,
   }
 }
 
-// ── Quote Section: Mobile sizing ──
 .quote-section {
   @media (max-width: $bp-md) {
     padding: $space-2xl $gutter;
@@ -7653,7 +8081,6 @@ a.project-card,
   }
 }
 
-// ── Contact: Buttons mobile layout ──
 .contact {
   @media (max-width: $bp-sm) {
     &__heading {
@@ -7669,7 +8096,6 @@ a.project-card,
   }
 }
 
-// ── Footer: Mobile spacing improvements ──
 .footer {
   @media (max-width: $bp-md) {
     padding: $space-xl $gutter $space-lg;
@@ -7689,7 +8115,6 @@ a.project-card,
   }
 }
 
-// ── Bihar Baithak: Mobile optimizations ──
 .bihar-baithak {
   @media (max-width: $bp-md) {
     &__badge-bar {
@@ -7728,20 +8153,17 @@ a.project-card,
   }
 }
 
-// ── Global: Prevent horizontal overflow on mobile ──
 html, body {
   @media (max-width: $bp-md) {
     overflow-x: hidden;
   }
 }
 
-// ── Ensure smooth scrolling on iOS ──
 html {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
 
-// ── Safe area padding for notch devices ──
 .nav {
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-top: calc(1.25rem + env(safe-area-inset-top));
@@ -7756,7 +8178,6 @@ html {
   }
 }
 
-// ── Touch device: Disable hover-only effects that cause sticky states ──
 @media (hover: none) and (pointer: coarse) {
   a.project-card:hover,
   .project-card:hover {
@@ -7803,7 +8224,6 @@ html {
   }
 }
 
-// ── Improve input accessibility (min touch target 44px) ──
 @media (hover: none) and (pointer: coarse) {
   .filter-btn {
     min-height: 44px;

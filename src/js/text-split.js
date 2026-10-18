@@ -1,7 +1,3 @@
-// ─── Text Splitting ───────────────────────────────────────────────
-// Wraps each word/line in a span for progressive GSAP animation
-// without breaking base visibility if animations are deferred.
-
 export class TextSplitter {
   constructor() {
     this.splitWords();

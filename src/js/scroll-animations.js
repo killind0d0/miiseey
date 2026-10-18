@@ -1,10 +1,3 @@
-// ─── Scroll Animations — GSAP ScrollTrigger ────────────────────
-// Handles all scroll-triggered reveals:
-//   - [data-reveal] elements fade up on scroll
-//   - Counter animations for stats
-//   - Parallax effects
-//   - Divider line reveals
-
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,7 +5,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export class ScrollAnimations {
   constructor() {
-    // Respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       this.showAllImmediately();
       return;
@@ -30,7 +22,6 @@ export class ScrollAnimations {
     this.actionSpotlightParallax();
     this.serviceRowHovers();
 
-    // ── Scroll Progress Bar ──
     const progressBar = document.getElementById('scroll-progress');
     if (progressBar) {
       ScrollTrigger.create({
@@ -153,7 +144,6 @@ export class ScrollAnimations {
       const scrollCue = about.querySelector('.about__scroll-cue');
 
       if (isMob) {
-        // On mobile: immediately reveal to avoid blank flash or delayed scroll jank
         [header, slate, narrative, stats, scrollCue].forEach((el) => {
           if (el) {
             el.style.opacity = '1';
@@ -213,16 +203,12 @@ export class ScrollAnimations {
     if (!sections.length) return;
 
     ScrollTrigger.matchMedia({
-      // Desktop (>= 1024px): Photo sustains much longer across the section and only fades out late
       '(min-width: 1024px)': () => {
         sections.forEach((section) => {
           const bgWrap = section.querySelector('.action-spotlight__bg');
           const bgImg = section.querySelector('.action-spotlight__bg img');
           if (!bgWrap) return;
 
-          // Desktop timeline: Enters at top 85%, reaches full opacity,
-          // sustains visibility throughout the entire reading experience,
-          // and only gently fades out when the section exits towards the top
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: section,
@@ -237,9 +223,7 @@ export class ScrollAnimations {
             { opacity: 0 },
             { opacity: 0.72, duration: 1, ease: 'power2.out' }
           )
-            // Extended sustain window so Shrey and Vikrant photos remain clearly visible while reading
             .to(bgWrap, { opacity: 0.72, duration: 4.5 })
-            // Soft late fade out only as section exits viewport
             .to(bgWrap, { opacity: 0, duration: 1.2, ease: 'power2.in' });
 
           if (bgImg) {
@@ -262,7 +246,6 @@ export class ScrollAnimations {
         });
       },
 
-      // Mobile / Tablet (< 1024px): Flawless timing kept exactly untouched
       '(max-width: 1023px)': () => {
         sections.forEach((section) => {
           const bgWrap = section.querySelector('.action-spotlight__bg');
@@ -309,7 +292,6 @@ export class ScrollAnimations {
   }
 
   serviceRowHovers() {
-    // Stagger service rows on scroll
     const rows = document.querySelectorAll('.service-row');
     if (!rows.length) return;
 
@@ -332,7 +314,6 @@ export class ScrollAnimations {
   }
 
   showAllImmediately() {
-    // For reduced-motion: just show everything
     document.querySelectorAll('[data-reveal]').forEach((el) => {
       el.style.opacity = '1';
       el.style.transform = 'none';

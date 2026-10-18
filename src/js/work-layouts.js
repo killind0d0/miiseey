@@ -1,6 +1,3 @@
-// ─── Work Layouts Demo Controller ────────────────────────────────────
-// Interactive controller for reviewing and selecting Options 1, 2, 3, and 4.
-
 export class WorkLayoutsDemo {
   constructor() {
     this.initLayoutTabs();
@@ -10,7 +7,6 @@ export class WorkLayoutsDemo {
     this.initCinemaModal();
   }
 
-  // ── 1. Top Layout Switcher ──
   initLayoutTabs() {
     const tabBtns = document.querySelectorAll('.layout-tab-btn');
     const sections = document.querySelectorAll('.layout-demo-section');
@@ -32,7 +28,6 @@ export class WorkLayoutsDemo {
           }
         });
 
-        // Scroll to top of preview area smoothly
         const container = document.getElementById('layouts-container');
         if (container) {
           container.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -41,7 +36,6 @@ export class WorkLayoutsDemo {
     });
   }
 
-  // ── 2. Option 2: Director's Suite (Master Monitor + Playlist) ──
   initDirectorsSuite() {
     const masterVideo = document.getElementById('suite-master-video');
     const masterIframeWrap = document.getElementById('suite-iframe-wrap');
@@ -98,7 +92,6 @@ export class WorkLayoutsDemo {
     });
   }
 
-  // ── 3. Option 3: Auteur Film Shelves (Horizontal Carousels) ──
   initAuteurShelves() {
     const carousels = document.querySelectorAll('.shelf-carousel-wrap');
 
@@ -125,7 +118,6 @@ export class WorkLayoutsDemo {
     });
   }
 
-  // ── 4. Option 4: Criterion Archive (Table + Live Spotlight) ──
   initCriterionArchive() {
     const rows = document.querySelectorAll('.criterion-row');
     const spotImg = document.getElementById('spotlight-img');
@@ -187,7 +179,6 @@ export class WorkLayoutsDemo {
     });
   }
 
-  // ── Universal In-Site Cinema Modal ──
   initCinemaModal() {
     this.modal = document.getElementById('cinema-modal');
     if (!this.modal) return;
@@ -211,7 +202,6 @@ export class WorkLayoutsDemo {
       }
     });
 
-    // Delegate clicks from any card marked with .js-play-cinema
     document.addEventListener('click', (e) => {
       const card = e.target.closest('.js-play-cinema');
       if (!card) return;
@@ -284,7 +274,6 @@ export class WorkLayoutsDemo {
   }
 }
 
-// Auto init on page load
 document.addEventListener('DOMContentLoaded', () => {
   new WorkLayoutsDemo();
 });

@@ -1,11 +1,3 @@
-// ─── Work Showcase & Craft Filter Controller (Movie Camera Suite & Drawer) ──
-// Features:
-// 1. Movie Camera Master Monitor (ARRI / RED Telemetry, Timecode, VU meters, Anamorphic Scope HUD).
-// 2. Collapsible Criterion Archive Drawer (Open / Close accordion with smooth glide).
-// 3. Category filtering and smooth linking from "Our Craft" to portfolio.
-// 4. Prev / Next Roll navigation + Camera OSD HUD toggle.
-// 5. Universal In-Site Cinema Darkroom Modal.
-
 import gsap from 'gsap';
 
 export class WorkShowcase {
@@ -27,8 +19,6 @@ export class WorkShowcase {
     this.isAutoRollEnabled = true;
     this.autoRollTimer = null;
     this.resumeTimer = null;
-
-    // Timecode and VU meter ticker state
     this.tcHours = 1;
     this.tcMinutes = 24;
     this.tcSeconds = 8;
@@ -43,7 +33,6 @@ export class WorkShowcase {
     this.initCinemaModal();
   }
 
-  // ─── 1. Movie Camera Preview Monitor ─────────────────────────────
   initCameraMonitor() {
     this.masterVideo = document.getElementById('hybrid-master-video');
     this.iframeWrap = document.getElementById('hybrid-iframe-wrap');
@@ -69,19 +58,14 @@ export class WorkShowcase {
     if (!this.ledgerTable) return;
     this.rows = Array.from(this.ledgerTable.querySelectorAll('.criterion-row'));
     if (this.rows.length === 0) return;
-
-    // Attach row & slipcase box interactions
     this.rows.forEach((row, i) => {
       row.addEventListener('click', (e) => {
-        // If clicking flip button, toggle 3D flip to show/hide back cover camera specs
         if (e.target.closest('.js-flip-spec')) {
           e.preventDefault();
           e.stopPropagation();
           row.classList.toggle('is-flipped');
           return;
         }
-
-        // If clicking thumbnail or play icon specifically, open full modal
         if (e.target.closest('.criterion-row__thumb') || e.target.closest('.js-open-modal')) {
           e.preventDefault();
           this.setMasterFilm(row, i);
@@ -90,8 +74,6 @@ export class WorkShowcase {
         }
 
         this.setMasterFilm(row, i);
-
-        // If clicking screen button, smoothly scroll up to the master monitor
         if (e.target.closest('.js-screen-reel')) {
           const monitor = document.getElementById('hybrid-master');
           if (monitor) {
@@ -100,8 +82,6 @@ export class WorkShowcase {
         }
       });
     });
-
-    // Prev / Next Reel buttons
     if (this.prevBtn) {
       this.prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -115,8 +95,6 @@ export class WorkShowcase {
         this.stepFilm(1);
       });
     }
-
-    // Toggle Camera OSD HUD
     if (this.hudToggleBtn && this.cameraOsd) {
       this.hudToggleBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -126,8 +104,6 @@ export class WorkShowcase {
         }
       });
     }
-
-    // ARRI Viewfinder Audio Controls
     this.camSoundToggle = document.getElementById('cam-sound-toggle');
     this.camSoundIcon = document.getElementById('cam-sound-icon');
     this.camSoundText = document.getElementById('cam-sound-text');
@@ -154,8 +130,6 @@ export class WorkShowcase {
         this.updateCamAudioUI();
       });
     }
-
-    // Expand button for full darkroom
     if (this.expandBtn) {
       this.expandBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -164,12 +138,8 @@ export class WorkShowcase {
         }
       });
     }
-
-    // Start Live Timecode & Audio VU Tickers
     this.startTimecodeTicker();
     this.startVuMeters();
-
-    // Set initial film to Row 0
     if (this.rows[0]) {
       this.setMasterFilm(this.rows[0], 0, true);
     }
@@ -184,7 +154,6 @@ export class WorkShowcase {
   }
 
   stepFilm(direction) {
-    // Only step through currently visible rows
     const visibleRows = this.rows.filter((r) => r.style.display !== 'none');
     if (visibleRows.length === 0) return;
 
@@ -222,12 +191,8 @@ export class WorkShowcase {
     this.currentFilmIndex = index;
     const data = this.extractRowData(row);
     this.currentFilmData = data;
-
-    // Update active highlight across ledger
     this.rows.forEach((r) => r.classList.remove('is-screening', 'is-active'));
     row.classList.add('is-screening', 'is-active');
-
-    // Smoothly center active card in the horizontal tape if not initial load
     if (this.tapeCanvas && row && !isInitial) {
       const cardLeft = row.offsetLeft;
       const cardWidth = row.offsetWidth;
@@ -235,8 +200,6 @@ export class WorkShowcase {
       const targetScroll = cardLeft - (canvasWidth / 2) + (cardWidth / 2);
       this.tapeCanvas.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
     }
-
-    // Update Telemetry Header & Info Text
     if (this.rollTag) this.rollTag.textContent = data.roll;
     if (this.badgeEl) this.badgeEl.textContent = data.badge;
     if (this.titleEl) this.titleEl.textContent = data.title;
@@ -252,8 +215,6 @@ export class WorkShowcase {
         this.linkText.textContent = data.platform === 'Instagram' ? 'Open Reel on Instagram' : 'Watch on YouTube';
       }
     }
-
-    // Playback Transition
     if (data.videoType === 'local' && data.videoSrc) {
       if (this.iframeWrap) this.iframeWrap.style.display = 'none';
       if (this.masterIframe) this.masterIframe.src = '';
@@ -288,12 +249,10 @@ export class WorkShowcase {
     }
   }
 
-  // ─── Real-Time Movie Camera Timecode Generator (24 FPS) ──────────
   startTimecodeTicker() {
     if (!this.timecodeEl) return;
 
     clearInterval(this.tcInterval);
-    // 24 frames per second ticker (~41.6ms per frame)
     this.tcInterval = setInterval(() => {
       this.tcFrames++;
       if (this.tcFrames >= 24) {
@@ -318,7 +277,6 @@ export class WorkShowcase {
     }, 42);
   }
 
-  // ─── Real-Time Dynamic VU Meters Simulation ──────────────────────
   startVuMeters() {
     if (!this.vuBar1 || !this.vuBar2) return;
 
@@ -331,14 +289,9 @@ export class WorkShowcase {
     }, 180);
   }
 
-  // ─── 2. Auto-Rolling Horizontal Exhibition Tape (Concept A) ──────
   initExhibitionTape() {
     if (!this.tapeCanvas) return;
-
-    // Start auto-rolling ticker (rolls smoothly every 2.4s)
     this.startAutoRoll();
-
-    // Hover pauses auto-roll so visitor can read specs, flip 3D card, or click
     this.tapeCanvas.addEventListener('mouseenter', () => {
       this.isTapePaused = true;
     });
@@ -346,8 +299,6 @@ export class WorkShowcase {
     this.tapeCanvas.addEventListener('mouseleave', () => {
       this.isTapePaused = false;
     });
-
-    // Touch support for mobile devices
     this.tapeCanvas.addEventListener('touchstart', () => {
       this.isTapePaused = true;
     }, { passive: true });
@@ -356,7 +307,6 @@ export class WorkShowcase {
       setTimeout(() => { this.isTapePaused = false; }, 3500);
     }, { passive: true });
 
-    // Toggle pause/play button
     if (this.tapePauseBtn) {
       this.tapePauseBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -369,8 +319,6 @@ export class WorkShowcase {
         }
       });
     }
-
-    // Step Previous button
     if (this.tapePrevBtn) {
       this.tapePrevBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -378,8 +326,6 @@ export class WorkShowcase {
         this.pauseAutoRollBriefly();
       });
     }
-
-    // Step Next button
     if (this.tapeNextBtn) {
       this.tapeNextBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -421,7 +367,6 @@ export class WorkShowcase {
     }, 4500);
   }
 
-  // ─── 3. Category Filtering ───────────────────────────────────────
   initCategoryFiltering() {
     if (!this.filterBar || !this.ledgerTable) return;
 
@@ -438,8 +383,6 @@ export class WorkShowcase {
 
   filterCategory(category) {
     if (!category) category = 'all';
-
-    // Update active button
     if (this.filterButtons) {
       this.filterButtons.forEach((b) => {
         if (b.getAttribute('data-filter') === category) {
@@ -464,7 +407,6 @@ export class WorkShowcase {
       }
     });
 
-    // Update exhibition tape counter
     if (this.ledgerCount) {
       const count = visibleRows.length;
       const catNames = {
@@ -478,12 +420,10 @@ export class WorkShowcase {
       this.ledgerCount.textContent = catNames[category] || `${count} Works`;
     }
 
-    // Reset horizontal scroll position to start of filtered tape
     if (this.tapeCanvas) {
       this.tapeCanvas.scrollTo({ left: 0, behavior: 'smooth' });
     }
 
-    // Hide non-matching
     if (hiddenRows.length) {
       gsap.to(hiddenRows, {
         opacity: 0,
@@ -498,7 +438,6 @@ export class WorkShowcase {
       });
     }
 
-    // Reveal matching
     visibleRows.forEach((r) => {
       r.style.display = '';
     });
@@ -516,14 +455,12 @@ export class WorkShowcase {
       }
     );
 
-    // Screen first matching film on Master Monitor
     if (visibleRows.length > 0) {
       const globalIdx = this.rows.indexOf(visibleRows[0]);
       this.setMasterFilm(visibleRows[0], globalIdx);
     }
   }
 
-  // ─── 4. Link "Our Craft" Rows to Portfolio Library ───────────────
   initCraftLinking() {
     if (!this.craftSection) return;
 
@@ -537,7 +474,6 @@ export class WorkShowcase {
         const craftFilter = row.getAttribute('data-craft-filter');
         if (!craftFilter) return;
 
-        // 1. Scroll smoothly to Selected Work (#work)
         const targetEl = document.getElementById('work');
         if (targetEl) {
           if (this.lenis) {
@@ -547,7 +483,6 @@ export class WorkShowcase {
           }
         }
 
-        // 2. Open drawer and filter category
         setTimeout(() => {
           this.filterCategory(craftFilter);
         }, 300);
@@ -555,7 +490,6 @@ export class WorkShowcase {
     });
   }
 
-  // ─── 5. In-Site Cinema Video Player Modal ────────────────────────
   initCinemaModal() {
     this.modal = document.getElementById('cinema-modal');
     if (!this.modal) return;
@@ -571,7 +505,6 @@ export class WorkShowcase {
     this.modalCloseBtn = document.getElementById('modal-close-btn');
     this.modalBackdrop = document.getElementById('cinema-modal-backdrop');
 
-    // Bespoke Player Bar Controls
     this.modalPlayBtn = document.getElementById('modal-play-btn');
     this.modalPlayIcon = document.getElementById('modal-play-icon');
     this.modalTimeCurrent = document.getElementById('modal-time-current');
@@ -595,7 +528,6 @@ export class WorkShowcase {
     });
 
     if (this.modalPlayer) {
-      // Play / Pause Toggle
       const togglePlay = (e) => {
         if (e) e.stopPropagation();
         if (this.modalPlayer.paused) {
@@ -616,7 +548,6 @@ export class WorkShowcase {
         if (this.modalPlayIcon) this.modalPlayIcon.textContent = '▶';
       });
 
-      // Time & Progress Updates
       const formatTime = (secs) => {
         if (isNaN(secs) || !isFinite(secs)) return '00:00';
         const m = Math.floor(secs / 60);
@@ -654,7 +585,6 @@ export class WorkShowcase {
         }
       });
 
-      // Scrubber Interaction (Click & Drag)
       if (this.modalScrubber) {
         let isSeeking = false;
 
@@ -684,8 +614,6 @@ export class WorkShowcase {
         window.addEventListener('mouseup', () => {
           isSeeking = false;
         });
-
-        // Touch support for mobile scrubbing
         this.modalScrubber.addEventListener('touchstart', (e) => {
           isSeeking = true;
           seek(e);
@@ -700,7 +628,6 @@ export class WorkShowcase {
         });
       }
 
-      // Volume & Mute Controls
       const updateVolumeUI = () => {
         const isMuted = this.modalPlayer.muted || this.modalPlayer.volume === 0;
         if (this.modalMuteIcon) {
@@ -735,7 +662,6 @@ export class WorkShowcase {
 
       this.modalPlayer.addEventListener('volumechange', updateVolumeUI);
 
-      // Fullscreen Toggle
       if (this.modalFullscreenBtn) {
         this.modalFullscreenBtn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -763,7 +689,6 @@ export class WorkShowcase {
 
     if (this.modalTitle) this.modalTitle.textContent = data.title;
 
-    // Detect mobile portrait aspect ratio (Instagram reels / vertical campaigns)
     const isPortrait = data.platform === 'Instagram' ||
       (data.videoSrc && (
         data.videoSrc.includes('skyhop') ||

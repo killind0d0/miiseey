@@ -1,7 +1,3 @@
-// ─── Cinematic Sound & UI Foley System ─────────────────────────
-// Authentic camera shutter actuations & 35mm cinema projector audio.
-// Built with Web Audio API for zero latency and frame-perfect response.
-
 export class SoundManager {
   constructor() {
     this.audioCtx = null;
@@ -126,7 +122,6 @@ export class SoundManager {
   }
 
   setupUIFoley() {
-    // 1. Shutter actuation on project cards
     document.querySelectorAll('.project-card').forEach((card) => {
       card.addEventListener('click', () => {
         this.playFoley('shutter', 0.55);
@@ -136,7 +131,6 @@ export class SoundManager {
       });
     });
 
-    // 2. Shutter actuation on portraits (Vivek Kumar & Vikrant Yadav)
     document.querySelectorAll('.about__portrait-frame').forEach((frame) => {
       frame.addEventListener('click', () => {
         this.playFoley('shutter', 0.6);
@@ -146,14 +140,12 @@ export class SoundManager {
       });
     });
 
-    // 3. Tactile clicks on navigation links & buttons
     document.querySelectorAll('.nav__link, .mobile-menu__link, .contact__cta').forEach((btn) => {
       btn.addEventListener('click', () => {
         this.playFoley('mechanical', 0.35);
       });
     });
 
-    // 4. Menu button
     const menuBtn = document.getElementById('menu-btn');
     if (menuBtn) {
       menuBtn.addEventListener('click', () => {
@@ -161,7 +153,6 @@ export class SoundManager {
       });
     }
 
-    // Preload key audio buffers on first user interaction
     window.addEventListener('pointerdown', () => {
       this.getAudioContext();
       this.loadSound('shutter');
